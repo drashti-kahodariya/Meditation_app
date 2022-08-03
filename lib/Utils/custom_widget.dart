@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hypnosis/Utils/constant.dart';
+import 'package:meditation_app/Utils/constant.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomWidget {
@@ -51,11 +51,11 @@ class CustomWidget {
       required double height,
       required double width,
       required String btnText,
-      double borderRadius = 20.0,
+      double borderRadius = 15.0,
       FontWeight fontWeight = FontWeight.w700,
-      Color color = AppColor.primaryColor,
-      Color textColor = AppColor.primaryColor,
-      double textSize = 12.0}) {
+      Color color = AppColor.lightPrimaryColor,
+      Color textColor = AppColor.lightPrimaryColor,
+      double textSize = 15.0}) {
     return GestureDetector(
       onTap: () => callBack(),
       child: Container(
@@ -105,10 +105,8 @@ class CustomWidget {
       Function? onTapSuffix,
       EdgeInsets contentPadding =
           const EdgeInsets.only(top: 15, bottom: 15, right: 0),
-      String? suffixIcon}) {
+      IconData? suffixIcon}) {
     return InputDecoration(
-        filled: true,
-        fillColor: AppColor.textFieldColor,
         isDense: true,
         prefixIconConstraints:
             BoxConstraints(minWidth: isPrefixShow! ? 20 : 10, maxHeight: 15),
@@ -135,19 +133,15 @@ class CustomWidget {
                 padding: const EdgeInsetsDirectional.only(start: 0.0),
                 child: text(''),
               ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: const BorderSide(
-            width: 0,
-            style: BorderStyle.none,
-          ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColor.whiteColor),
         ),
         hintText: hintText,
         hintStyle: TextStyle(
-            fontSize: 12.0.sp,
+            fontSize: 13.0.sp,
             letterSpacing: 0.5,
-            fontFamily: 'SFProText',
-            color: AppColor.whiteColor.withOpacity(0.5)),
+            fontFamily: 'Poppins',
+            color: AppColor.whiteColor),
         contentPadding: contentPadding);
   }
 
@@ -268,7 +262,7 @@ class CustomWidget {
             fontSize: 12.0, color: AppColor.textHeadigColor),
         SizedBox(height: 1.0.h),
         TextField(
-          cursorColor: AppColor.primaryColor,
+          cursorColor: AppColor.lightPrimaryColor,
           decoration: CustomWidget.customInputDecoration(hintText: hintText!),
         ),
       ],
@@ -317,7 +311,8 @@ class CustomWidget {
   static ThemeData dateTimePickerThemeData() {
     return ThemeData.light().copyWith(
       colorScheme: const ColorScheme.light(
-          primary: AppColor.primaryColor, onSurface: AppColor.textHeadigColor),
+          primary: AppColor.lightPrimaryColor,
+          onSurface: AppColor.textHeadigColor),
       buttonTheme: const ButtonThemeData(
         colorScheme: ColorScheme.light(
           primary: Colors.green,
