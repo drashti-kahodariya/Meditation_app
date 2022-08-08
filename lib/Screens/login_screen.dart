@@ -80,13 +80,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   CustomWidget.customButton(
                       callBack: () {
-                        Get.toNamed(Routes.homeScreen);
+                        Get.toNamed(Routes.dashboard);
                       },
                       height: 6.h,
                       width: 70.w,
                       btnText: "Login",
                       textColor: AppColor.whiteColor,
-                      color: AppColor.lightPrimaryColor),
+                      color: AppColor.primaryColor),
                   SizedBox(
                     height: 1.h,
                   ),

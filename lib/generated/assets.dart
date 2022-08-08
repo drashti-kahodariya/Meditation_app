@@ -3,6 +3,9 @@ class Assets {
   Assets._();
 
   static const String assetsApple = 'assets/apple.png';
+  static const String assetsClock = 'assets/clock.png';
+  static const String assetsDummy = 'assets/dummy.png';
+  static const String assetsDummy2 = 'assets/dummy2.png';
   static const String assetsEmail = 'assets/email.png';
   static const String assetsGoogle = 'assets/google.png';
   static const String assetsHeart = 'assets/heart.png';
@@ -10,7 +13,11 @@ class Assets {
   static const String assetsLogo = 'assets/Logo.png';
   static const String assetsNotification = 'assets/notification.png';
   static const String assetsRecent = 'assets/recent.png';
+  static const String assetsSearch = 'assets/search.png';
   static const String assetsSplashBg = 'assets/splash_bg.png';
+  static const String assetsToday = 'assets/today.png';
+  static const String assetsUser = 'assets/user.png';
+  static const String assetsVolumeUp = 'assets/volume-up.png';
   static const String assetsWelcomeBg = 'assets/welcome_bg.png';
   static const String assetsWelcomeYoga = 'assets/welcome_yoga.png';
 }

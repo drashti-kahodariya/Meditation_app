@@ -53,8 +53,8 @@ class CustomWidget {
       required String btnText,
       double borderRadius = 15.0,
       FontWeight fontWeight = FontWeight.w700,
-      Color color = AppColor.lightPrimaryColor,
-      Color textColor = AppColor.lightPrimaryColor,
+      Color color = AppColor.primaryColor,
+      Color textColor = AppColor.primaryColor,
       double textSize = 15.0}) {
     return GestureDetector(
       onTap: () => callBack(),
@@ -81,16 +81,16 @@ class CustomWidget {
   ///
   /// This method provide [BoxDecoration] with some predefine properties
   ///
-  static BoxDecoration customBoxDecoration({
-    Color color = Colors.white,
-    double borderRadius = 10.0,
-    bool isBoxShadow = true,
-    double borderWidth = 2,
-  }) {
+  static BoxDecoration customBoxDecoration(
+      {Color color = Colors.transparent,
+      double borderRadius = 10.0,
+      bool isBoxShadow = true,
+      double borderWidth = 2,
+      Color borderColor = Colors.transparent}) {
     return BoxDecoration(
       color: color,
       borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-      // border: Border.all(color: AppColor.borderColor, width: borderWidth),
+      border: Border.all(color: borderColor, width: borderWidth),
     );
   }
 
@@ -259,10 +259,10 @@ class CustomWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomWidget.text(headingText!,
-            fontSize: 12.0, color: AppColor.textHeadigColor),
+            fontSize: 12.0, color: AppColor.textHeadingColor),
         SizedBox(height: 1.0.h),
         TextField(
-          cursorColor: AppColor.lightPrimaryColor,
+          cursorColor: AppColor.primaryColor,
           decoration: CustomWidget.customInputDecoration(hintText: hintText!),
         ),
       ],
@@ -311,8 +311,7 @@ class CustomWidget {
   static ThemeData dateTimePickerThemeData() {
     return ThemeData.light().copyWith(
       colorScheme: const ColorScheme.light(
-          primary: AppColor.lightPrimaryColor,
-          onSurface: AppColor.textHeadigColor),
+          primary: AppColor.primaryColor, onSurface: AppColor.textHeadingColor),
       buttonTheme: const ButtonThemeData(
         colorScheme: ColorScheme.light(
           primary: Colors.green,

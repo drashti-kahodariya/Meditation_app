@@ -97,7 +97,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         width: 70.w,
                         btnText: "Register",
                         textColor: AppColor.whiteColor,
-                        color: AppColor.lightPrimaryColor),
+                        color: AppColor.primaryColor),
                     SizedBox(
                       height: 1.h,
                     ),
