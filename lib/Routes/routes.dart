@@ -8,4 +8,12 @@ class Routes {
   static const recentScreen = '/recent_screen';
   static const dashboard = '/dashboard';
   static const notificationScreen = '/notificationScreen';
+  static const exploreScreen = '/exploreScreen';
+  static const musicPlayScreen = '/musicPlayScreen';
+  static const settingScreen = '/settingScreen';
+  static const profileScreen = '/profileScreen';
+  static const editProfileScreen = '/editProfileScreen';
+  static const inviteFriendsScreen = '/inviteFriendsScreen';
+  static const downloadsScreen = '/downloadsScreen';
+  static const forgotPasswordScreen = '/forgotPasswordScreen';
 }

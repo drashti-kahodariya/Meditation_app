@@ -29,11 +29,17 @@ class _RecentScreenState extends State<RecentScreen> {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: AppColor.whiteColor)),
-                  child: const Center(
-                      child: Icon(
-                    Icons.arrow_back_ios,
-                    color: AppColor.whiteColor,
-                  )),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: Center(
+                        child: Icon(
+                      Icons.arrow_back_ios,
+                      color: AppColor.whiteColor,
+                    )),
+                  ),
+                ),
+                SizedBox(
+                  width: 22.w,
                 ),
                 CustomWidget.text("Recent"),
               ],

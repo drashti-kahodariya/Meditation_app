@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:meditation_app/Routes/pages.dart';
-import 'package:meditation_app/Screens/splash_screen.dart';
+import 'package:meditation_app/Screens/Onboarding/splash_screen.dart';
 import 'package:sizer/sizer.dart';
 
 Future<void> main() async {

@@ -36,14 +36,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     color: AppColor.whiteColor,
                   )),
                 ),
+                SizedBox(
+                  width: 22.w,
+                ),
                 CustomWidget.text("Notification"),
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0),
-            child: Container(
-              height: 86.h,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18.0),
               child: ListView.separated(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,

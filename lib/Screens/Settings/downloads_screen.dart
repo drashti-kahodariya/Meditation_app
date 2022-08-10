@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
-import 'package:meditation_app/generated/assets.dart';
 import 'package:sizer/sizer.dart';
 
-class FavouriteScreen extends StatefulWidget {
-  const FavouriteScreen({Key? key}) : super(key: key);
+class DownloadsScreen extends StatefulWidget {
+  const DownloadsScreen({Key? key}) : super(key: key);
 
   @override
-  _FavouriteScreenState createState() => _FavouriteScreenState();
+  _DownloadsScreenState createState() => _DownloadsScreenState();
 }
 
-class _FavouriteScreenState extends State<FavouriteScreen> {
+class _DownloadsScreenState extends State<DownloadsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,19 +27,20 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: AppColor.whiteColor)),
-                  // child: Icon(Icons.),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: Center(
+                        child: Icon(
+                      Icons.arrow_back_ios,
+                      color: AppColor.whiteColor,
+                    )),
+                  ),
                 ),
-                CustomWidget.text("Favorite"),
+                SizedBox(
+                  width: 22.w,
+                ),
+                CustomWidget.text("Downloads"),
               ],
-            ),
-          ),
-          Container(
-            height: 12.h,
-            width: 100.w,
-            color: AppColor.primaryColor,
-            child: Center(
-              child: CustomWidget.text(
-                  "Find all your favorites meditation and exercirs here."),
             ),
           ),
           Expanded(
@@ -59,7 +59,8 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                               height: 9.h,
                               width: 25.w,
                               decoration: CustomWidget.customBoxDecoration(
-                                  borderRadius: 12),
+                                  borderRadius: 12,
+                                  borderColor: AppColor.whiteColor),
                             ),
                             SizedBox(
                               width: 2.w,
@@ -75,9 +76,6 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                         AppColor.whiteColor.withOpacity(0.7)),
                               ],
                             ),
-                            Spacer(),
-                            CustomWidget.customAssetImageWidget(
-                                image: Assets.assetsHeart)
                           ],
                         ),
                         SizedBox(

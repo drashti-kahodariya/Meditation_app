@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meditation_app/Screens/favourite_screen.dart';
-import 'package:meditation_app/Screens/home_screen.dart';
-import 'package:meditation_app/Screens/recent_screen.dart';
+import 'package:meditation_app/Screens/Explore/explore_screen.dart';
+import 'package:meditation_app/Screens/Home/home_screen.dart';
+import 'package:meditation_app/Screens/Settings/profile_screen.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -17,7 +17,7 @@ class _DashboardState extends State<Dashboard> {
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
   List<Widget> _buildScreens() {
-    return [const HomeScreen(), const FavouriteScreen(), const RecentScreen()];
+    return [const HomeScreen(), const ExploreScreen(), const ProfileScreen()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -36,7 +36,7 @@ class _DashboardState extends State<Dashboard> {
           Icons.search,
           size: 30,
         ),
-        title: ("Favourite"),
+        title: ("Explore"),
         activeColorPrimary: AppColor.lightPinkColor,
         inactiveColorPrimary: AppColor.whiteColor,
         // onPressed: (context) async {

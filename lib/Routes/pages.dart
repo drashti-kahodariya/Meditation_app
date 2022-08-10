@@ -1,14 +1,22 @@
 import 'package:get/get.dart' show GetPage, Transition;
 import 'package:meditation_app/Routes/routes.dart';
+import 'package:meditation_app/Screens/Explore/explore_screen.dart';
+import 'package:meditation_app/Screens/Explore/music_play_screen.dart';
+import 'package:meditation_app/Screens/Home/favourite_screen.dart';
+import 'package:meditation_app/Screens/Home/home_screen.dart';
+import 'package:meditation_app/Screens/Home/notification_screen.dart';
+import 'package:meditation_app/Screens/Home/recent_screen.dart';
+import 'package:meditation_app/Screens/Onboarding/forgot_password.dart';
+import 'package:meditation_app/Screens/Onboarding/login_screen.dart';
+import 'package:meditation_app/Screens/Onboarding/signup_screen.dart';
+import 'package:meditation_app/Screens/Onboarding/splash_screen.dart';
+import 'package:meditation_app/Screens/Onboarding/welcome_screen.dart';
+import 'package:meditation_app/Screens/Settings/downloads_screen.dart';
+import 'package:meditation_app/Screens/Settings/edit_profile.dart';
+import 'package:meditation_app/Screens/Settings/invite_friends.dart';
+import 'package:meditation_app/Screens/Settings/profile_screen.dart';
+import 'package:meditation_app/Screens/Settings/settings_screen.dart';
 import 'package:meditation_app/Screens/dashboard.dart';
-import 'package:meditation_app/Screens/favourite_screen.dart';
-import 'package:meditation_app/Screens/home_screen.dart';
-import 'package:meditation_app/Screens/login_screen.dart';
-import 'package:meditation_app/Screens/notification_screen.dart';
-import 'package:meditation_app/Screens/recent_screen.dart';
-import 'package:meditation_app/Screens/signup_screen.dart';
-import 'package:meditation_app/Screens/splash_screen.dart';
-import 'package:meditation_app/Screens/welcome_screen.dart';
 
 const Transition transition = Transition.cupertino;
 
@@ -52,6 +60,38 @@ class AppPages {
     GetPage(
         name: Routes.notificationScreen,
         page: () => const NotificationScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.exploreScreen,
+        page: () => const ExploreScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.musicPlayScreen,
+        page: () => const MusicPlayScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.settingScreen,
+        page: () => const SettingScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.profileScreen,
+        page: () => const ProfileScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.editProfileScreen,
+        page: () => const EditProfile(),
+        transition: transition),
+    GetPage(
+        name: Routes.inviteFriendsScreen,
+        page: () => const InviteFriends(),
+        transition: transition),
+    GetPage(
+        name: Routes.downloadsScreen,
+        page: () => const DownloadsScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.forgotPasswordScreen,
+        page: () => const ForgotPassword(),
         transition: transition),
   ];
 }
