@@ -72,7 +72,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      CustomWidget.text("Forgot Password?", fontSize: 11),
+                      GestureDetector(
+                          onTap: () {
+                            Get.toNamed(Routes.forgotPasswordScreen);
+                          },
+                          child: CustomWidget.text("Forgot Password?",
+                              fontSize: 11)),
                     ],
                   ),
                   SizedBox(

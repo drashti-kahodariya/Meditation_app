@@ -16,4 +16,7 @@ class Routes {
   static const inviteFriendsScreen = '/inviteFriendsScreen';
   static const downloadsScreen = '/downloadsScreen';
   static const forgotPasswordScreen = '/forgotPasswordScreen';
+  static const subscriptionScreen = '/subscriptionScreen';
+  static const featuredScreen = '/featuredScreen';
+  static const supportScreen = '/supportScreen';
 }

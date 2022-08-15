@@ -8,10 +8,13 @@ class Assets {
   static const String assetsDummy = 'assets/dummy.png';
   static const String assetsDummy2 = 'assets/dummy2.png';
   static const String assetsDummy3 = 'assets/dummy3.png';
+  static const String assetsDummy4 = 'assets/dummy4.png';
+  static const String assetsDummy5 = 'assets/dummy5.png';
   static const String assetsEmail = 'assets/email.png';
   static const String assetsEmailIcon = 'assets/email_icon.png';
   static const String assetsFocusIcon = 'assets/focus_icon.png';
   static const String assetsFocusImage = 'assets/focus_image.png';
+  static const String assetsForgotPassword = 'assets/forgot_password.png';
   static const String assetsGoogle = 'assets/google.png';
   static const String assetsHeart = 'assets/heart.png';
   static const String assetsInvitationImage = 'assets/invitation_image.png';
@@ -37,6 +40,7 @@ class Assets {
   static const String assetsSupport = 'assets/support.png';
   static const String assetsTermsCondition = 'assets/terms_condition.png';
   static const String assetsToday = 'assets/today.png';
+  static const String assetsUnlockIcon = 'assets/unlockIcon.png';
   static const String assetsUser = 'assets/user.png';
   static const String assetsVolumeUp = 'assets/volume-up.png';
   static const String assetsWelcomeBg = 'assets/welcome_bg.png';

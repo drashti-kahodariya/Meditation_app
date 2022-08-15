@@ -53,7 +53,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
       {required String image, required String icon, required String title}) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.musicPlayScreen);
+        Get.toNamed(Routes.featuredScreen);
       },
       child: Stack(
         children: [

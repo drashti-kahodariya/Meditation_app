@@ -1,6 +1,7 @@
 import 'package:get/get.dart' show GetPage, Transition;
 import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Screens/Explore/explore_screen.dart';
+import 'package:meditation_app/Screens/Explore/featured_screen.dart';
 import 'package:meditation_app/Screens/Explore/music_play_screen.dart';
 import 'package:meditation_app/Screens/Home/favourite_screen.dart';
 import 'package:meditation_app/Screens/Home/home_screen.dart';
@@ -16,7 +17,9 @@ import 'package:meditation_app/Screens/Settings/edit_profile.dart';
 import 'package:meditation_app/Screens/Settings/invite_friends.dart';
 import 'package:meditation_app/Screens/Settings/profile_screen.dart';
 import 'package:meditation_app/Screens/Settings/settings_screen.dart';
+import 'package:meditation_app/Screens/Settings/support_screen.dart';
 import 'package:meditation_app/Screens/dashboard.dart';
+import 'package:meditation_app/Screens/subscription_screen.dart';
 
 const Transition transition = Transition.cupertino;
 
@@ -92,6 +95,18 @@ class AppPages {
     GetPage(
         name: Routes.forgotPasswordScreen,
         page: () => const ForgotPassword(),
+        transition: transition),
+    GetPage(
+        name: Routes.subscriptionScreen,
+        page: () => const SubScriptionScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.featuredScreen,
+        page: () => const FeaturedScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.supportScreen,
+        page: () => const SupportScreen(),
         transition: transition),
   ];
 }

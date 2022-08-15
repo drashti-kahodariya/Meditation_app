@@ -101,15 +101,19 @@ class CustomWidget {
       {required String hintText,
       bool? isSufixShow = false,
       bool? isPrefixShow = false,
+      bool? isFilled = false,
       String? prefixImage,
       Function? onTapSuffix,
       EdgeInsets contentPadding =
           const EdgeInsets.only(top: 15, bottom: 15, right: 0),
       IconData? suffixIcon}) {
     return InputDecoration(
+        fillColor:
+            isFilled! ? Color(0xffAF6FBA).withOpacity(0.2) : Colors.transparent,
+        filled: isFilled,
         isDense: true,
         prefixIconConstraints:
-            BoxConstraints(minWidth: isPrefixShow! ? 20 : 10, maxHeight: 15),
+            BoxConstraints(minWidth: isPrefixShow! ? 20 : 10, maxHeight: 22),
         suffixIconConstraints:
             BoxConstraints(minWidth: isSufixShow! ? 20 : 10, maxHeight: 15),
         suffixIcon: isSufixShow
@@ -133,9 +137,20 @@ class CustomWidget {
                 padding: const EdgeInsetsDirectional.only(start: 0.0),
                 child: text(''),
               ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColor.whiteColor),
-        ),
+        enabledBorder: isPrefixShow
+            ? OutlineInputBorder(
+                borderSide: BorderSide(color: AppColor.primaryColor),
+                borderRadius: BorderRadius.circular(15))
+            : UnderlineInputBorder(
+                borderSide: BorderSide(color: AppColor.whiteColor),
+              ),
+        focusedBorder: isPrefixShow
+            ? OutlineInputBorder(
+                borderSide: BorderSide(color: AppColor.primaryColor),
+                borderRadius: BorderRadius.circular(15))
+            : UnderlineInputBorder(
+                borderSide: BorderSide(color: AppColor.whiteColor),
+              ),
         hintText: hintText,
         hintStyle: TextStyle(
             fontSize: 13.0.sp,

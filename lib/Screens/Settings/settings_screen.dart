@@ -53,7 +53,10 @@ class _SettingScreenState extends State<SettingScreen> {
               children: [
                 customSettingTile(
                     icon: Assets.assetsSettingUser,
-                    title: "Account Information"),
+                    title: "Account Information",
+                    onTap: () {
+                      Get.toNamed(Routes.editProfileScreen);
+                    }),
                 SizedBox(
                   height: 3.h,
                 ),
@@ -67,7 +70,11 @@ class _SettingScreenState extends State<SettingScreen> {
                   height: 3.h,
                 ),
                 customSettingTile(
-                    icon: Assets.assetsNotification, title: "Notification"),
+                    icon: Assets.assetsNotification,
+                    title: "Notification",
+                    onTap: () {
+                      Get.toNamed(Routes.notificationScreen);
+                    }),
                 SizedBox(
                   height: 3.h,
                 ),
@@ -95,7 +102,12 @@ class _SettingScreenState extends State<SettingScreen> {
                 SizedBox(
                   height: 3.h,
                 ),
-                customSettingTile(icon: Assets.assetsSupport, title: "Support"),
+                customSettingTile(
+                    icon: Assets.assetsSupport,
+                    title: "Support",
+                    onTap: () {
+                      Get.toNamed(Routes.supportScreen);
+                    }),
                 SizedBox(
                   height: 3.h,
                 ),
