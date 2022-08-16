@@ -3,13 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:meditation_app/Data/API/api_manager.dart';
 import 'package:meditation_app/Models/login_success_response_model.dart';
+import 'package:meditation_app/Repository/authentication_repository.dart';
+import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:the_apple_sign_in/the_apple_sign_in.dart';
 
 class AuthenticationController extends GetxController {
-  // final authenticationRepository = AuthenticationRepository();
+  final authenticationRepository = AuthenticationRepository(APIManager());
 
   final currentUserData = UserData().obs;
 
@@ -20,6 +23,30 @@ class AuthenticationController extends GetxController {
     printInfo(info: GetStorage().read(AppPreferencesHelper.pUser).toString());
     currentUserData.value =
         UserData.fromJson(GetStorage().read(AppPreferencesHelper.pUser));
+  }
+
+  ///
+  /// You have to use this method in registration form same as i used in the login screen
+  ///
+  Future<void> login(Map<String, String> params) async {
+    var loginData = await authenticationRepository.loginApiCall(params);
+    GetStorage()
+        .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
+    setCurrentUser();
+    print("LOGIN DONE");
+    Get.offAllNamed(Routes.homeScreen);
+  }
+
+  ///
+  /// You have to use this method in registration form same as i used in the login screen
+  ///
+  Future<void> signUp(Map<String, String> params) async {
+    var loginData = await authenticationRepository.signupApiCall(params);
+    GetStorage()
+        .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
+    setCurrentUser();
+    print("REGISTRATION DONE");
+    Get.offAllNamed(Routes.homeScreen);
   }
 
   ///
@@ -49,13 +76,13 @@ class AuthenticationController extends GetxController {
 
         firebaseUser = userCredential.user;
 
-        // var loginData = await authenticationRepository.signInWithGoogle(
-        //     googleSignInAuthentication.accessToken,
-        //     googleSignInAuthentication.idToken);
-        // GetStorage()
-        //     .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
-        // setCurrentUser();
-        // Get.offAllNamed(Routes.splashScreen);
+        var loginData = await authenticationRepository.signInWithGoogle(
+            googleSignInAuthentication.accessToken,
+            googleSignInAuthentication.idToken);
+        GetStorage()
+            .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
+        setCurrentUser();
+        Get.offAllNamed(Routes.homeScreen);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           CustomWidget.errorSnackBar(content: 'Account Already Exist');

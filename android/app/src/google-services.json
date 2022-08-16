@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "742445721696-o2hnj9io9jaerf1he5v9105earl8b03h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meditation_app",
+            "certificate_hash": "1704b7b0331868465345fef37ba29dddaa32a436"
+          }
+        },
+        {
           "client_id": "742445721696-uq03qjikhk7hktkecaomvhg9jnpsfvop.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -11,17 +9,32 @@ class SupportScreen extends StatefulWidget {
 }
 
 class _SupportScreenState extends State<SupportScreen> {
+  String url = "";
   @override
-  void initState() {
-    super.initState();
-    // Enable virtual display.
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+  @override
+  void didChangeDependencies() {
+    WebView.platform = AndroidWebView();
+    String argument = ModalRoute.of(context)!.settings.arguments as String;
+    if (argument == "My Data") {
+      url =
+          "https://headspace-meditation.s3.eu-west-2.amazonaws.com/Privacy.html";
+    } else if (argument == "Privacy Policy") {
+      url =
+          "https://headspace-meditation.s3.eu-west-2.amazonaws.com/Privacy.html";
+    } else if (argument == "Terms & Conditions") {
+      url =
+          "https://headspace-meditation.s3.eu-west-2.amazonaws.com/TermsCondition.html";
+    } else {
+      url =
+          "https://headspace-meditation.s3.eu-west-2.amazonaws.com/Support.html";
+    }
+    super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
     return WebView(
-      initialUrl: 'https://flutter.dev',
+      initialUrl: url,
     );
   }
 }

@@ -78,13 +78,22 @@ class _SettingScreenState extends State<SettingScreen> {
                 SizedBox(
                   height: 3.h,
                 ),
-                customSettingTile(icon: Assets.assetsMyData, title: "My Data"),
+                customSettingTile(
+                    icon: Assets.assetsMyData,
+                    title: "My Data",
+                    onTap: () {
+                      Get.toNamed(Routes.supportScreen, arguments: "My Data");
+                    }),
                 SizedBox(
                   height: 3.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsTermsCondition,
-                    title: "Terms & Conditions"),
+                    title: "Terms & Conditions",
+                    onTap: () {
+                      Get.toNamed(Routes.supportScreen,
+                          arguments: "Terms & Conditions");
+                    }),
                 SizedBox(
                   height: 3.h,
                 ),
@@ -98,7 +107,12 @@ class _SettingScreenState extends State<SettingScreen> {
                   height: 3.h,
                 ),
                 customSettingTile(
-                    icon: Assets.assetsPrivacyPolicy, title: "Privacy Policy"),
+                    icon: Assets.assetsPrivacyPolicy,
+                    title: "Privacy Policy",
+                    onTap: () {
+                      Get.toNamed(Routes.supportScreen,
+                          arguments: "Privacy Policy");
+                    }),
                 SizedBox(
                   height: 3.h,
                 ),
@@ -106,7 +120,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     icon: Assets.assetsSupport,
                     title: "Support",
                     onTap: () {
-                      Get.toNamed(Routes.supportScreen);
+                      Get.toNamed(Routes.supportScreen, arguments: "Support");
                     }),
                 SizedBox(
                   height: 3.h,

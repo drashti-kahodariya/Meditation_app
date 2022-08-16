@@ -35,7 +35,7 @@ dependencies:
   get: ^4.6.5
   http: ^0.13.4
   get_storage: ^2.0.3
-  flutter_easyloading: ^3.0.5
+  flutter_easyloading:
   google_fonts: ^3.0.1
   flutter_facebook_auth: ^4.4.0+1
   firebase_auth: ^3.5.1
