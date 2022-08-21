@@ -114,10 +114,10 @@ class AuthenticationController extends GetxController {
         final credential = oAuthProvider.credential(
           idToken: String.fromCharCodes(appleIdCredential.identityToken!),
           accessToken:
-          String.fromCharCodes(appleIdCredential.authorizationCode!),
+              String.fromCharCodes(appleIdCredential.authorizationCode!),
         );
         final userCredential =
-        await _firebaseAuth.signInWithCredential(credential);
+            await _firebaseAuth.signInWithCredential(credential);
         final firebaseUser = userCredential.user!;
         if (scopes.contains(Scope.fullName)) {
           final fullName = appleIdCredential.fullName;
@@ -129,7 +129,10 @@ class AuthenticationController extends GetxController {
           }
         }
         var loginData = await authenticationRepository.signInWithApple(
-            appleAuthCode: String.fromCharCodes(appleIdCredential.authorizationCode!),email: firebaseUser.email,name: firebaseUser.displayName ?? "");
+            appleAuthCode:
+                String.fromCharCodes(appleIdCredential.authorizationCode!),
+            email: firebaseUser.email,
+            name: firebaseUser.displayName ?? "");
         GetStorage()
             .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
         setCurrentUser();
@@ -159,6 +162,6 @@ class AuthenticationController extends GetxController {
   ///
   logOut() {
     GetStorage().erase();
-    Get.offAllNamed(Routes.loginScreen);
+    Get.offAllNamed(Routes.welcomeScreen);
   }
 }
