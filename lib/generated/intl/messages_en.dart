@@ -21,5 +21,23 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Downloads": MessageLookupByLibrary.simpleMessage(""),
+        "Explore": MessageLookupByLibrary.simpleMessage(""),
+        "Favorite": MessageLookupByLibrary.simpleMessage(""),
+        "Featured": MessageLookupByLibrary.simpleMessage(""),
+        "Focus": MessageLookupByLibrary.simpleMessage(""),
+        "Login": MessageLookupByLibrary.simpleMessage("Login"),
+        "Meditate": MessageLookupByLibrary.simpleMessage(""),
+        "Notification": MessageLookupByLibrary.simpleMessage(""),
+        "Password": MessageLookupByLibrary.simpleMessage("Password"),
+        "Recent": MessageLookupByLibrary.simpleMessage(""),
+        "Register": MessageLookupByLibrary.simpleMessage("Register"),
+        "Setting": MessageLookupByLibrary.simpleMessage(""),
+        "Sleep": MessageLookupByLibrary.simpleMessage(""),
+        "Submit": MessageLookupByLibrary.simpleMessage(""),
+        "Support": MessageLookupByLibrary.simpleMessage(""),
+        "Today": MessageLookupByLibrary.simpleMessage(""),
+        "Welcome": MessageLookupByLibrary.simpleMessage("Welcome")
+      };
 }

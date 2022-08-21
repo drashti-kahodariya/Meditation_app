@@ -92,7 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 2.h,
                   ),
                   SizedBox(
-                    height: 75.h,
+                    height: 27.h *
+                        homeController.dashboardMeditationList.value[0]
+                            .startYourDay!.length!,
                     child: Obx(() {
                       return ListView.separated(
                         physics: BouncingScrollPhysics(),
