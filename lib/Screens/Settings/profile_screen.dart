@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
@@ -14,92 +15,105 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  var authController = Get.put(AuthenticationController());
+
+  @override
+  void initState() {
+    authController.setCurrentUser();
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed(Routes.settingScreen);
-                  },
-                  child: Image.asset(
-                    Assets.assetsSettingIcon,
-                    height: 30,
-                    width: 30,
+        child: Obx(() {
+          return Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routes.settingScreen);
+                    },
+                    child: Image.asset(
+                      Assets.assetsSettingIcon,
+                      height: 30,
+                      width: 30,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 7.h,
-            ),
-            CircleAvatar(
-              backgroundColor: AppColor.whiteColor,
-              maxRadius: 7.h,
-            ),
-            SizedBox(
-              height: 1.h,
-            ),
-            CustomWidget.text("Drashti kahodariya"),
-            SizedBox(
-              height: 2.h,
-            ),
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 18.w,
-                ),
-                Image.asset(
-                  Assets.assetsPhone,
-                  height: 20,
-                  width: 20,
-                ),
-                SizedBox(
-                  width: 3.w,
-                ),
-                CustomWidget.text("+91 99999 88888", fontSize: 13),
-              ],
-            ),
-            SizedBox(
-              height: 2.h,
-            ),
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 18.w,
-                ),
-                Image.asset(
-                  Assets.assetsEmailIcon,
-                  height: 20,
-                  width: 20,
-                ),
-                SizedBox(
-                  width: 3.w,
-                ),
-                CustomWidget.text("dollyfelix@apple.com", fontSize: 13),
-              ],
-            ),
-            SizedBox(
-              height: 4.h,
-            ),
-            CustomPracticeContainer(
-                icon: Assets.assetsPracticesIcon, title: "Practices"),
-            SizedBox(
-              height: 4.h,
-            ),
-            CustomPracticeContainer(
-                icon: Assets.assetsMeditationsIcon, title: "Meditations")
-          ],
-        ),
+                ],
+              ),
+              SizedBox(
+                height: 7.h,
+              ),
+              CircleAvatar(
+                backgroundColor: AppColor.whiteColor,
+                maxRadius: 7.h,
+              ),
+              SizedBox(
+                height: 1.h,
+              ),
+              CustomWidget.text(authController.currentUserData.value.email!),
+              SizedBox(
+                height: 2.h,
+              ),
+              Row(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 18.w,
+                  ),
+                  Image.asset(
+                    Assets.assetsPhone,
+                    height: 20,
+                    width: 20,
+                  ),
+                  SizedBox(
+                    width: 3.w,
+                  ),
+                  CustomWidget.text("+91 99999 88888", fontSize: 13),
+                ],
+              ),
+              SizedBox(
+                height: 2.h,
+              ),
+              Row(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 18.w,
+                  ),
+                  Image.asset(
+                    Assets.assetsEmailIcon,
+                    height: 20,
+                    width: 20,
+                  ),
+                  SizedBox(
+                    width: 3.w,
+                  ),
+                  CustomWidget.text(
+                      "${authController.currentUserData.value.email!}",
+                      fontSize: 13),
+                ],
+              ),
+              SizedBox(
+                height: 4.h,
+              ),
+              CustomPracticeContainer(
+                  icon: Assets.assetsPracticesIcon, title: "Practices"),
+              SizedBox(
+                height: 4.h,
+              ),
+              CustomPracticeContainer(
+                  icon: Assets.assetsMeditationsIcon, title: "Meditations")
+            ],
+          );
+        }),
       ),
     );
   }

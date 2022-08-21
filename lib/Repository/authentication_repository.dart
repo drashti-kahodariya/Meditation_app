@@ -7,7 +7,7 @@ class AuthenticationRepository {
 
   AuthenticationRepository(this.apiManager);
 
-  ///Signup API call
+  ///Signup API
   Future<LoginSuccessResponseModel> signupApiCall(
       Map<String, String> parameters) async {
     var json = await apiManager.postAPICall(
@@ -18,7 +18,7 @@ class AuthenticationRepository {
     return response;
   }
 
-  /// Login API call
+  /// Login API
   Future<LoginSuccessResponseModel> loginApiCall(
       Map<String, String> parameters) async {
     var json = await apiManager.postAPICall(
@@ -28,6 +28,7 @@ class AuthenticationRepository {
     var response = LoginSuccessResponseModel.fromJson(json);
     return response;
   }
+
   ///
   /// This method used for the do sign in with google
   ///
@@ -38,11 +39,12 @@ class AuthenticationRepository {
     goggleLoginModel.idToken = idToken;
     goggleLoginModel.accessToken = accessToken;
     goggleLoginModel.deviceToken = "123";
-    var jsonResponse =
-    await apiManager.postAPICall("user/google_login", goggleLoginModel.toJson());
+    var jsonResponse = await apiManager.postAPICall(
+        "user/google_login", goggleLoginModel.toJson());
     var loginResponse = LoginSuccessResponseModel.fromJson(jsonResponse);
     return loginResponse;
   }
+
   ///
   /// This method used for the do sign in with facebook
   ///

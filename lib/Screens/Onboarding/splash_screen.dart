@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:meditation_app/Routes/routes.dart';
+import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
 import 'package:sizer/sizer.dart';
@@ -21,14 +23,10 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: Define the routes and set logic accordingly
     Timer(
-      const Duration(seconds: 3),
-      () =>
-          //         GetStorage().read(AppPreferencesHelper.pUser) == null
-          // ?
-          Get.toNamed(Routes.welcomeScreen),
-    );
-    // :
-    //         Get.offAllNamed(Routes.homeScreen));
+        const Duration(seconds: 3),
+        () => GetStorage().read(AppPreferencesHelper.pUser) == null
+            ? Get.offAllNamed(Routes.welcomeScreen)
+            : Get.offAllNamed(Routes.dashboard));
     super.initState();
   }
 

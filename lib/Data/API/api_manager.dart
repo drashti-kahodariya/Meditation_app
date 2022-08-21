@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:meditation_app/Data/API/api_exception.dart';
@@ -30,16 +31,15 @@ class APIManager {
       EasyLoading.show(maskType: EasyLoadingMaskType.black);
 
       /// Set header for send request
-      var headers = GetStorage().read(AppPreferencesHelper.pUser) == "null"
+      var headers = GetStorage().read(AppPreferencesHelper.pUser) == null
           ? {
               "Content-Type": "application/json",
             }
           : {
               "Content-Type": "application/json",
-              "Authorization": "Bearer " +
-                  UserData.fromJson(
-                          GetStorage().read(AppPreferencesHelper.pUser))
-                      .token!
+              "Authorization": UserData.fromJson(
+                      GetStorage().read(AppPreferencesHelper.pUser))
+                  .token!
             };
 
       /// call post api for given url and parameters
@@ -80,16 +80,16 @@ class APIManager {
         EasyLoading.show(maskType: EasyLoadingMaskType.black);
       }
 
-      // print(auth_token);
       Map<String, String>? headers =
           GetStorage().read(AppPreferencesHelper.pUser) == null
               ? {}
               : {
-                  "Authorization": "Bearer " +
-                      UserData.fromJson(
-                              GetStorage().read(AppPreferencesHelper.pUser))
-                          .token!
+                  "Authorization": UserData.fromJson(
+                          GetStorage().read(AppPreferencesHelper.pUser))
+                      .token!
                 };
+      Get.printInfo(info: 'header- ${headers.toString()}');
+      Get.printInfo(info: 'URL- ${baseUrl + url}');
 
       /// call post api for given url and parameters
       final response = await http
@@ -97,7 +97,7 @@ class APIManager {
           .timeout(Duration(seconds: 15));
       // .onError((error, stackTrace) =>
       //     throw FetchDataException('Something went wrong!'));
-
+      print("HEllo:: ${response.body}");
       if (kDebugMode) {
         print(response.body);
       }
@@ -136,10 +136,9 @@ class APIManager {
             }
           : {
               "Content-Type": "application/json",
-              "Authorization": "Bearer " +
-                  UserData.fromJson(
-                          GetStorage().read(AppPreferencesHelper.pUser))
-                      .token!
+              "Authorization": UserData.fromJson(
+                      GetStorage().read(AppPreferencesHelper.pUser))
+                  .token!
             };
       print("Headers:${headers}");
 
@@ -222,10 +221,9 @@ class APIManager {
             }
           : {
               "Content-Type": "application/json",
-              "Authorization": "Bearer " +
-                  UserData.fromJson(
-                          GetStorage().read(AppPreferencesHelper.pUser))
-                      .token!
+              "Authorization": UserData.fromJson(
+                      GetStorage().read(AppPreferencesHelper.pUser))
+                  .token!
             };
 
       /// call post api for given url and parameters

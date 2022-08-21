@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
@@ -12,6 +14,18 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+  var authController = Get.put(AuthenticationController());
+  var _nameController = TextEditingController();
+  var _emailController = TextEditingController();
+  var _mobNoController = TextEditingController();
+  @override
+  void initState() {
+    authController.currentUserData();
+    // _nameController.text = authController.currentUserData.value.name!;
+    _emailController.text = authController.currentUserData.value.email!;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,13 +61,20 @@ class _EditProfileState extends State<EditProfile> {
               ),
             ),
             CircleAvatar(
-              backgroundColor: AppColor.whiteColor,
+              backgroundColor: AppColor.whiteColor.withOpacity(0.2),
               maxRadius: 70,
+              child: Padding(
+                padding: const EdgeInsets.all(38.0),
+                child: Image.asset(
+                  Assets.assetsEditUser,
+                  color: AppColor.primaryColor,
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(28.0),
               child: TextFormField(
-                // controller: _passwordController,
+                controller: _nameController,
                 style: TextStyle(color: AppColor.whiteColor),
                 decoration: CustomWidget.customInputDecoration(
                     hintText: "Name",
@@ -65,7 +86,7 @@ class _EditProfileState extends State<EditProfile> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 28.0),
               child: TextFormField(
-                // controller: _passwordController,
+                controller: _emailController,
                 style: TextStyle(color: AppColor.whiteColor),
                 decoration: CustomWidget.customInputDecoration(
                     hintText: "Email",
@@ -77,7 +98,7 @@ class _EditProfileState extends State<EditProfile> {
             Padding(
               padding: const EdgeInsets.only(top: 28.0, right: 28, left: 28),
               child: TextFormField(
-                // controller: _passwordController,
+                controller: _mobNoController,
                 style: TextStyle(color: AppColor.whiteColor),
                 decoration: CustomWidget.customInputDecoration(
                   hintText: "Mobile No.",

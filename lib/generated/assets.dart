@@ -10,6 +10,7 @@ class Assets {
   static const String assetsDummy3 = 'assets/dummy3.png';
   static const String assetsDummy4 = 'assets/dummy4.png';
   static const String assetsDummy5 = 'assets/dummy5.png';
+  static const String assetsEditUser = 'assets/edit_user.png';
   static const String assetsEmail = 'assets/email.png';
   static const String assetsEmailIcon = 'assets/email_icon.png';
   static const String assetsFocusIcon = 'assets/focus_icon.png';
@@ -45,4 +46,5 @@ class Assets {
   static const String assetsVolumeUp = 'assets/volume-up.png';
   static const String assetsWelcomeBg = 'assets/welcome_bg.png';
   static const String assetsWelcomeYoga = 'assets/welcome_yoga.png';
+
 }

@@ -34,7 +34,7 @@ class AuthenticationController extends GetxController {
         .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
     setCurrentUser();
     print("LOGIN DONE");
-    Get.offAllNamed(Routes.homeScreen);
+    Get.offAllNamed(Routes.dashboard);
   }
 
   ///
@@ -46,7 +46,7 @@ class AuthenticationController extends GetxController {
         .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
     setCurrentUser();
     print("REGISTRATION DONE");
-    Get.offAllNamed(Routes.homeScreen);
+    Get.offAllNamed(Routes.dashboard);
   }
 
   ///
@@ -82,7 +82,7 @@ class AuthenticationController extends GetxController {
         GetStorage()
             .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
         setCurrentUser();
-        Get.offAllNamed(Routes.homeScreen);
+        Get.offAllNamed(Routes.dashboard);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           CustomWidget.errorSnackBar(content: 'Account Already Exist');
@@ -114,10 +114,10 @@ class AuthenticationController extends GetxController {
         final credential = oAuthProvider.credential(
           idToken: String.fromCharCodes(appleIdCredential.identityToken!),
           accessToken:
-              String.fromCharCodes(appleIdCredential.authorizationCode!),
+          String.fromCharCodes(appleIdCredential.authorizationCode!),
         );
         final userCredential =
-            await _firebaseAuth.signInWithCredential(credential);
+        await _firebaseAuth.signInWithCredential(credential);
         final firebaseUser = userCredential.user!;
         if (scopes.contains(Scope.fullName)) {
           final fullName = appleIdCredential.fullName;
@@ -128,15 +128,12 @@ class AuthenticationController extends GetxController {
             await firebaseUser.updateDisplayName(displayName);
           }
         }
-        // var loginData = await authenticationRepository.signInWithApple(
-        //     appleAuthCode:
-        //         String.fromCharCodes(appleIdCredential.authorizationCode!),
-        //     email: firebaseUser.email,
-        //     name: firebaseUser.displayName ?? "");
-        // GetStorage()
-        //     .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
-        // setCurrentUser();
-        // Get.offAllNamed(Routes.homeScreen);
+        var loginData = await authenticationRepository.signInWithApple(
+            appleAuthCode: String.fromCharCodes(appleIdCredential.authorizationCode!),email: firebaseUser.email,name: firebaseUser.displayName ?? "");
+        GetStorage()
+            .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
+        setCurrentUser();
+        Get.offAllNamed(Routes.homeScreen);
         break;
 
       case AuthorizationStatus.error:
@@ -155,5 +152,13 @@ class AuthenticationController extends GetxController {
       default:
         throw UnimplementedError();
     }
+  }
+
+  ///
+  /// This method used for sign out user from app
+  ///
+  logOut() {
+    GetStorage().erase();
+    Get.offAllNamed(Routes.loginScreen);
   }
 }

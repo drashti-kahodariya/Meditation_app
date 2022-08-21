@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
@@ -15,6 +16,8 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
+  var authController = Get.put(AuthenticationController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,7 +129,11 @@ class _SettingScreenState extends State<SettingScreen> {
                   height: 3.h,
                 ),
                 customSettingTile(
-                    icon: Assets.assetsLogout, title: "Log Out", onTap: () {}),
+                    icon: Assets.assetsLogout,
+                    title: "Log Out",
+                    onTap: () {
+                      authController.logOut();
+                    }),
               ],
             ),
           )
