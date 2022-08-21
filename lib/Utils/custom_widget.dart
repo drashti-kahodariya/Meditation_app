@@ -35,6 +35,7 @@ class CustomWidget {
       {String? image,
       double height = 4.0,
       double width = 4.0,
+        Color? color,
       BoxFit fit = BoxFit.contain}) {
     return SizedBox(
       height: height.h,
@@ -42,6 +43,7 @@ class CustomWidget {
       child: Image.asset(
         image!,
         fit: fit,
+        color: color,
       ),
     );
   }
