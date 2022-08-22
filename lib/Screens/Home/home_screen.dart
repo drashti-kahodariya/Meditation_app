@@ -46,20 +46,19 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(18.0),
               child: Row(
                 children: [
-                  CustomWidget.text("${homeController.greetingMessage()}, Felix",
+                  CustomWidget.text(
+                      "${homeController.greetingMessage()}, Felix",
                       textAlign: TextAlign.start,
                       fontWeight: FontWeight.w400,
-                      color: AppColor.whiteColor.withOpacity(0.7),
-                      fontSize: 12),
+                      color: AppColor.whiteColor,
+                      fontSize: 16),
                   Spacer(),
                   GestureDetector(
                     onTap: () {
                       Get.toNamed(Routes.favouriteScreen);
                     },
                     child: CustomWidget.customAssetImageWidget(
-                      image: Assets.assetsHeart,
-                      height: 3.0
-                    ),
+                        image: Assets.assetsHeart, height: 3.0),
                   ),
                   SizedBox(width: 4.w),
                   GestureDetector(
@@ -67,10 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Get.toNamed(Routes.recentScreen);
                     },
                     child: CustomWidget.customAssetImageWidget(
-                      image: Assets.assetsRecent,
-                        height: 3.0
-
-                    ),
+                        image: Assets.assetsRecent, height: 3.0),
                   ),
                   SizedBox(
                     width: 4.w,
@@ -80,10 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Get.toNamed(Routes.notificationScreen);
                     },
                     child: CustomWidget.customAssetImageWidget(
-                      image: Assets.assetsNotification,
-                        height: 3.0
-
-                    ),
+                        image: Assets.assetsNotification, height: 3.0),
                   )
                 ],
               ),
@@ -163,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
   GestureDetector dashboardCourseCard(StartYourDay course) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.subscriptionScreen);
+        Get.toNamed(Routes.musicPlayScreen, arguments: course);
       },
       child: Container(
         height: 22.h,

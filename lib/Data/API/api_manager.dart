@@ -11,6 +11,7 @@ import 'package:meditation_app/Data/API/api_exception.dart';
 import 'package:meditation_app/Models/error_model.dart';
 import 'package:meditation_app/Models/login_success_response_model.dart';
 import 'package:meditation_app/Utils/constant.dart';
+import 'package:meditation_app/Utils/custom_widget.dart';
 
 class APIManager {
   ///
@@ -247,6 +248,66 @@ class APIManager {
     return responseJson;
   }
 
+  ///
+  /// This method is used to call api with formdata
+  ///
+  Future<dynamic> postFormData(String url, http.MultipartFile file,
+      {String? filePath,
+      bool isLoaderShow = true,
+      bool isErrorSnackShow = true}) async {
+    Get.printInfo(info: 'Api Post, url $url');
+    try {
+      if (isLoaderShow) {
+        EasyLoading.show(maskType: EasyLoadingMaskType.black);
+      }
+
+      ///
+      /// Declare the header for the request, if user not loged in then pass emplty array as header
+      /// or else pass the authentication token stored on login time
+      ///
+      Map<String, String> header =
+          GetStorage().read(AppPreferencesHelper.pUser) == null
+              ? {}
+              : {
+                  "authorization": UserData.fromJson(
+                          GetStorage().read(AppPreferencesHelper.pUser))
+                      .token!,
+                };
+
+      Get.printInfo(info: 'header- ${header.toString()}');
+      Get.printInfo(info: 'URL- ${baseUrl + url}');
+
+      ///
+      /// Make the post method api call with header and given parameter
+      ///
+      var request = http.MultipartRequest('POST', Uri.parse(baseUrl + url));
+      request.files.add(file);
+      request.headers.addAll(header);
+
+      http.StreamedResponse response = await request.send();
+
+      var responseString = await response.stream.bytesToString();
+      printInfo(info: responseString);
+
+      ///
+      /// Handle response and errors
+      ///
+      Map<dynamic, dynamic> map = _returnFormDataResponse(
+          response.statusCode, json.decode(responseString));
+
+      ///
+      /// Return the map response here and handle it in you model class accordigly
+      ///
+      return map;
+    } on SocketException {
+      Get.printInfo(info: 'No net');
+      CustomWidget.errorSnackBar(content: 'No Internet');
+      throw FetchDataException('No Internet connection');
+    } finally {
+      EasyLoading.dismiss();
+    }
+  }
+
   /// Check response status and handle exception
   static _response(http.Response response) {
     print(response.statusCode);
@@ -299,6 +360,39 @@ class APIManager {
       default:
         throw FetchDataException(
             'Error occured while Communication with Server with StatusCode: ${response.statusCode}');
+    }
+  }
+
+  dynamic _returnFormDataResponse(
+      int? statusCode, Map<String, dynamic> response,
+      {bool isShow = true}) {
+    EasyLoading.dismiss();
+    switch (statusCode) {
+      case 200:
+        var responseJson = response;
+        if (responseJson['status'] == false) {
+          throw BadRequestException(responseJson['message']);
+        }
+        return responseJson;
+      case 400:
+        if (isShow) {
+          CustomWidget.errorSnackBar(content: response.toString());
+        }
+        throw BadRequestException(response.toString());
+      case 401:
+        if (isShow) {
+          CustomWidget.errorSnackBar(content: response.toString());
+        }
+        GetStorage().erase();
+        throw BadRequestException(response.toString());
+      case 403:
+        CustomWidget.errorSnackBar(
+            content: ErrorModel.fromJson(response).message!);
+        throw UnauthorisedException(response.toString());
+      case 500:
+      default:
+        throw FetchDataException(
+            'Error occured while Communication with Server with StatusCode : $statusCode');
     }
   }
 }

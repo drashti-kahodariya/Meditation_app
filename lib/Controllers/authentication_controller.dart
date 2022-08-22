@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
 import 'package:meditation_app/Data/API/api_manager.dart';
 import 'package:meditation_app/Models/login_success_response_model.dart';
 import 'package:meditation_app/Repository/authentication_repository.dart';
@@ -154,6 +156,39 @@ class AuthenticationController extends GetxController {
         break;
       default:
         throw UnimplementedError();
+    }
+  }
+
+  ///
+  /// This method used for getUser Details from api and set current user to App
+  ///
+  getAndSetUser() async {
+    var getProfileResponse = await authenticationRepository.getProfile();
+    getProfileResponse.userData!.token = currentUserData.value.token;
+    getProfileResponse.userData!.refreshToken =
+        currentUserData.value.refreshToken;
+    GetStorage().write(
+        AppPreferencesHelper.pUser, getProfileResponse.userData!.toJson());
+    setCurrentUser();
+  }
+
+  ///
+  /// This method used for call edit profile API
+  /// If user change image then call upload image API and after call editProfile API and pass image url got from upload image api
+  ///
+  editImage(String name, String email, {String? filePath}) async {
+    if (filePath != null) {
+      var imageResponse = await authenticationRepository.uploadProfileImage(
+          file: await http.MultipartFile.fromPath('image', filePath,
+              contentType: MediaType('image', 'png')));
+
+      await authenticationRepository.editProfile(
+          email: email, imagePath: imageResponse.imageData!.image, name: name);
+      getAndSetUser();
+    } else {
+      await authenticationRepository.editProfile(
+          email: email, imagePath: currentUserData.value.image, name: name);
+      getAndSetUser();
     }
   }
 

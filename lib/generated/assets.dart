@@ -3,6 +3,7 @@ class Assets {
   Assets._();
 
   static const String assetsApple = 'assets/apple.png';
+  static const String assetsBackward = 'assets/backward.png';
   static const String assetsClock = 'assets/clock.png';
   static const String assetsDownload = 'assets/download.png';
   static const String assetsDummy = 'assets/dummy.png';
@@ -16,6 +17,7 @@ class Assets {
   static const String assetsFocusIcon = 'assets/focus_icon.png';
   static const String assetsFocusImage = 'assets/focus_image.png';
   static const String assetsForgotPassword = 'assets/forgot_password.png';
+  static const String assetsForward = 'assets/forward.png';
   static const String assetsGoogle = 'assets/google.png';
   static const String assetsHeart = 'assets/heart.png';
   static const String assetsInvitationImage = 'assets/invitation_image.png';
@@ -28,6 +30,7 @@ class Assets {
   static const String assetsMeditationsIcon = 'assets/meditations_icon.png';
   static const String assetsMyData = 'assets/my_data.png';
   static const String assetsNotification = 'assets/notification.png';
+  static const String assetsPause = 'assets/Pause.png';
   static const String assetsPhone = 'assets/phone.png';
   static const String assetsPracticesIcon = 'assets/practices_icon.png';
   static const String assetsPrivacyPolicy = 'assets/privacy_policy.png';
@@ -46,5 +49,4 @@ class Assets {
   static const String assetsVolumeUp = 'assets/volume-up.png';
   static const String assetsWelcomeBg = 'assets/welcome_bg.png';
   static const String assetsWelcomeYoga = 'assets/welcome_yoga.png';
-
 }

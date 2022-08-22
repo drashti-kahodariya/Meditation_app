@@ -1,6 +1,8 @@
+import 'package:http/http.dart' as http;
 import 'package:meditation_app/Data/API/api_manager.dart';
 import 'package:meditation_app/Data/Model/google_login_model.dart';
 import 'package:meditation_app/Models/login_success_response_model.dart';
+import 'package:meditation_app/Models/upload_image_response_model.dart';
 
 class AuthenticationRepository {
   final APIManager apiManager;
@@ -59,5 +61,39 @@ class AuthenticationRepository {
     });
     var loginResponse = LoginSuccessResponseModel.fromJson(jsonResponse);
     return loginResponse;
+  }
+
+  ///
+  /// This method used for getProfile
+  ///
+  Future<LoginSuccessResponseModel> getProfile() async {
+    var jsonResponse = await apiManager.getAPICall("/user/get_profile");
+    var editResponse = LoginSuccessResponseModel.fromJson(jsonResponse);
+    return editResponse;
+  }
+
+  ///
+  /// This method used for edit Profile
+  ///
+  Future<LoginSuccessResponseModel> editProfile({
+    required String? name,
+    required String? email,
+    required String? imagePath,
+  }) async {
+    var jsonResponse = await apiManager.putAPICall("user/update_profile",
+        {"email": email, "name": name, "image": imagePath});
+    var editResponse = LoginSuccessResponseModel.fromJson(jsonResponse);
+    return editResponse;
+  }
+
+  ///
+  /// This method used for upload profile image
+  ///
+  Future<UploadImageResponseModel> uploadProfileImage({
+    required http.MultipartFile file,
+  }) async {
+    var jsonResponse = await apiManager.postFormData("/upload/profile", file);
+    var editResponse = UploadImageResponseModel.fromJson(jsonResponse);
+    return editResponse;
   }
 }
