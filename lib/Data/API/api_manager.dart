@@ -81,14 +81,16 @@ class APIManager {
         EasyLoading.show(maskType: EasyLoadingMaskType.black);
       }
 
-      Map<String, String>? headers =
-          GetStorage().read(AppPreferencesHelper.pUser) == null
-              ? {}
-              : {
-                  "Authorization": UserData.fromJson(
-                          GetStorage().read(AppPreferencesHelper.pUser))
-                      .token!
-                };
+      var headers = GetStorage().read(AppPreferencesHelper.pUser) == null
+          ? {
+              "Content-Type": "application/json",
+            }
+          : {
+              "Content-Type": "application/json",
+              "Authorization": UserData.fromJson(
+                      GetStorage().read(AppPreferencesHelper.pUser))
+                  .token!
+            };
       Get.printInfo(info: 'header- ${headers.toString()}');
       Get.printInfo(info: 'URL- ${baseUrl + url}');
 
@@ -178,9 +180,16 @@ class APIManager {
       EasyLoading.show(maskType: EasyLoadingMaskType.black);
 
       /// Set header for send request
-      var headers = {
-        "Content-Type": "application/json",
-      };
+      var headers = GetStorage().read(AppPreferencesHelper.pUser) == null
+          ? {
+              "Content-Type": "application/json",
+            }
+          : {
+              "Content-Type": "application/json",
+              "Authorization": UserData.fromJson(
+                      GetStorage().read(AppPreferencesHelper.pUser))
+                  .token!
+            };
 
       /// call post api for given url and parameters
       final response = await http
@@ -265,16 +274,18 @@ class APIManager {
       /// Declare the header for the request, if user not loged in then pass emplty array as header
       /// or else pass the authentication token stored on login time
       ///
-      Map<String, String> header =
-          GetStorage().read(AppPreferencesHelper.pUser) == null
-              ? {}
-              : {
-                  "authorization": UserData.fromJson(
-                          GetStorage().read(AppPreferencesHelper.pUser))
-                      .token!,
-                };
+      var headers = GetStorage().read(AppPreferencesHelper.pUser) == null
+          ? {
+              "Content-Type": "application/json",
+            }
+          : {
+              "Content-Type": "application/json",
+              "Authorization": UserData.fromJson(
+                      GetStorage().read(AppPreferencesHelper.pUser))
+                  .token!
+            };
 
-      Get.printInfo(info: 'header- ${header.toString()}');
+      Get.printInfo(info: 'header- ${headers.toString()}');
       Get.printInfo(info: 'URL- ${baseUrl + url}');
 
       ///
@@ -282,7 +293,7 @@ class APIManager {
       ///
       var request = http.MultipartRequest('POST', Uri.parse(baseUrl + url));
       request.files.add(file);
-      request.headers.addAll(header);
+      request.headers.addAll(headers);
 
       http.StreamedResponse response = await request.send();
 

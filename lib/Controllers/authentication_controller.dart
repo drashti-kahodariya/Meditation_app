@@ -35,7 +35,6 @@ class AuthenticationController extends GetxController {
     GetStorage()
         .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
     setCurrentUser();
-    print("LOGIN DONE");
     Get.offAllNamed(Routes.dashboard);
   }
 
@@ -47,7 +46,6 @@ class AuthenticationController extends GetxController {
     GetStorage()
         .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
     setCurrentUser();
-    print("REGISTRATION DONE");
     Get.offAllNamed(Routes.dashboard);
   }
 
@@ -176,18 +174,27 @@ class AuthenticationController extends GetxController {
   /// This method used for call edit profile API
   /// If user change image then call upload image API and after call editProfile API and pass image url got from upload image api
   ///
-  editImage(String name, String email, {String? filePath}) async {
+  editImage(String fName, String lName, String mobNo, String email,
+      {String? filePath}) async {
     if (filePath != null) {
       var imageResponse = await authenticationRepository.uploadProfileImage(
           file: await http.MultipartFile.fromPath('image', filePath,
               contentType: MediaType('image', 'png')));
 
       await authenticationRepository.editProfile(
-          email: email, imagePath: imageResponse.imageData!.image, name: name);
+          email: email,
+          imagePath: imageResponse.imageData!.image,
+          fName: fName,
+          lName: lName,
+          mobNo: mobNo);
       getAndSetUser();
     } else {
       await authenticationRepository.editProfile(
-          email: email, imagePath: currentUserData.value.image, name: name);
+          email: email,
+          imagePath: currentUserData.value.image,
+          fName: fName,
+          lName: lName,
+          mobNo: mobNo);
       getAndSetUser();
     }
   }

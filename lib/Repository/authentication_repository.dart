@@ -76,12 +76,19 @@ class AuthenticationRepository {
   /// This method used for edit Profile
   ///
   Future<LoginSuccessResponseModel> editProfile({
-    required String? name,
+    required String? fName,
+    required String? lName,
+    required String? mobNo,
     required String? email,
     required String? imagePath,
   }) async {
-    var jsonResponse = await apiManager.putAPICall("user/update_profile",
-        {"email": email, "name": name, "image": imagePath});
+    var jsonResponse = await apiManager.putAPICall("user/update_profile", {
+      "email": email,
+      "firstName": fName,
+      "image": imagePath,
+      "lastName": lName,
+      "mobileNumber": mobNo
+    });
     var editResponse = LoginSuccessResponseModel.fromJson(jsonResponse);
     return editResponse;
   }
@@ -92,7 +99,7 @@ class AuthenticationRepository {
   Future<UploadImageResponseModel> uploadProfileImage({
     required http.MultipartFile file,
   }) async {
-    var jsonResponse = await apiManager.postFormData("/upload/profile", file);
+    var jsonResponse = await apiManager.postFormData("upload/profile", file);
     var editResponse = UploadImageResponseModel.fromJson(jsonResponse);
     return editResponse;
   }
