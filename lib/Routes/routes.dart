@@ -19,4 +19,5 @@ class Routes {
   static const subscriptionScreen = '/subscriptionScreen';
   static const featuredScreen = '/featuredScreen';
   static const supportScreen = '/supportScreen';
+  static const otpVerificationScreen = '/otpVerificationScreen';
 }

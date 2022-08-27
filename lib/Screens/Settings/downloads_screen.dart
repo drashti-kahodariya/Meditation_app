@@ -17,32 +17,7 @@ class _DownloadsScreenState extends State<DownloadsScreen> {
       backgroundColor: AppColor.backgroundColor,
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 28.0, horizontal: 13),
-            child: Row(
-              children: [
-                Container(
-                  height: 45,
-                  width: 45,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: AppColor.whiteColor)),
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 8.0),
-                    child: Center(
-                        child: Icon(
-                      Icons.arrow_back_ios,
-                      color: AppColor.whiteColor,
-                    )),
-                  ),
-                ),
-                SizedBox(
-                  width: 22.w,
-                ),
-                CustomWidget.text("Downloads"),
-              ],
-            ),
-          ),
+          CustomWidget.customAppBar(title: "Downloads"),
           Expanded(
             child: ListView.builder(
                 physics: const BouncingScrollPhysics(),

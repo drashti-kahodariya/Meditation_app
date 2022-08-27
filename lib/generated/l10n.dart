@@ -50,227 +50,383 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  // skipped getter for the 'Do meditation. Stay focused' key
-
-  // skipped getter for the 'Live a healthy life.' key
-
-  /// `Welcome`
-  String get Welcome {
+  /// `Meditera. Var fokuserad.`
+  String get doMeditationStayFocused {
     return Intl.message(
-      'Welcome',
-      name: 'Welcome',
+      'Meditera. Var fokuserad.',
+      name: 'doMeditationStayFocused',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'Create an account to get started on your health and happiness journey' key
+  // skipped getter for the 'liveAHealthyLife.' key
 
-  /// `Login`
-  String get Login {
+  /// `Välkommen`
+  String get welcome {
     return Intl.message(
-      'Login',
-      name: 'Login',
+      'Välkommen',
+      name: 'welcome',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'Email Address' key
-
-  /// `Password`
-  String get Password {
+  /// `Skapa ett konto och börja med din hälsa och glädje resa`
+  String get createAnAccountToGetStartedOnYourHealthAndHappinessJourney {
     return Intl.message(
-      'Password',
-      name: 'Password',
+      'Skapa ett konto och börja med din hälsa och glädje resa',
+      name: 'createAnAccountToGetStartedOnYourHealthAndHappinessJourney',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'Forgot Password?' key
-
-  // skipped getter for the 'Don’t have an account ? Register' key
-
-  /// `Register`
-  String get Register {
+  /// `Logga in`
+  String get login {
     return Intl.message(
-      'Register',
-      name: 'Register',
+      'Logga in',
+      name: 'login',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'First Name' key
-
-  // skipped getter for the 'Last Name*' key
-
-  // skipped getter for the 'Already have an account ? Login' key
-
-  // skipped getter for the 'Good morning' key
-
-  // skipped getter for the 'Good afternoon' key
-
-  // skipped getter for the 'Good night' key
-
-  // skipped getter for the 'Start Your Day' key
-
-  // skipped getter for the 'Your afternoon lift' key
-
-  // skipped getter for the 'At Night' key
-
-  /// ``
-  String get Today {
+  /// `Email adress`
+  String get emailAddress {
     return Intl.message(
-      '',
-      name: 'Today',
+      'Email adress',
+      name: 'emailAddress',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
-  String get Explore {
+  /// `Lösenord`
+  String get password {
     return Intl.message(
-      '',
-      name: 'Explore',
+      'Lösenord',
+      name: 'password',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
-  String get Favorite {
+  /// `Glömt lösenord?`
+  String get forgotPassword {
     return Intl.message(
-      '',
-      name: 'Favorite',
+      'Glömt lösenord?',
+      name: 'forgotPassword',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'Find all your favorites meditation' key
+  // skipped getter for the 'don’tHaveAnAccount' key
 
-  // skipped getter for the 'and exercirs here.' key
-
-  /// ``
-  String get Recent {
+  /// `Registrera`
+  String get register {
     return Intl.message(
-      '',
-      name: 'Recent',
+      'Registrera',
+      name: 'register',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
-  String get Featured {
+  /// `Förnamn`
+  String get firstName {
     return Intl.message(
-      '',
-      name: 'Featured',
+      'Förnamn',
+      name: 'firstName',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
-  String get Sleep {
+  /// `Efternamn`
+  String get lastName {
     return Intl.message(
-      '',
-      name: 'Sleep',
+      'Efternamn',
+      name: 'lastName',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
-  String get Focus {
+  /// `Har redan ett konto? Logga in`
+  String get alreadyHaveAnAccount {
     return Intl.message(
-      '',
-      name: 'Focus',
+      'Har redan ett konto? Logga in',
+      name: 'alreadyHaveAnAccount',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
-  String get Notification {
+  /// `God morgon`
+  String get goodMorning {
     return Intl.message(
-      '',
-      name: 'Notification',
+      'God morgon',
+      name: 'goodMorning',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
-  String get Meditate {
+  /// `God eftermiddag`
+  String get goodAfternoon {
     return Intl.message(
-      '',
-      name: 'Meditate',
+      'God eftermiddag',
+      name: 'goodAfternoon',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
-  String get Setting {
+  /// `Godnatt`
+  String get goodNight {
     return Intl.message(
-      '',
-      name: 'Setting',
+      'Godnatt',
+      name: 'goodNight',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'Account Information' key
-
-  // skipped getter for the 'Invite Friend' key
-
-  // skipped getter for the 'My Data' key
-
-  // skipped getter for the 'Terms & Conditions' key
-
-  /// ``
-  String get Downloads {
+  /// `Starta din dag`
+  String get startYourDay {
     return Intl.message(
-      '',
-      name: 'Downloads',
+      'Starta din dag',
+      name: 'startYourDay',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'Privacy Policy' key
-
-  /// ``
-  String get Support {
+  /// `Din eftermiddags lyft`
+  String get yourAfternoonLift {
     return Intl.message(
-      '',
-      name: 'Support',
+      'Din eftermiddags lyft',
+      name: 'yourAfternoonLift',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'Log Out' key
-
-  // skipped getter for the 'You’ve used all you invites. More to come at' key
-
-  // skipped getter for the 'the appropriate time.' key
-
-  // skipped getter for the 'Send Invite' key
-
-  // skipped getter for the 'Did someone forget their password ?' key
-
-  // skipped getter for the 'Just enter the email address you’ve used to register with us and we’ll send you a reset link !' key
-
-  /// ``
-  String get Submit {
+  /// `Till kvällen`
+  String get atNight {
     return Intl.message(
-      '',
-      name: 'Submit',
+      'Till kvällen',
+      name: 'atNight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Idag`
+  String get today {
+    return Intl.message(
+      'Idag',
+      name: 'today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Utforsa`
+  String get explore {
+    return Intl.message(
+      'Utforsa',
+      name: 'explore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favoriter`
+  String get favorite {
+    return Intl.message(
+      'Favoriter',
+      name: 'favorite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'findAllYourFavoritesMeditationAndExerciesHere.' key
+
+  /// `Nydligen spelade`
+  String get recent {
+    return Intl.message(
+      'Nydligen spelade',
+      name: 'recent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Utvalda`
+  String get featured {
+    return Intl.message(
+      'Utvalda',
+      name: 'featured',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sömn`
+  String get sleep {
+    return Intl.message(
+      'Sömn',
+      name: 'sleep',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fokus`
+  String get focus {
+    return Intl.message(
+      'Fokus',
+      name: 'focus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifikation`
+  String get notification {
+    return Intl.message(
+      'Notifikation',
+      name: 'notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Meditera`
+  String get meditate {
+    return Intl.message(
+      'Meditera',
+      name: 'meditate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inställningar`
+  String get setting {
+    return Intl.message(
+      'Inställningar',
+      name: 'setting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Konto information`
+  String get accountInformation {
+    return Intl.message(
+      'Konto information',
+      name: 'accountInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bjud in en vän`
+  String get inviteFriend {
+    return Intl.message(
+      'Bjud in en vän',
+      name: 'inviteFriend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Min data`
+  String get myData {
+    return Intl.message(
+      'Min data',
+      name: 'myData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'terms&Conditions' key
+
+  /// `Nedladdningar`
+  String get downloads {
+    return Intl.message(
+      'Nedladdningar',
+      name: 'downloads',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `integritetspolicy`
+  String get privacyPolicy {
+    return Intl.message(
+      'integritetspolicy',
+      name: 'privacyPolicy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support`
+  String get support {
+    return Intl.message(
+      'Support',
+      name: 'support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logga ut`
+  String get logOut {
+    return Intl.message(
+      'Logga ut',
+      name: 'logOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'you’veUsedAllYouInvitesMoreToComeAtTheAppropriateTime.' key
+
+  /// `Skicka inbjudan`
+  String get sendInvite {
+    return Intl.message(
+      'Skicka inbjudan',
+      name: 'sendInvite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Har någon glömt sitt lösenord?`
+  String get didSomeoneForgetTheirPassword {
+    return Intl.message(
+      'Har någon glömt sitt lösenord?',
+      name: 'didSomeoneForgetTheirPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'justEnterTheEmailAddressYou’veUsedToRegisterWithUsAndWe’llSendYouAResetLink' key
+
+  /// `Skicka in`
+  String get submit {
+    return Intl.message(
+      'Skicka in',
+      name: 'submit',
       desc: '',
       args: [],
     );
@@ -283,6 +439,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'sv'),
     ];
   }
 

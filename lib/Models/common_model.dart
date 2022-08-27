@@ -1,5 +1,5 @@
 class CommonResponseModel {
-  bool? status;
+  int? status;
   String? message;
 
   CommonResponseModel({this.status, this.message});

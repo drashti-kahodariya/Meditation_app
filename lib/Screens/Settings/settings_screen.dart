@@ -24,32 +24,7 @@ class _SettingScreenState extends State<SettingScreen> {
       backgroundColor: AppColor.backgroundColor,
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 28.0, horizontal: 13),
-            child: Row(
-              children: [
-                Container(
-                  height: 45,
-                  width: 45,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: AppColor.whiteColor)),
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 8.0),
-                    child: Center(
-                        child: Icon(
-                      Icons.arrow_back_ios,
-                      color: AppColor.whiteColor,
-                    )),
-                  ),
-                ),
-                SizedBox(
-                  width: 22.w,
-                ),
-                CustomWidget.text("Setting"),
-              ],
-            ),
-          ),
+          CustomWidget.customAppBar(title: "Setting"),
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: Column(
@@ -132,7 +107,12 @@ class _SettingScreenState extends State<SettingScreen> {
                     icon: Assets.assetsLogout,
                     title: "Log Out",
                     onTap: () {
-                      authController.logOut();
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return CustomWidget.alertDialog();
+                          });
+                      // authController.logOut();
                     }),
               ],
             ),

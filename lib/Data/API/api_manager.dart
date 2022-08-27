@@ -366,6 +366,11 @@ class APIManager {
         throw UnauthorisedException(
             ErrorModel.fromJson(json.decode(response.body.toString())).message);
 
+      /// Authorisation token invalid
+      case 409:
+        throw UnauthorisedException(
+            ErrorModel.fromJson(json.decode(response.body.toString())).message);
+
       /// Error occured while Communication with Server
       case 500:
       default:

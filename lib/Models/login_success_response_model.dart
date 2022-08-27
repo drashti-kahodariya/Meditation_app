@@ -1,5 +1,3 @@
-import 'package:get/get.dart';
-
 class LoginSuccessResponseModel {
   int? status;
   String? message;
@@ -28,8 +26,10 @@ class UserData {
   int? userType;
   int? loginType;
   String? sId;
-  String? name;
+  String? firstName;
+  String? lastName;
   String? email;
+  String? mobileNumber;
   String? image;
   String? token;
   String? refreshToken;
@@ -38,8 +38,10 @@ class UserData {
       {this.userType,
       this.loginType,
       this.sId,
-      this.name,
+      this.firstName,
+      this.lastName,
       this.email,
+      this.mobileNumber,
       this.image,
       this.token,
       this.refreshToken,
@@ -49,12 +51,14 @@ class UserData {
     userType = json['userType'];
     loginType = json['loginType'];
     sId = json['_id'];
-    name = json['name'];
+    firstName = json['firstName'];
+    lastName = json['lastName'];
     email = json['email'];
+    mobileNumber = json['mobileNumber'];
     image = json['image'];
     token = json['token'];
     refreshToken = json['refresh_token'];
-    isUserPremium = json['isUserPremium'] ;
+    isUserPremium = json['isUserPremium'];
   }
 
   Map<String, dynamic> toJson() {
@@ -62,8 +66,10 @@ class UserData {
     data['userType'] = userType;
     data['loginType'] = loginType;
     data['_id'] = sId;
-    data['name'] = name;
+    data['firstName'] = firstName;
+    data['lastName'] = lastName;
     data['email'] = email;
+    data['mobileNumber'] = mobileNumber;
     data['image'] = image;
     data['token'] = token;
     data['refresh_token'] = refreshToken;

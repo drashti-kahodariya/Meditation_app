@@ -162,6 +162,7 @@ class AuthenticationController extends GetxController {
   ///
   getAndSetUser() async {
     var getProfileResponse = await authenticationRepository.getProfile();
+    print(getProfileResponse.toJson());
     getProfileResponse.userData!.token = currentUserData.value.token;
     getProfileResponse.userData!.refreshToken =
         currentUserData.value.refreshToken;
@@ -188,6 +189,7 @@ class AuthenticationController extends GetxController {
           lName: lName,
           mobNo: mobNo);
       getAndSetUser();
+      CustomWidget.successSnackBar(content: "Updated Successfully");
     } else {
       await authenticationRepository.editProfile(
           email: email,
@@ -196,7 +198,35 @@ class AuthenticationController extends GetxController {
           lName: lName,
           mobNo: mobNo);
       getAndSetUser();
+      CustomWidget.successSnackBar(content: "Updated Successfully");
     }
+  }
+
+  ///
+  /// You have to use this method for forgot password to get link in you mail
+  ///
+  Future<void> forgotPassword(Map<String, String> params) async {
+    var forgotPasswordData =
+        await authenticationRepository.forgotPasswordApiCall(params);
+    Get.toNamed(Routes.otpVerificationScreen);
+  }
+
+  ///
+  /// You have to use this method for otp verification
+  ///
+  Future<void> otpVerification(Map<String, String> params) async {
+    var otpVerificationData =
+        await authenticationRepository.otpVerificationApiCall(params);
+    Get.offAllNamed(Routes.dashboard);
+  }
+
+  ///
+  /// You have to use this method for resend otp verification
+  ///
+  Future<void> resendOtpVerification(Map<String, String> params) async {
+    var resendOtpVerificationData =
+        await authenticationRepository.resendOtpVerificationApiCall(params);
+    Get.offAllNamed(Routes.dashboard);
   }
 
   ///

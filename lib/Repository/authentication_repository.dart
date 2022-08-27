@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'package:meditation_app/Data/API/api_manager.dart';
 import 'package:meditation_app/Data/Model/google_login_model.dart';
+import 'package:meditation_app/Models/common_model.dart';
 import 'package:meditation_app/Models/login_success_response_model.dart';
 import 'package:meditation_app/Models/upload_image_response_model.dart';
 
@@ -11,10 +12,10 @@ class AuthenticationRepository {
 
   ///Signup API
   Future<LoginSuccessResponseModel> signupApiCall(
-      Map<String, String> parameters) async {
+      Map<String, String> params) async {
     var json = await apiManager.postAPICall(
       "user/signup",
-      parameters,
+      params,
     );
     var response = LoginSuccessResponseModel.fromJson(json);
     return response;
@@ -22,10 +23,10 @@ class AuthenticationRepository {
 
   /// Login API
   Future<LoginSuccessResponseModel> loginApiCall(
-      Map<String, String> parameters) async {
+      Map<String, String> params) async {
     var json = await apiManager.postAPICall(
       "user/login",
-      parameters,
+      params,
     );
     var response = LoginSuccessResponseModel.fromJson(json);
     return response;
@@ -67,7 +68,7 @@ class AuthenticationRepository {
   /// This method used for getProfile
   ///
   Future<LoginSuccessResponseModel> getProfile() async {
-    var jsonResponse = await apiManager.getAPICall("/user/get_profile");
+    var jsonResponse = await apiManager.getAPICall("user/get_profile");
     var editResponse = LoginSuccessResponseModel.fromJson(jsonResponse);
     return editResponse;
   }
@@ -83,11 +84,11 @@ class AuthenticationRepository {
     required String? imagePath,
   }) async {
     var jsonResponse = await apiManager.putAPICall("user/update_profile", {
-      "email": email,
       "firstName": fName,
-      "image": imagePath,
       "lastName": lName,
-      "mobileNumber": mobNo
+      "email": email,
+      "mobileNumber": mobNo,
+      "image": imagePath,
     });
     var editResponse = LoginSuccessResponseModel.fromJson(jsonResponse);
     return editResponse;
@@ -102,5 +103,48 @@ class AuthenticationRepository {
     var jsonResponse = await apiManager.postFormData("upload/profile", file);
     var editResponse = UploadImageResponseModel.fromJson(jsonResponse);
     return editResponse;
+  }
+
+  ///
+  ///Forgot password API calling
+  ///
+  Future<CommonResponseModel> forgotPasswordApiCall(
+      Map<String, String> params) async {
+    var jsonResponse =
+        await apiManager.postAPICall("user/forgot_password", params);
+    var forgotPasswordResponse = CommonResponseModel.fromJson(jsonResponse);
+    return forgotPasswordResponse;
+  }
+
+  ///
+  ///Otp verification API calling
+  ///
+  Future<CommonResponseModel> otpVerificationApiCall(
+      Map<String, String> params) async {
+    var jsonResponse =
+        await apiManager.postAPICall("user/otp_verification", params);
+    var otpResponse = CommonResponseModel.fromJson(jsonResponse);
+    return otpResponse;
+  }
+
+  ///
+  ///Resend otp verification API calling
+  ///
+  Future<CommonResponseModel> resendOtpVerificationApiCall(
+      Map<String, String> params) async {
+    var jsonResponse = await apiManager.postAPICall("user/resend_otp", params);
+    var resendOtpResponse = CommonResponseModel.fromJson(jsonResponse);
+    return resendOtpResponse;
+  }
+
+  ///
+  ///Set new password API calling
+  ///
+  Future<CommonResponseModel> setNewPasswordApiCall(
+      Map<String, String> params) async {
+    var jsonResponse =
+        await apiManager.postAPICall("user/otp_verification", params);
+    var forgotPasswordResponse = CommonResponseModel.fromJson(jsonResponse);
+    return forgotPasswordResponse;
   }
 }

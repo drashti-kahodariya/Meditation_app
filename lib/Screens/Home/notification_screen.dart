@@ -20,29 +20,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       backgroundColor: AppColor.backgroundColor,
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 13, left: 13, top: 30),
-            child: Row(
-              children: [
-                Container(
-                  height: 45,
-                  width: 45,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: AppColor.whiteColor)),
-                  child: const Center(
-                      child: Icon(
-                    Icons.arrow_back_ios,
-                    color: AppColor.whiteColor,
-                  )),
-                ),
-                SizedBox(
-                  width: 22.w,
-                ),
-                CustomWidget.text("Notification"),
-              ],
-            ),
-          ),
+          CustomWidget.customAppBar(title: "Notification"),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),

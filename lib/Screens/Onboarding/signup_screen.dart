@@ -121,6 +121,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         decoration: CustomWidget.customInputDecoration(
                           hintText: "Password",
                         ),
+                        obscureText: true,
                         validator: (v) {
                           if (v!.isEmpty) {
                             return "Please enter password!";

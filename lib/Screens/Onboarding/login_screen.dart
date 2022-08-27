@@ -85,7 +85,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(color: AppColor.whiteColor),
                       decoration: CustomWidget.customInputDecoration(
                         hintText: "Password",
+                        suffixIcon: CupertinoIcons.eye,
                       ),
+                      obscureText: true,
                       validator: (v) {
                         if (v!.isEmpty) {
                           return "Please enter password!";

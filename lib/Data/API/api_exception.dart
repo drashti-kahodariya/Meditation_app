@@ -1,3 +1,5 @@
+import 'package:meditation_app/Utils/custom_widget.dart';
+
 class AppException implements Exception {
   // ignore: prefer_typing_uninitialized_variables
   final _message;
@@ -6,6 +8,7 @@ class AppException implements Exception {
   AppException([this._message, this._prefix]);
   @override
   String toString() {
+    CustomWidget.errorSnackBar(content: _message);
     return "$_prefix$_message";
   }
 }

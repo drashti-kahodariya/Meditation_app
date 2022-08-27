@@ -163,7 +163,8 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                               child: CustomWidget.customAssetImageWidget(
                                 height: 8.0,
                                 width: 8.0,
-                                image: Assets.assetsPause,
+                                color: AppColor.blackColor,
+                                image: Assets.assetsPlay,
                               ));
                         } else if (processingState !=
                             ProcessingState.completed) {

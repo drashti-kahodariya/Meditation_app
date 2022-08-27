@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -31,10 +32,19 @@ class _EditProfileState extends State<EditProfile> {
     if (mounted) {
       authController.currentUserData();
     }
-    _fnameController.text = authController.currentUserData.value.name!;
-    _lnameController.text = authController.currentUserData.value.name!;
-    _mobNoController.text = authController.currentUserData.value.email!;
+    _fnameController.text =
+        authController.currentUserData.value.firstName != null
+            ? authController.currentUserData.value.firstName!
+            : "";
+    _lnameController.text =
+        authController.currentUserData.value.lastName != null
+            ? authController.currentUserData.value.lastName!
+            : "";
     _emailController.text = authController.currentUserData.value.email!;
+    _mobNoController.text =
+        authController.currentUserData.value.mobileNumber != null
+            ? authController.currentUserData.value.mobileNumber!
+            : "";
     super.initState();
   }
 
@@ -45,33 +55,7 @@ class _EditProfileState extends State<EditProfile> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 28.0, horizontal: 13),
-              child: Row(
-                children: [
-                  Container(
-                    height: 45,
-                    width: 45,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: AppColor.whiteColor)),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 8.0),
-                      child: Center(
-                          child: Icon(
-                        Icons.arrow_back_ios,
-                        color: AppColor.whiteColor,
-                      )),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 12.w,
-                  ),
-                  CustomWidget.text("Account Information"),
-                ],
-              ),
-            ),
+            CustomWidget.customAppBar(title: "Account Information"),
             GestureDetector(
               onTap: () async {
                 print("Done");
@@ -99,6 +83,7 @@ class _EditProfileState extends State<EditProfile> {
                       ? Center(
                           child: CircleAvatar(
                             maxRadius: 60,
+                            backgroundColor: AppColor.primaryColor,
                             backgroundImage: NetworkImage(
                                 authController.currentUserData.value.image!),
                           ),
@@ -106,6 +91,7 @@ class _EditProfileState extends State<EditProfile> {
                       : Center(
                           child: CircleAvatar(
                             maxRadius: 60,
+                            backgroundColor: AppColor.primaryColor,
                             backgroundImage:
                                 FileImage(File(selectedImage!.path)),
                           ),

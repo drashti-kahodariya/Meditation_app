@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 children: [
                   CustomWidget.text(
-                      "${homeController.greetingMessage()}, Felix",
+                      "${homeController.greetingMessage()}, ${authController.currentUserData.value.firstName}",
                       textAlign: TextAlign.start,
                       fontWeight: FontWeight.w400,
                       color: AppColor.whiteColor,
@@ -226,9 +226,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: CachedNetworkImage(
                     imageUrl: course.image!,
                     fit: BoxFit.cover,
-                    progressIndicatorBuilder:
-                        (context, url, downloadProgress) =>
-                            const CupertinoActivityIndicator(),
+                    progressIndicatorBuilder: (context, url,
+                            downloadProgress) =>
+                        const CupertinoActivityIndicator(color: Colors.white),
                     errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),

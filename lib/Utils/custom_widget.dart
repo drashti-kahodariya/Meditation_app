@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:sizer/sizer.dart';
 
@@ -35,7 +36,7 @@ class CustomWidget {
       {String? image,
       double height = 4.0,
       double width = 4.0,
-        Color? color,
+      Color? color,
       BoxFit fit = BoxFit.contain}) {
     return SizedBox(
       height: height.h,
@@ -292,7 +293,7 @@ class CustomWidget {
   static errorSnackBar(
       {required String content, Color textColor = AppColor.whiteColor}) {
     return Get.snackbar('Error', content,
-        backgroundColor: Colors.red[400],
+        backgroundColor: Colors.red.withOpacity(0.6),
         colorText: textColor,
         borderRadius: 10);
   }
@@ -301,9 +302,9 @@ class CustomWidget {
   /// Success SnackBar
   ///
   static successSnackBar(
-      {required String content, Color textColor = AppColor.blackColor}) {
+      {required String content, Color textColor = AppColor.whiteColor}) {
     return Get.snackbar('Success', content,
-        backgroundColor: Colors.green[100]!.withOpacity(0.8),
+        backgroundColor: AppColor.primaryColor.withOpacity(0.6),
         borderRadius: 6,
         colorText: textColor);
   }
@@ -333,6 +334,70 @@ class CustomWidget {
         colorScheme: ColorScheme.light(
           primary: Colors.green,
         ),
+      ),
+    );
+  }
+
+  static Padding customAppBar({required String title}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 28.0, horizontal: 13),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: Container(
+              height: 45,
+              width: 45,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: AppColor.whiteColor)),
+              child: const Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Center(
+                    child: Icon(
+                  Icons.arrow_back_ios,
+                  color: AppColor.whiteColor,
+                )),
+              ),
+            ),
+          ),
+          CustomWidget.text(title),
+          Container(
+            height: 45,
+            width: 45,
+          ),
+        ],
+      ),
+    );
+  }
+
+  static ClipRRect alertDialog() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(50),
+      child: AlertDialog(
+        backgroundColor: AppColor.primaryColor,
+        content: text(
+          "Are you sure want to logout?",
+          fontSize: 13,
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: text("Cancel", fontSize: 12),
+          ),
+          TextButton(
+            onPressed: () {
+              AuthenticationController().logOut();
+            },
+            child:
+                text("Logout", fontSize: 12, color: AppColor.backgroundColor),
+          )
+        ],
       ),
     );
   }

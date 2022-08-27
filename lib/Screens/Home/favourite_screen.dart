@@ -29,32 +29,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
       backgroundColor: AppColor.backgroundColor,
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 28.0, horizontal: 13),
-            child: Row(
-              children: [
-                Container(
-                  height: 45,
-                  width: 45,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: AppColor.whiteColor)),
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 8.0),
-                    child: Center(
-                        child: Icon(
-                      Icons.arrow_back_ios,
-                      color: AppColor.whiteColor,
-                    )),
-                  ),
-                ),
-                SizedBox(
-                  width: 22.w,
-                ),
-                CustomWidget.text("Favorite"),
-              ],
-            ),
-          ),
+          CustomWidget.customAppBar(title: "Favorite"),
           Container(
             height: 12.h,
             width: 100.w,

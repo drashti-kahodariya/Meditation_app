@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:meditation_app/Controllers/explore_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
@@ -13,12 +15,24 @@ class FeaturedScreen extends StatefulWidget {
 }
 
 class _FeaturedScreenState extends State<FeaturedScreen> {
+  var exploreController = ExploreController();
+  RxString id = "".obs;
+
+  @override
+  void didChangeDependencies() {
+    id.value = Get.arguments;
+    exploreController
+        .getFeaturedData({"categoryId": id.value, "page": "1", "limit": "10"});
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.backgroundColor,
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -30,22 +44,27 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                   width: 100.w,
                   fit: BoxFit.cover,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 28.0, horizontal: 13),
-                  child: Container(
-                    height: 45,
-                    width: 45,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: AppColor.whiteColor)),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 8.0),
-                      child: Center(
-                          child: Icon(
-                        Icons.arrow_back_ios,
-                        color: AppColor.whiteColor,
-                      )),
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 28.0, horizontal: 13),
+                    child: Container(
+                      height: 45,
+                      width: 45,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: AppColor.whiteColor)),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 8.0),
+                        child: Center(
+                            child: Icon(
+                          Icons.arrow_back_ios,
+                          color: AppColor.whiteColor,
+                        )),
+                      ),
                     ),
                   ),
                 ),
@@ -87,13 +106,8 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                   Divider(
                     thickness: 2,
                   ),
-                  CustomWidget.text(
-                    "Featured",
-                    fontSize: 20,
-                    color: AppColor.whiteColor,
-                  ),
                   SizedBox(
-                    height: 1.h,
+                    height: 1.5.h,
                   ),
                 ],
               ),
@@ -174,46 +188,45 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                 color: AppColor.whiteColor,
               ),
             ),
-            Container(
-              height: 100.h,
-              child: ListView.separated(
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                    child: Stack(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(25),
-                          child: Image.asset(
-                            Assets.assetsFocusImage,
-                            height: 30.h,
-                            width: 100.w,
-                            fit: BoxFit.cover,
-                          ),
+            ListView.separated(
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: 5,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Stack(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(25),
+                        child: Image.asset(
+                          Assets.assetsFocusImage,
+                          height: 30.h,
+                          width: 100.w,
+                          fit: BoxFit.cover,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(28.0),
-                          child: Column(
-                            children: [
-                              CustomWidget.text("Guided Breath", fontSize: 22),
-                              CustomWidget.text("The power of deep calm",
-                                  fontSize: 13,
-                                  color: AppColor.whiteColor.withOpacity(0.8)),
-                            ],
-                          ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(28.0),
+                        child: Column(
+                          children: [
+                            CustomWidget.text("Guided Breath", fontSize: 22),
+                            CustomWidget.text("The power of deep calm",
+                                fontSize: 13,
+                                color: AppColor.whiteColor.withOpacity(0.8)),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    height: 3.h,
-                  );
-                },
-              ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(
+                  height: 3.h,
+                );
+              },
             ),
             SizedBox(
               height: 28,

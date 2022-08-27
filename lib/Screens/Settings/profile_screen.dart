@@ -49,36 +49,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
               SizedBox(
-                height: 7.h,
+                height: 6.h,
               ),
               CircleAvatar(
-                backgroundColor: AppColor.whiteColor,
-                maxRadius: 7.h,
+                maxRadius: 60,
+                backgroundColor: AppColor.primaryColor,
+                backgroundImage:
+                    NetworkImage(authController.currentUserData.value.image!),
               ),
               SizedBox(
                 height: 1.h,
               ),
-              CustomWidget.text(authController.currentUserData.value.email!),
+              authController.currentUserData.value.firstName == null
+                  ? Container()
+                  : CustomWidget.text(
+                      authController.currentUserData.value.firstName! +
+                          " " +
+                          authController.currentUserData.value.lastName!,
+                      maxLine: 1),
               SizedBox(
                 height: 2.h,
               ),
-              Row(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 18.w,
-                  ),
-                  Image.asset(
-                    Assets.assetsPhone,
-                    height: 20,
-                    width: 20,
-                  ),
-                  SizedBox(
-                    width: 3.w,
-                  ),
-                  CustomWidget.text("+91 99999 88888", fontSize: 13),
-                ],
-              ),
+              authController.currentUserData.value.mobileNumber == null
+                  ? Container()
+                  : Row(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 18.w,
+                        ),
+                        Image.asset(
+                          Assets.assetsPhone,
+                          height: 20,
+                          width: 20,
+                        ),
+                        SizedBox(
+                          width: 3.w,
+                        ),
+                        CustomWidget.text(
+                            authController.currentUserData.value.mobileNumber!,
+                            maxLine: 1,
+                            fontSize: 13),
+                      ],
+                    ),
               SizedBox(
                 height: 2.h,
               ),
@@ -98,6 +111,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomWidget.text(
                       "${authController.currentUserData.value.email!}",
+                      maxLine: 1,
                       fontSize: 13),
                 ],
               ),

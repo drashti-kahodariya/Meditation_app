@@ -32,6 +32,7 @@ class Assets {
   static const String assetsNotification = 'assets/notification.png';
   static const String assetsPause = 'assets/Pause.png';
   static const String assetsPhone = 'assets/phone.png';
+  static const String assetsPlay = 'assets/play.png';
   static const String assetsPracticesIcon = 'assets/practices_icon.png';
   static const String assetsPrivacyPolicy = 'assets/privacy_policy.png';
   static const String assetsRecent = 'assets/recent.png';
