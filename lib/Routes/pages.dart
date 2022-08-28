@@ -10,6 +10,7 @@ import 'package:meditation_app/Screens/Home/recent_screen.dart';
 import 'package:meditation_app/Screens/Onboarding/forgot_password.dart';
 import 'package:meditation_app/Screens/Onboarding/login_screen.dart';
 import 'package:meditation_app/Screens/Onboarding/otp_verification_screen.dart';
+import 'package:meditation_app/Screens/Onboarding/set_new_password.dart';
 import 'package:meditation_app/Screens/Onboarding/signup_screen.dart';
 import 'package:meditation_app/Screens/Onboarding/splash_screen.dart';
 import 'package:meditation_app/Screens/Onboarding/welcome_screen.dart';
@@ -112,6 +113,10 @@ class AppPages {
     GetPage(
         name: Routes.otpVerificationScreen,
         page: () => const OtpVerificationScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.setNewPasswordScreen,
+        page: () => const SetNewPasswordScreen(),
         transition: transition),
   ];
 }

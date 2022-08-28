@@ -23,7 +23,7 @@ class APIManager {
   ///
   /// `APIManager().postAPICall("https://.....",{});`
   Future<dynamic> postAPICall(String url, Map param) async {
-    print("Calling API: $url");
+    print("Calling API: ${baseUrl + url}");
     print("Calling parameters: $param");
 
     var responseJson;
@@ -326,7 +326,7 @@ class APIManager {
 
       /// Successfully get api response
       case 200:
-        if (json.decode(response.body)['status'] == 0) {
+        if (json.decode(response.body)['status'] != 200) {
           throw BadRequestException(
               ErrorModel.fromJson(json.decode(response.body.toString()))
                   .message);
@@ -337,7 +337,7 @@ class APIManager {
 
       /// Successfully get api response
       case 201:
-        if (json.decode(response.body)['status'] == 0) {
+        if (json.decode(response.body)['status'] != 200) {
           throw BadRequestException(
               ErrorModel.fromJson(json.decode(response.body.toString()))
                   .message);

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:meditation_app/Controllers/explore_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
@@ -16,13 +17,14 @@ class FeaturedScreen extends StatefulWidget {
 
 class _FeaturedScreenState extends State<FeaturedScreen> {
   var exploreController = ExploreController();
+  RxInt page = 1.obs;
   RxString id = "".obs;
 
   @override
   void didChangeDependencies() {
     id.value = Get.arguments;
-    exploreController
-        .getFeaturedData({"categoryId": id.value, "page": "1", "limit": "10"});
+    exploreController.getFeaturedData(
+        {"categoryId": id.value, "page": page.value, "limit": 10});
     super.didChangeDependencies();
   }
 
@@ -117,63 +119,74 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
               child: Container(
                 height: 22.h,
                 width: 100.w,
-                child: ListView.separated(
-                  physics: BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 22.h,
-                      width: 47.w,
-                      // color: AppColor.blackColor,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              Assets.assetsDummy5,
-                              height: 15.h,
-                              width: 100.w,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child:
-                                CustomWidget.text("Moon Clouds", fontSize: 15),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Row(
-                              children: [
-                                CustomWidget.text("45 min",
-                                    fontSize: 10,
-                                    color:
-                                        AppColor.whiteColor.withOpacity(0.8)),
-                                SizedBox(
-                                  width: 1.w,
-                                ),
-                                CustomWidget.customAssetImageWidget(
-                                    image: Assets.assetsVolumeUp, height: 2.5),
-                                CustomWidget.text("Sleep music",
-                                    fontSize: 10,
-                                    color:
-                                        AppColor.whiteColor.withOpacity(0.8)),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
+                child: LazyLoadScrollView(
+                  onEndOfPage: () {
+                    page.value += 1;
+                    exploreController.getFeaturedData({
+                      "categoryId": id.value,
+                      "page": page.value,
+                      "limit": 10
+                    });
                   },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                      width: 3.w,
-                    );
-                  },
+                  child: ListView.separated(
+                    physics: BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: 22.h,
+                        width: 47.w,
+                        // color: AppColor.blackColor,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.asset(
+                                Assets.assetsDummy5,
+                                height: 15.h,
+                                width: 100.w,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: CustomWidget.text("Moon Clouds",
+                                  fontSize: 15),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Row(
+                                children: [
+                                  CustomWidget.text("45 min",
+                                      fontSize: 10,
+                                      color:
+                                          AppColor.whiteColor.withOpacity(0.8)),
+                                  SizedBox(
+                                    width: 1.w,
+                                  ),
+                                  CustomWidget.customAssetImageWidget(
+                                      image: Assets.assetsVolumeUp,
+                                      height: 2.5),
+                                  CustomWidget.text("Sleep music",
+                                      fontSize: 10,
+                                      color:
+                                          AppColor.whiteColor.withOpacity(0.8)),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return SizedBox(
+                        width: 3.w,
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

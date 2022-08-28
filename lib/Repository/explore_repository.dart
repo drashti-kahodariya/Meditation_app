@@ -20,7 +20,7 @@ class ExploreRepository {
   /// Get the featured course
   ///
   Future<GetFeaturedCourseModel> featuredApiCall(
-      Map<String, String> params) async {
+      Map<String, dynamic> params) async {
     print("PARAMS:: ${params}");
     var json =
         await apiManager.postAPICall("user/course/category_wise", params);

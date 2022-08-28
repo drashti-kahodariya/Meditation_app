@@ -14,7 +14,7 @@ class ExploreController extends GetxController {
     exploreList.addAll(getExploreResponse.exploreList!);
   }
 
-  getFeaturedData(Map<String, String> params) async {
+  getFeaturedData(Map<String, dynamic> params) async {
     final getFeaturedCourseResponse =
         await exploreRepository.featuredApiCall(params);
     // featuredCourseList.clear();

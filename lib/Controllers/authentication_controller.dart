@@ -230,6 +230,15 @@ class AuthenticationController extends GetxController {
   }
 
   ///
+  /// You have to use this method for set new password
+  ///
+  Future<void> setNewPassword(Map<String, String> params) async {
+    var setNewPasswordData =
+        await authenticationRepository.setNewPasswordApiCall(params);
+    Get.offAllNamed(Routes.dashboard);
+  }
+
+  ///
   /// This method used for sign out user from app
   ///
   logOut() {

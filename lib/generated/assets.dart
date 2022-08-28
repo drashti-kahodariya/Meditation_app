@@ -17,6 +17,8 @@ class Assets {
   static const String assetsFocusIcon = 'assets/focus_icon.png';
   static const String assetsFocusImage = 'assets/focus_image.png';
   static const String assetsForgotPassword = 'assets/forgot_password.png';
+  static const String assetsForgotPasswordImage =
+      'assets/forgot_password_image.png';
   static const String assetsForward = 'assets/forward.png';
   static const String assetsGoogle = 'assets/google.png';
   static const String assetsHeart = 'assets/heart.png';

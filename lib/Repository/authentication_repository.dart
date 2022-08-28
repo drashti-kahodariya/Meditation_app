@@ -143,7 +143,7 @@ class AuthenticationRepository {
   Future<CommonResponseModel> setNewPasswordApiCall(
       Map<String, String> params) async {
     var jsonResponse =
-        await apiManager.postAPICall("user/otp_verification", params);
+        await apiManager.postAPICall("user/change_password", params);
     var forgotPasswordResponse = CommonResponseModel.fromJson(jsonResponse);
     return forgotPasswordResponse;
   }
