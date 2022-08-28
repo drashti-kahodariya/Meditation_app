@@ -51,12 +51,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(
                 height: 6.h,
               ),
-              CircleAvatar(
-                maxRadius: 60,
-                backgroundColor: AppColor.primaryColor,
-                backgroundImage:
-                    NetworkImage(authController.currentUserData.value.image!),
-              ),
+              authController.currentUserData.value.image == null
+                  ? Center(
+                      child: CircleAvatar(
+                        backgroundColor: AppColor.whiteColor.withOpacity(0.2),
+                        maxRadius: 60,
+                        child: Padding(
+                          padding: const EdgeInsets.all(33.0),
+                          child: Image.asset(
+                            Assets.assetsEditUser,
+                            color: AppColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                    )
+                  : CircleAvatar(
+                      maxRadius: 60,
+                      backgroundColor: AppColor.primaryColor,
+                      backgroundImage: NetworkImage(
+                          authController.currentUserData.value.image!),
+                    ),
               SizedBox(
                 height: 1.h,
               ),
@@ -67,6 +81,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           " " +
                           authController.currentUserData.value.lastName!,
                       maxLine: 1),
+              SizedBox(
+                height: 2.h,
+              ),
+              Row(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 18.w,
+                  ),
+                  Image.asset(
+                    Assets.assetsEmailIcon,
+                    height: 20,
+                    width: 20,
+                  ),
+                  SizedBox(
+                    width: 3.w,
+                  ),
+                  CustomWidget.text(
+                      "${authController.currentUserData.value.email!}",
+                      maxLine: 1,
+                      fontSize: 13),
+                ],
+              ),
               SizedBox(
                 height: 2.h,
               ),
@@ -92,29 +129,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             fontSize: 13),
                       ],
                     ),
-              SizedBox(
-                height: 2.h,
-              ),
-              Row(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 18.w,
-                  ),
-                  Image.asset(
-                    Assets.assetsEmailIcon,
-                    height: 20,
-                    width: 20,
-                  ),
-                  SizedBox(
-                    width: 3.w,
-                  ),
-                  CustomWidget.text(
-                      "${authController.currentUserData.value.email!}",
-                      maxLine: 1,
-                      fontSize: 13),
-                ],
-              ),
               SizedBox(
                 height: 4.h,
               ),

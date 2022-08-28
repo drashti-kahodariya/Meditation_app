@@ -6,7 +6,7 @@ import 'package:meditation_app/Repository/explore_repository.dart';
 class ExploreController extends GetxController {
   var exploreRepository = ExploreRepository();
   var exploreList = <ExploreData>[].obs;
-  var featuredCourseList = FeaturedCourseData().obs;
+  var featuredCourseList = <CourseData>[].obs;
 
   getExploreData() async {
     final getExploreResponse = await exploreRepository.exploreApiCall();
@@ -18,6 +18,7 @@ class ExploreController extends GetxController {
     final getFeaturedCourseResponse =
         await exploreRepository.featuredApiCall(params);
     // featuredCourseList.clear();
-    featuredCourseList.value = getFeaturedCourseResponse.featuredDataList!;
+    featuredCourseList
+        .addAll(getFeaturedCourseResponse.featuredDataList!.courseData!);
   }
 }
