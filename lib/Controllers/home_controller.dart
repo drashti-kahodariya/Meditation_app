@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:meditation_app/Data/Model/dashboard_meditation_model.dart';
-import 'package:meditation_app/Models/favourite_model.dart';
+import 'package:meditation_app/Data/Model/favourite_model.dart';
 import 'package:meditation_app/Repository/home_repository.dart';
 
 class HomeController extends GetxController {

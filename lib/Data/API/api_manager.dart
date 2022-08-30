@@ -8,8 +8,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:meditation_app/Data/API/api_exception.dart';
-import 'package:meditation_app/Models/error_model.dart';
-import 'package:meditation_app/Models/login_success_response_model.dart';
+import 'package:meditation_app/Data/Model/error_model.dart';
+import 'package:meditation_app/Data/Model/login_success_response_model.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 

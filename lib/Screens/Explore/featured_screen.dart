@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:meditation_app/Controllers/explore_controller.dart';
+import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
@@ -25,6 +27,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
     id.value = Get.arguments;
     exploreController.getFeaturedData(
         {"categoryId": id.value, "page": page.value, "limit": 10});
+    exploreController.getExploreCourseData(id.value);
     super.didChangeDependencies();
   }
 
@@ -46,6 +49,12 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                   width: 100.w,
                   fit: BoxFit.cover,
                 ),
+                // Image.network(
+                //  ,
+                //   height: 40.h,
+                //   width: 100.w,
+                //   fit: BoxFit.cover,
+                // ),
                 GestureDetector(
                   onTap: () {
                     Get.back();
@@ -128,65 +137,70 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                       "limit": 10
                     });
                   },
-                  child: ListView.separated(
-                    physics: BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: 22.h,
-                        width: 47.w,
-                        // color: AppColor.blackColor,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                Assets.assetsDummy5,
-                                height: 15.h,
-                                width: 100.w,
-                                fit: BoxFit.cover,
+                  child: Obx(() {
+                    return ListView.separated(
+                      physics: BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: exploreController.featuredCourseList.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          height: 22.h,
+                          width: 47.w,
+                          // color: AppColor.blackColor,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: CachedNetworkImage(
+                                    imageUrl: exploreController
+                                        .featuredCourseList![index].image!,
+                                    fit: BoxFit.cover,
+                                    height: 15.h,
+                                    width: 100.w,
+                                    progressIndicatorBuilder:
+                                        (context, url, downloadProgress) =>
+                                            const CupertinoActivityIndicator(
+                                                color: Colors.white),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                  )),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                child: CustomWidget.text(
+                                    exploreController
+                                        .featuredCourseList![index].title!,
+                                    fontSize: 15),
                               ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: CustomWidget.text("Moon Clouds",
-                                  fontSize: 15),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Row(
-                                children: [
-                                  CustomWidget.text("45 min",
-                                      fontSize: 10,
-                                      color:
-                                          AppColor.whiteColor.withOpacity(0.8)),
-                                  SizedBox(
-                                    width: 1.w,
-                                  ),
-                                  CustomWidget.customAssetImageWidget(
-                                      image: Assets.assetsVolumeUp,
-                                      height: 2.5),
-                                  CustomWidget.text("Sleep music",
-                                      fontSize: 10,
-                                      color:
-                                          AppColor.whiteColor.withOpacity(0.8)),
-                                ],
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Row(
+                                  children: [
+                                    CustomWidget.customAssetImageWidget(
+                                        image: Assets.assetsVolumeUp,
+                                        height: 2.5),
+                                    CustomWidget.text(
+                                        exploreController
+                                            .featuredCourseList![index]
+                                            .description!,
+                                        fontSize: 10,
+                                        color: AppColor.whiteColor
+                                            .withOpacity(0.8)),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return SizedBox(
-                        width: 3.w,
-                      );
-                    },
-                  ),
+                            ],
+                          ),
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) {
+                        return SizedBox(
+                          width: 3.w,
+                        );
+                      },
+                    );
+                  }),
                 ),
               ),
             ),
@@ -201,46 +215,71 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                 color: AppColor.whiteColor,
               ),
             ),
-            ListView.separated(
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: 5,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                  child: Stack(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(25),
-                        child: Image.asset(
-                          Assets.assetsFocusImage,
-                          height: 30.h,
-                          width: 100.w,
-                          fit: BoxFit.cover,
-                        ),
+            Obx(() {
+              return ListView.separated(
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: exploreController.exploreCourseList.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routes.courseScreen,
+                          arguments: exploreController
+                              .exploreCourseList[index].courseList!);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                      child: Stack(
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: CachedNetworkImage(
+                              imageUrl: exploreController
+                                  .exploreCourseList[index].image!,
+                              fit: BoxFit.cover,
+                              height: 30.h,
+                              width: 100.w,
+                              progressIndicatorBuilder:
+                                  (context, url, downloadProgress) =>
+                                      const CupertinoActivityIndicator(
+                                          color: Colors.white),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(28.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                CustomWidget.text(
+                                    exploreController
+                                        .exploreCourseList[index].title!,
+                                    fontSize: 22,
+                                    maxLine: 2),
+                                CustomWidget.text(
+                                    exploreController
+                                        .exploreCourseList[index].description!,
+                                    fontSize: 13,
+                                    maxLine: 1,
+                                    color:
+                                        AppColor.whiteColor.withOpacity(0.8)),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(28.0),
-                        child: Column(
-                          children: [
-                            CustomWidget.text("Guided Breath", fontSize: 22),
-                            CustomWidget.text("The power of deep calm",
-                                fontSize: 13,
-                                color: AppColor.whiteColor.withOpacity(0.8)),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(
-                  height: 3.h,
-                );
-              },
-            ),
+                    ),
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return SizedBox(
+                    height: 3.h,
+                  );
+                },
+              );
+            }),
             SizedBox(
               height: 28,
             )

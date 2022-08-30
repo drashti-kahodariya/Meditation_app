@@ -1,6 +1,6 @@
 import 'package:meditation_app/Data/API/api_manager.dart';
 import 'package:meditation_app/Data/Model/dashboard_meditation_model.dart';
-import 'package:meditation_app/Models/favourite_model.dart';
+import 'package:meditation_app/Data/Model/favourite_model.dart';
 
 class HomeRepository {
   final apiManager = APIManager();

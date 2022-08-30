@@ -1,5 +1,7 @@
 import 'package:get/get.dart' show GetPage, Transition;
 import 'package:meditation_app/Routes/routes.dart';
+import 'package:meditation_app/Screens/Explore/course_screen.dart';
+import 'package:meditation_app/Screens/Explore/episode_screen.dart';
 import 'package:meditation_app/Screens/Explore/explore_screen.dart';
 import 'package:meditation_app/Screens/Explore/featured_screen.dart';
 import 'package:meditation_app/Screens/Explore/music_play_screen.dart';
@@ -117,6 +119,14 @@ class AppPages {
     GetPage(
         name: Routes.setNewPasswordScreen,
         page: () => const SetNewPasswordScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.courseScreen,
+        page: () => const CourseScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.episodeScreen,
+        page: () => const EpisodeScreen(),
         transition: transition),
   ];
 }

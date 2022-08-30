@@ -1,11 +1,13 @@
-class GetFeaturedCourseModel {
+import 'package:meditation_app/Data/Model/explore_course_model.dart';
+
+class FeaturedCourseModel {
   int? status;
   String? message;
   FeaturedCourseData? featuredDataList;
 
-  GetFeaturedCourseModel({this.status, this.message, this.featuredDataList});
+  FeaturedCourseModel({this.status, this.message, this.featuredDataList});
 
-  GetFeaturedCourseModel.fromJson(Map<String, dynamic> json) {
+  FeaturedCourseModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     featuredDataList = json['data'] != null
@@ -48,47 +50,6 @@ class FeaturedCourseData {
     if (this.state != null) {
       data['state'] = this.state!.toJson();
     }
-    return data;
-  }
-}
-
-class CourseData {
-  String? sId;
-  String? title;
-  String? image;
-  String? description;
-  bool? isActive;
-  String? createdAt;
-  bool? isFavorite;
-
-  CourseData(
-      {this.sId,
-      this.title,
-      this.image,
-      this.description,
-      this.isActive,
-      this.createdAt,
-      this.isFavorite});
-
-  CourseData.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
-    title = json['title'];
-    image = json['image'];
-    description = json['description'];
-    isActive = json['isActive'];
-    createdAt = json['createdAt'];
-    isFavorite = json['isFavorite'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['title'] = this.title;
-    data['image'] = this.image;
-    data['description'] = this.description;
-    data['isActive'] = this.isActive;
-    data['createdAt'] = this.createdAt;
-    data['isFavorite'] = this.isFavorite;
     return data;
   }
 }

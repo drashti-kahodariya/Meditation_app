@@ -1,9 +1,9 @@
 import 'package:http/http.dart' as http;
 import 'package:meditation_app/Data/API/api_manager.dart';
+import 'package:meditation_app/Data/Model/common_model.dart';
 import 'package:meditation_app/Data/Model/google_login_model.dart';
-import 'package:meditation_app/Models/common_model.dart';
-import 'package:meditation_app/Models/login_success_response_model.dart';
-import 'package:meditation_app/Models/upload_image_response_model.dart';
+import 'package:meditation_app/Data/Model/login_success_response_model.dart';
+import 'package:meditation_app/Data/Model/upload_image_response_model.dart';
 
 class AuthenticationRepository {
   final APIManager apiManager;

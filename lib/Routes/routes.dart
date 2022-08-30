@@ -18,6 +18,8 @@ class Routes {
   static const forgotPasswordScreen = '/forgotPasswordScreen';
   static const subscriptionScreen = '/subscriptionScreen';
   static const featuredScreen = '/featuredScreen';
+  static const courseScreen = '/courseScreen';
+  static const episodeScreen = '/episodeScreen';
   static const supportScreen = '/supportScreen';
   static const otpVerificationScreen = '/otpVerificationScreen';
   static const setNewPasswordScreen = '/setNewPasswordScreen';

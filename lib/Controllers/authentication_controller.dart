@@ -6,7 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:meditation_app/Data/API/api_manager.dart';
-import 'package:meditation_app/Models/login_success_response_model.dart';
+import 'package:meditation_app/Data/Model/login_success_response_model.dart';
 import 'package:meditation_app/Repository/authentication_repository.dart';
 import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
