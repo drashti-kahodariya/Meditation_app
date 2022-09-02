@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:meditation_app/Screens/Explore/explore_screen.dart';
 import 'package:meditation_app/Screens/Home/home_screen.dart';
 import 'package:meditation_app/Screens/Settings/profile_screen.dart';
 import 'package:meditation_app/Utils/constant.dart';
+import 'package:meditation_app/generated/assets.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:sizer/sizer.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -16,9 +19,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
-  List<Widget> _buildScreens() {
-    return [const HomeScreen(), const ExploreScreen(), const ProfileScreen()];
-  }
+  final _selectedIndex = 0.obs;
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
@@ -59,37 +60,84 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      controller: _controller,
-      screens: _buildScreens(),
-      items: _navBarsItems(),
-      confineInSafeArea: true,
-      backgroundColor: AppColor.backgroundColor, // Default is Colors.white.
-      handleAndroidBackButtonPress: true, // Default is true.
-      resizeToAvoidBottomInset:
-          true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-      stateManagement: true, // Default is true.
-      hideNavigationBarWhenKeyboardShows:
-          true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-      decoration: NavBarDecoration(
-        borderRadius: BorderRadius.only(
-            topRight: Radius.circular(10.0), topLeft: Radius.circular(10.0)),
-        colorBehindNavBar: Colors.white,
+    return Scaffold(
+      bottomNavigationBar: Obx(() => BottomNavigationBar(
+          currentIndex: _selectedIndex.value,
+          onTap: (int index) {
+            _selectedIndex.value = index;
+          },
+          selectedItemColor: AppColor.lightPinkColor,
+          unselectedItemColor: AppColor.whiteColor.withOpacity(0.7),
+          backgroundColor: AppColor.backgroundColor,
+          type: BottomNavigationBarType.fixed,
+          items: navBarsItems())),
+      body: Obx(() => buildScreens()[_selectedIndex.value]),
+    );
+  }
+
+  ///
+  /// This method return the screen according to tab selection from bottomNavigationBar
+  ///
+  List<Widget> buildScreens() {
+    return [
+      const HomeScreen(),
+      const ExploreScreen(),
+      const ProfileScreen(),
+    ];
+  }
+
+  ///
+  /// This method returns the navBarItems
+  ///
+  List<BottomNavigationBarItem> navBarsItems() {
+    return <BottomNavigationBarItem>[
+      const BottomNavigationBarItem(
+        icon: NavBarItemImage(
+          image: Assets.assetsToday,
+        ),
+        activeIcon: NavBarItemImage(
+          image: Assets.assetsSelectedToday,
+          fromSelected: true,
+        ),
+        label: "Today",
       ),
-      popAllScreensOnTapOfSelectedTab: true,
-      popActionScreens: PopActionScreensType.all,
-      itemAnimationProperties: const ItemAnimationProperties(
-        duration: Duration(milliseconds: 200),
-        curve: Curves.ease,
+      const BottomNavigationBarItem(
+        icon: NavBarItemImage(
+          image: Assets.assetsSearch,
+        ),
+        activeIcon: NavBarItemImage(
+            image: Assets.assetsSelectedExplore, fromSelected: true),
+        label: "Today",
       ),
-      screenTransitionAnimation: const ScreenTransitionAnimation(
-        animateTabTransition: true,
-        curve: Curves.ease,
-        duration: Duration(milliseconds: 200),
+      const BottomNavigationBarItem(
+        icon: NavBarItemImage(
+          image: Assets.assetsProfileIcon,
+        ),
+        activeIcon: NavBarItemImage(
+            image: Assets.assetsSelectedProfile, fromSelected: true),
+        label: "Today",
       ),
-      navBarStyle:
-          NavBarStyle.style2, // Choose the nav bar style with this property.
+    ];
+  }
+}
+
+class NavBarItemImage extends StatelessWidget {
+  const NavBarItemImage(
+      {Key? key, required this.image, this.fromSelected = false})
+      : super(key: key);
+
+  final String image;
+  final bool fromSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(bottom: 2),
+      height: fromSelected ? 4.0.h : 3.0.h,
+      width: fromSelected ? 4.0.h : 3.0.h,
+      child: Image.asset(
+        image,
+      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/explore_controller.dart';
+import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:sizer/sizer.dart';
@@ -40,64 +41,69 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                   shrinkWrap: true,
                   itemCount: exploreController.episodeList.length,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: CachedNetworkImage(
-                                  imageUrl: exploreController
-                                      .episodeList[index].image!,
-                                  fit: BoxFit.cover,
-                                  height: 9.h,
-                                  width: 25.w,
-                                  progressIndicatorBuilder:
-                                      (context, url, downloadProgress) =>
-                                          const CupertinoActivityIndicator(
-                                              color: Colors.white),
-                                  errorWidget: (context, url, error) =>
-                                      Icon(Icons.error),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 2.w,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: 60.w,
-                                    child: CustomWidget.text(
-                                        exploreController
-                                            .episodeList[index].title!,
-                                        maxLine: 1,
-                                        fontSize: 15,textAlign: TextAlign.start),
+                    return InkWell(
+                      onTap: () => Get.toNamed(Routes.musicPlayScreen,
+                          arguments: exploreController.episodeList[index]),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: CachedNetworkImage(
+                                    imageUrl: exploreController
+                                        .episodeList[index].image!,
+                                    fit: BoxFit.cover,
+                                    height: 9.h,
+                                    width: 25.w,
+                                    progressIndicatorBuilder:
+                                        (context, url, downloadProgress) =>
+                                            const CupertinoActivityIndicator(
+                                                color: Colors.white),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
                                   ),
-                                  CustomWidget.text(
-                                      exploreController
-                                          .episodeList[index].description!,
-                                      fontSize: 11,
-                                      color:
-                                          AppColor.whiteColor.withOpacity(0.7)),
-                                ],
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 1.h,
-                          ),
-                          const Divider(
-                            color: AppColor.blackColor,
-                            thickness: 0.2,
-                          ),
-                          SizedBox(
-                            height: 0.5.h,
-                          ),
-                        ],
+                                ),
+                                SizedBox(
+                                  width: 2.w,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: 60.w,
+                                      child: CustomWidget.text(
+                                          exploreController
+                                              .episodeList[index].title!,
+                                          maxLine: 1,
+                                          fontSize: 15,
+                                          textAlign: TextAlign.start),
+                                    ),
+                                    CustomWidget.text(
+                                        exploreController
+                                            .episodeList[index].description!,
+                                        fontSize: 11,
+                                        color: AppColor.whiteColor
+                                            .withOpacity(0.7)),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 1.h,
+                            ),
+                            const Divider(
+                              color: AppColor.blackColor,
+                              thickness: 0.2,
+                            ),
+                            SizedBox(
+                              height: 0.5.h,
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   });

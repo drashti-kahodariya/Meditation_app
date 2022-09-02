@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:meditation_app/Data/Model/dashboard_meditation_model.dart';
+import 'package:meditation_app/Data/Model/episode_model.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
 import 'package:rxdart/rxdart.dart' as rx;
 import 'package:sizer/sizer.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 class MusicPlayScreen extends StatefulWidget {
   const MusicPlayScreen({Key? key}) : super(key: key);
 
@@ -19,7 +20,7 @@ class MusicPlayScreen extends StatefulWidget {
 
 class _MusicPlayScreenState extends State<MusicPlayScreen>
     with WidgetsBindingObserver {
-  var audioData = StartYourDay().obs;
+  var audioData = EpisodeData().obs;
   RxBool isPlay = true.obs;
   Duration? progress;
   Duration? buffered;
@@ -69,10 +70,21 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
           Container(
             height: 100.h,
             width: 100.w,
-            child: Image.network(
-              audioData.value.image!,
+            child: CachedNetworkImage(
+              maxHeightDiskCache: 1000,
+              imageUrl: audioData.value.image!,
+              placeholder: (_, String s) => CupertinoActivityIndicator(),
+              errorWidget: (_, __, ___) => CupertinoActivityIndicator(),
+              width: 80,
+              height: 80,
               fit: BoxFit.cover,
             ),
+          ),
+          Container(
+            height: 100.h,
+            width: 100.w,
+            decoration:
+                BoxDecoration(color: AppColor.blackColor.withOpacity(0.4)),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 38.0, right: 18, left: 18),
@@ -92,17 +104,18 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                   ),
                 ),
                 SizedBox(
-                  height: 65.h,
+                  height: 64.h,
                 ),
                 CustomWidget.text("${audioData.value.title}",
                     fontWeight: FontWeight.w500,
                     fontSize: 15,
-                    color: Colors.black),
+                    color: Colors.white),
                 CustomWidget.text("${audioData.value.description}",
                     fontWeight: FontWeight.w400,
-                    fontSize: 15,
-                    color: const Color(0xff5b6667)),
+                    fontSize: 10,
+                    color: AppColor.whiteColor.withOpacity(0.8)),
                 // const Spacer(),
+                SizedBox(height: 10),
                 StreamBuilder<DurationState>(
                   stream: _durationState,
                   builder: (context, snapshot) {
@@ -116,10 +129,12 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                       child: ProgressBar(
                         progress: progress!,
                         buffered: buffered,
-                        progressBarColor: Colors.black.withOpacity(0.5),
-                        baseBarColor: Colors.black.withOpacity(0.2),
-                        bufferedBarColor: Colors.black.withOpacity(0.4),
-                        thumbColor: Colors.black,
+                        barHeight: 3,
+                        thumbRadius: 6,
+                        progressBarColor: Colors.white.withOpacity(1),
+                        baseBarColor: Colors.white.withOpacity(0.1),
+                        bufferedBarColor: Colors.white.withOpacity(0.4),
+                        thumbColor: Colors.white,
                         total: total,
                         onSeek: (duration) {
                           _player!.seek(duration);
@@ -128,7 +143,7 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                     );
                   },
                 ),
-                // const SizedBox(height: 35),
+                const SizedBox(height: 20),
                 Row(
                   children: [
                     Spacer(),
@@ -138,10 +153,10 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                             : _player!.seek(
                                 Duration(seconds: progress!.inSeconds - 10)),
                         child: CustomWidget.customAssetImageWidget(
-                          height: 3.0,
-                          width: 3.0,
-                          image: Assets.assetsBackward,
-                        )),
+                            height: 3.0,
+                            width: 3.0,
+                            image: Assets.assetsBackward,
+                            color: AppColor.whiteColor)),
                     Spacer(),
                     StreamBuilder<PlayerState>(
                       stream: _player!.playerStateStream,
@@ -163,7 +178,6 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                               child: CustomWidget.customAssetImageWidget(
                                 height: 8.0,
                                 width: 8.0,
-                                color: AppColor.blackColor,
                                 image: Assets.assetsPlay,
                               ));
                         } else if (processingState !=
@@ -171,10 +185,10 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                           return GestureDetector(
                               onTap: _player!.pause,
                               child: CustomWidget.customAssetImageWidget(
-                                height: 8.0,
-                                width: 8.0,
-                                image: Assets.assetsPause,
-                              ));
+                                  height: 8.0,
+                                  width: 8.0,
+                                  image: Assets.assetsPause,
+                                  color: AppColor.whiteColor));
                         } else {
                           return IconButton(
                             icon: const Icon(
@@ -192,10 +206,10 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                         onTap: () => _player!
                             .seek(Duration(seconds: progress!.inSeconds + 10)),
                         child: CustomWidget.customAssetImageWidget(
-                          height: 3.0,
-                          width: 3.0,
-                          image: Assets.assetsForward,
-                        )),
+                            height: 3.0,
+                            width: 3.0,
+                            image: Assets.assetsForward,
+                            color: AppColor.whiteColor)),
                     Spacer(),
                   ],
                 ),

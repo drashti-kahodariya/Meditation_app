@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Controllers/home_controller.dart';
 import 'package:meditation_app/Data/Model/dashboard_meditation_model.dart';
+import 'package:meditation_app/Data/Model/episode_model.dart';
 import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
@@ -153,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  GestureDetector dashboardCourseCard(StartYourDay course) {
+  GestureDetector dashboardCourseCard(EpisodeData course) {
     return GestureDetector(
       onTap: () {
         Get.toNamed(Routes.musicPlayScreen, arguments: course);

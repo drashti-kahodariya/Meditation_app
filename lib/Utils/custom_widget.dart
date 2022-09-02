@@ -27,7 +27,7 @@ class CustomWidget {
               color: color,
               fontWeight: fontWeight,
               fontSize: fontSize.sp,
-              letterSpacing: letterSpacing,
+              // letterSpacing: letterSpacing,
               overflow: overflow),
         ));
   }

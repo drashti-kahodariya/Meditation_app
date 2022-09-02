@@ -1,3 +1,5 @@
+import 'package:meditation_app/Data/Model/episode_model.dart';
+
 class DashboardMeditationModel {
   int? status;
   String? message;
@@ -11,91 +13,62 @@ class DashboardMeditationModel {
     if (json['data'] != null) {
       dashboardList = <DashboardData>[];
       json['data'].forEach((v) {
-        dashboardList!.add(new DashboardData.fromJson(v));
+        dashboardList!.add(DashboardData.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['message'] = this.message;
-    if (this.dashboardList != null) {
-      data['data'] = this.dashboardList!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    data['message'] = message;
+    if (dashboardList != null) {
+      data['data'] = dashboardList!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class DashboardData {
-  List<StartYourDay>? startYourDay;
-  List<StartYourDay>? afternoonLift;
-  List<StartYourDay>? atNight;
+  List<EpisodeData>? startYourDay;
+  List<EpisodeData>? afternoonLift;
+  List<EpisodeData>? atNight;
 
   DashboardData({this.startYourDay, this.afternoonLift, this.atNight});
 
   DashboardData.fromJson(Map<String, dynamic> json) {
     if (json['startYourDay'] != null) {
-      startYourDay = <StartYourDay>[];
+      startYourDay = <EpisodeData>[];
       json['startYourDay'].forEach((v) {
-        startYourDay!.add(new StartYourDay.fromJson(v));
+        startYourDay!.add(EpisodeData.fromJson(v));
       });
     }
     if (json['afternoonLift'] != null) {
-      afternoonLift = <StartYourDay>[];
+      afternoonLift = <EpisodeData>[];
       json['afternoonLift'].forEach((v) {
-        afternoonLift!.add(new StartYourDay.fromJson(v));
+        afternoonLift!.add(EpisodeData.fromJson(v));
       });
     }
     if (json['atNight'] != null) {
-      atNight = <StartYourDay>[];
+      atNight = <EpisodeData>[];
       json['atNight'].forEach((v) {
-        atNight!.add(new StartYourDay.fromJson(v));
+        atNight!.add(EpisodeData.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.startYourDay != null) {
-      data['startYourDay'] = this.startYourDay!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (startYourDay != null) {
+      data['startYourDay'] = startYourDay!.map((v) => v.toJson()).toList();
     }
-    if (this.afternoonLift != null) {
+    if (afternoonLift != null) {
       data['afternoonLift'] =
-          this.afternoonLift!.map((v) => v.toJson()).toList();
+          afternoonLift!.map((v) => v.toJson()).toList();
     }
-    if (this.atNight != null) {
-      data['atNight'] = this.atNight!.map((v) => v.toJson()).toList();
+    if (atNight != null) {
+      data['atNight'] = atNight!.map((v) => v.toJson()).toList();
     }
-    return data;
-  }
-}
-
-class StartYourDay {
-  String? sId;
-  String? title;
-  String? image;
-  String? description;
-  String? audioOrVideo;
-
-  StartYourDay(
-      {this.sId, this.title, this.image, this.description, this.audioOrVideo});
-
-  StartYourDay.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
-    title = json['title'];
-    image = json['image'];
-    description = json['description'];
-    audioOrVideo = json['audioOrVideo'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['title'] = this.title;
-    data['image'] = this.image;
-    data['description'] = this.description;
-    data['audioOrVideo'] = this.audioOrVideo;
     return data;
   }
 }

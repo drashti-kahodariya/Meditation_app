@@ -154,7 +154,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                                   borderRadius: BorderRadius.circular(10),
                                   child: CachedNetworkImage(
                                     imageUrl: exploreController
-                                        .featuredCourseList![index].image!,
+                                        .featuredCourseList[index].image!,
                                     fit: BoxFit.cover,
                                     height: 15.h,
                                     width: 100.w,
@@ -169,7 +169,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                                 child: CustomWidget.text(
                                     exploreController
-                                        .featuredCourseList![index].title!,
+                                        .featuredCourseList[index].title!,
                                     fontSize: 15),
                               ),
                               Padding(
@@ -182,7 +182,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                                         height: 2.5),
                                     CustomWidget.text(
                                         exploreController
-                                            .featuredCourseList![index]
+                                            .featuredCourseList[index]
                                             .description!,
                                         fontSize: 10,
                                         color: AppColor.whiteColor

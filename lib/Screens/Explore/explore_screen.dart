@@ -44,58 +44,54 @@ class _ExploreScreenState extends State<ExploreScreen> {
             SizedBox(
               height: 6.h,
             ),
-            Obx(() {
-              return ListView.separated(
-                shrinkWrap: true,
-                itemCount: exploreController.exploreList.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routes.featuredScreen,
-                          arguments: exploreController.exploreList[index].sId);
-                    },
-                    child: Stack(
-                      children: [
-                        Container(
-                          height: 25.h,
-                          width: 100.w,
-                          decoration: CustomWidget.customBoxDecoration(
-                            borderRadius: 10,
-                          ),
-                          child: ClipRRect(
+            Expanded(
+              child: Obx(() {
+                return ListView.separated(
+                  itemCount: exploreController.exploreList.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.featuredScreen,
+                            arguments: exploreController.exploreList[index].sId);
+                      },
+                      child: Stack(
+                        children: [
+                          ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.asset(
                               imageList[index],
-                              fit: BoxFit.cover,
+                              fit: BoxFit.contain,
+                              // height: 25.h,
+                              // width: 150.w,
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(18.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                iconList[index],
-                                height: 30,
-                                width: 30,
-                              ),
-                              CustomWidget.text(
-                                  exploreController.exploreList[index].name!)
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    height: 4.h,
-                  );
-                },
-              );
-            }),
+                          Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  iconList[index],
+                                  height: 30,
+                                  width: 30,
+                                ),
+                                CustomWidget.text(
+                                    exploreController.exploreList[index].name!)
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                      height: 2.5.h,
+                    );
+                  },
+                );
+              }),
+            ),
           ],
         ),
       ),

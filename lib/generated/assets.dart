@@ -17,8 +17,7 @@ class Assets {
   static const String assetsFocusIcon = 'assets/focus_icon.png';
   static const String assetsFocusImage = 'assets/focus_image.png';
   static const String assetsForgotPassword = 'assets/forgot_password.png';
-  static const String assetsForgotPasswordImage =
-      'assets/forgot_password_image.png';
+  static const String assetsForgotPasswordImage = 'assets/forgot_password_image.png';
   static const String assetsForward = 'assets/forward.png';
   static const String assetsGoogle = 'assets/google.png';
   static const String assetsHeart = 'assets/heart.png';
@@ -37,8 +36,12 @@ class Assets {
   static const String assetsPlay = 'assets/play.png';
   static const String assetsPracticesIcon = 'assets/practices_icon.png';
   static const String assetsPrivacyPolicy = 'assets/privacy_policy.png';
+  static const String assetsProfileIcon = 'assets/profile_icon.png';
   static const String assetsRecent = 'assets/recent.png';
   static const String assetsSearch = 'assets/search.png';
+  static const String assetsSelectedExplore = 'assets/selected_explore.png';
+  static const String assetsSelectedProfile = 'assets/selected_profile.png';
+  static const String assetsSelectedToday = 'assets/selected_today.png';
   static const String assetsSettingIcon = 'assets/setting_icon.png';
   static const String assetsSettingUser = 'assets/setting_user.png';
   static const String assetsSleepIcon = 'assets/sleep_icon.png';
@@ -49,7 +52,8 @@ class Assets {
   static const String assetsToday = 'assets/today.png';
   static const String assetsUnlockIcon = 'assets/unlockIcon.png';
   static const String assetsUser = 'assets/user.png';
-  static const String assetsVolumeUp = 'assets/volume-up.png';
+  static const String assetsVolumeUp = 'assets/volume_up.png';
   static const String assetsWelcomeBg = 'assets/welcome_bg.png';
   static const String assetsWelcomeYoga = 'assets/welcome_yoga.png';
+
 }
