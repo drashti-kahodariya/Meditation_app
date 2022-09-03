@@ -62,18 +62,28 @@ class _CourseScreenState extends State<CourseScreen> {
                                 Icon(Icons.error),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(28.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              CustomWidget.text(courseData[index].title!,
-                                  fontSize: 22, maxLine: 2),
-                              CustomWidget.text(courseData[index].description!,
-                                  fontSize: 13,
-                                  maxLine: 1,
-                                  color: AppColor.whiteColor.withOpacity(0.8)),
-                            ],
+                        Container(
+                          height: 30.h,
+                          width: 100.w,
+                          decoration:
+                          BoxDecoration(color: AppColor.blackColor.withOpacity(0.4), borderRadius: BorderRadius.circular(25)),
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+
+                                CustomWidget.text(courseData[index].title!.capitalize!,
+                                    fontSize: 20, maxLine: 2,fontWeight: FontWeight.w600),
+                                CustomWidget.text(courseData[index].description!.capitalize!,
+                                    fontSize: 12,
+                                    color: AppColor.whiteColor.withOpacity(0.7)),
+                              ],
+                            ),
                           ),
                         ),
                       ],
