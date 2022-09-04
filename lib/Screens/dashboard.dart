@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Screens/Explore/explore_screen.dart';
 import 'package:meditation_app/Screens/Home/home_screen.dart';
 import 'package:meditation_app/Screens/Settings/profile_screen.dart';
@@ -19,6 +20,8 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
+  var authController = Get.put(AuthenticationController());
+
   final _selectedIndex = 0.obs;
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -107,15 +110,17 @@ class _DashboardState extends State<Dashboard> {
         ),
         activeIcon: NavBarItemImage(
             image: Assets.assetsSelectedExplore, fromSelected: true),
-        label: "Today",
+        label: "Explore",
       ),
-      const BottomNavigationBarItem(
-        icon: NavBarItemImage(
+      BottomNavigationBarItem(
+        icon: const NavBarItemImage(
           image: Assets.assetsProfileIcon,
         ),
         activeIcon: NavBarItemImage(
             image: Assets.assetsSelectedProfile, fromSelected: true),
-        label: "Today",
+        label: authController.currentUserData.value.firstName! == "null"
+            ? "Profile"
+            : "${authController.currentUserData.value.firstName}",
       ),
     ];
   }

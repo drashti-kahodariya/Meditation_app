@@ -10,6 +10,7 @@ class Routes {
   static const notificationScreen = '/notificationScreen';
   static const exploreScreen = '/exploreScreen';
   static const musicPlayScreen = '/musicPlayScreen';
+  static const videoPlayScreen = '/videoPlayScreen';
   static const settingScreen = '/settingScreen';
   static const profileScreen = '/profileScreen';
   static const editProfileScreen = '/editProfileScreen';

@@ -43,7 +43,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Obx(
-            ()=> Column(
+            () => Column(
               children: exploreController.exploreList.map((element) {
                 var index = exploreController.exploreList.indexOf(element);
                 return Expanded(
@@ -88,12 +88,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                       width: 25,
                                     ),
                                     CustomWidget.text(
-                                        exploreController.exploreList[index].name!
+                                        exploreController
+                                            .exploreList[index].name!
                                             .toUpperCase(),
                                         fontWeight: FontWeight.bold,
                                         fontSize: 25,
-                                        color:
-                                            AppColor.whiteColor.withOpacity(0.9))
+                                        color: AppColor.whiteColor
+                                            .withOpacity(0.9))
                                   ],
                                 ),
                               )
@@ -108,61 +109,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   ),
                 );
               }).toList(),
-              // Expanded(
-              //   child: Obx(() {
-              //     return ListView.separated(
-              //       itemCount: exploreController.exploreList.length,
-              //       itemBuilder: (context, index) {
-              //         return GestureDetector(
-              //           onTap: () {
-              //             Get.toNamed(Routes.featuredScreen,
-              //                 arguments: exploreController.exploreList[index].sId);
-              //           },
-              //           child: Stack(
-              //             children: [
-              //               ClipRRect(
-              //                 borderRadius: BorderRadius.circular(10),
-              //                 child: Image.asset(
-              //                   imageList[index],
-              //                   fit: BoxFit.contain,
-              //                   // height: 25.h,
-              //                   // width: 150.w,
-              //                 ),
-              //               ),
-              //               // Container(
-              //               //   height: 100.h,
-              //               //   width: 100.w,
-              //               //   decoration:
-              //               //   BoxDecoration(color: AppColor.blackColor.withOpacity(0.4)),
-              //               // ),
-              //               Padding(
-              //                 padding: const EdgeInsets.all(18.0),
-              //                 child: Column(
-              //                   crossAxisAlignment: CrossAxisAlignment.start,
-              //                   children: [
-              //                     Image.asset(
-              //                       iconList[index],
-              //                       height: 30,
-              //                       width: 30,
-              //                     ),
-              //                     CustomWidget.text(
-              //                         exploreController.exploreList[index].name!)
-              //                   ],
-              //                 ),
-              //               )
-              //             ],
-              //           ),
-              //         );
-              //       },
-              //       separatorBuilder: (BuildContext context, int index) {
-              //         return SizedBox(
-              //           height: 2.5.h,
-              //         );
-              //       },
-              //     );
-              //   }),
-              // ),
-              // ],
             ),
           ),
         ),

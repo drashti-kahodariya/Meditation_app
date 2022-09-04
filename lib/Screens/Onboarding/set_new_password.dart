@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
@@ -14,6 +15,9 @@ class SetNewPasswordScreen extends StatefulWidget {
 
 class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
   final _passwordController = TextEditingController();
+  final _newPasswordController = TextEditingController();
+  var authController = AuthenticationController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +63,7 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
               height: 2.h,
             ),
             TextFormField(
-              controller: _passwordController,
+              controller: _newPasswordController,
               style: TextStyle(color: AppColor.whiteColor),
               decoration: CustomWidget.customInputDecoration(
                 hintText: "Confirm Password",
@@ -79,6 +83,14 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
             ),
             CustomWidget.customButton(
                 callBack: () {
+                  if (_newPasswordController.text == _passwordController.text) {
+                    authController
+                        .setNewPassword({"password": _passwordController.text});
+                  } else {
+                    CustomWidget.errorSnackBar(
+                        content:
+                            "New password and cofirm password should be same!");
+                  }
                   // authController.otpVerification({"otp": verificationCode});
                 },
                 height: 6.h,

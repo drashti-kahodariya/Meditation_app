@@ -5,6 +5,7 @@ import 'package:meditation_app/Screens/Explore/episode_screen.dart';
 import 'package:meditation_app/Screens/Explore/explore_screen.dart';
 import 'package:meditation_app/Screens/Explore/featured_screen.dart';
 import 'package:meditation_app/Screens/Explore/music_play_screen.dart';
+import 'package:meditation_app/Screens/Explore/video_play_screen.dart';
 import 'package:meditation_app/Screens/Home/favourite_screen.dart';
 import 'package:meditation_app/Screens/Home/home_screen.dart';
 import 'package:meditation_app/Screens/Home/notification_screen.dart';
@@ -75,6 +76,10 @@ class AppPages {
     GetPage(
         name: Routes.musicPlayScreen,
         page: () => const MusicPlayScreen(),
+        transition: transition),
+    GetPage(
+        name: Routes.videoPlayScreen,
+        page: () =>  VideoPlayScreen(),
         transition: transition),
     GetPage(
         name: Routes.settingScreen,

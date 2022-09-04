@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:meditation_app/Controllers/premium_controller.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
 import 'package:sizer/sizer.dart';
@@ -13,6 +15,14 @@ class SubScriptionScreen extends StatefulWidget {
 }
 
 class _SubScriptionScreenState extends State<SubScriptionScreen> {
+  final premiumController = Get.put(PremiumController());
+  @override
+  void initState() {
+    premiumController.setPremium();
+    premiumController.initStoreInfo();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +69,11 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
               height: 5.h,
             ),
             CustomWidget.customButton(
-                callBack: () {},
+                callBack: () {
+                  premiumController
+                      .getPremium()
+                      .then((value) => setState(() {}));
+                },
                 height: 6.h,
                 width: 70.w,
                 btnText: "Try free and subscribe",

@@ -100,7 +100,6 @@ class APIManager {
           .timeout(Duration(seconds: 15));
       // .onError((error, stackTrace) =>
       //     throw FetchDataException('Something went wrong!'));
-      print("HEllo:: ${response.body}");
       if (kDebugMode) {
         print(response.body);
       }

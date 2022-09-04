@@ -17,10 +17,12 @@ class Assets {
   static const String assetsFocusIcon = 'assets/focus_icon.png';
   static const String assetsFocusImage = 'assets/focus_image.png';
   static const String assetsForgotPassword = 'assets/forgot_password.png';
-  static const String assetsForgotPasswordImage = 'assets/forgot_password_image.png';
+  static const String assetsForgotPasswordImage =
+      'assets/forgot_password_image.png';
   static const String assetsForward = 'assets/forward.png';
   static const String assetsGoogle = 'assets/google.png';
   static const String assetsHeart = 'assets/heart.png';
+  static const String assetsHeartOutline = 'assets/heart_outline.png';
   static const String assetsInvitationImage = 'assets/invitation_image.png';
   static const String assetsInvite = 'assets/invite.png';
   static const String assetsLoginBg = 'assets/login_bg.png';
@@ -55,5 +57,4 @@ class Assets {
   static const String assetsVolumeUp = 'assets/volume_up.png';
   static const String assetsWelcomeBg = 'assets/welcome_bg.png';
   static const String assetsWelcomeYoga = 'assets/welcome_yoga.png';
-
 }

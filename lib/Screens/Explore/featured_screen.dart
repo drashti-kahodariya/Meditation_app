@@ -43,11 +43,16 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
           children: [
             Stack(
               children: [
-                Image.asset(
-                  Assets.assetsDummy4,
-                  height: 40.h,
-                  width: 100.w,
-                  fit: BoxFit.cover,
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(Routes.subscriptionScreen);
+                  },
+                  child: Image.asset(
+                    Assets.assetsDummy4,
+                    height: 40.h,
+                    width: 100.w,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 // Image.network(
                 //  ,
@@ -143,54 +148,62 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                       scrollDirection: Axis.horizontal,
                       itemCount: exploreController.featuredCourseList.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          height: 22.h,
-                          width: 47.w,
-                          // color: AppColor.blackColor,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: CachedNetworkImage(
-                                    imageUrl: exploreController
-                                        .featuredCourseList[index].image!,
-                                    fit: BoxFit.cover,
-                                    height: 15.h,
-                                    width: 100.w,
-                                    progressIndicatorBuilder:
-                                        (context, url, downloadProgress) =>
-                                            const CupertinoActivityIndicator(
-                                                color: Colors.white),
-                                    errorWidget: (context, url, error) =>
-                                        Icon(Icons.error),
-                                  )),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                child: CustomWidget.text(
-                                    exploreController
-                                        .featuredCourseList[index].title!,
-                                    fontSize: 15),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Row(
-                                  children: [
-                                    CustomWidget.customAssetImageWidget(
-                                        image: Assets.assetsVolumeUp,
-                                        height: 2.5),
-                                    CustomWidget.text(
-                                        exploreController
-                                            .featuredCourseList[index]
-                                            .description!,
-                                        fontSize: 10,
-                                        color: AppColor.whiteColor
-                                            .withOpacity(0.8)),
-                                  ],
+                        return GestureDetector(
+                          onTap: () {
+                            Get.toNamed(Routes.episodeScreen,
+                                arguments: exploreController
+                                    .featuredCourseList[index].sId);
+                          },
+                          child: Container(
+                            height: 22.h,
+                            width: 47.w,
+                            // color: AppColor.blackColor,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: CachedNetworkImage(
+                                      imageUrl: exploreController
+                                          .featuredCourseList[index].image!,
+                                      fit: BoxFit.cover,
+                                      height: 15.h,
+                                      width: 100.w,
+                                      progressIndicatorBuilder:
+                                          (context, url, downloadProgress) =>
+                                              const CupertinoActivityIndicator(
+                                                  color: Colors.white),
+                                      errorWidget: (context, url, error) =>
+                                          Icon(Icons.error),
+                                    )),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 8.0),
+                                  child: CustomWidget.text(
+                                      exploreController
+                                          .featuredCourseList[index].title!,
+                                      fontSize: 15),
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0),
+                                  child: Row(
+                                    children: [
+                                      CustomWidget.customAssetImageWidget(
+                                          image: Assets.assetsVolumeUp,
+                                          height: 2.5),
+                                      CustomWidget.text(
+                                          exploreController
+                                              .featuredCourseList[index]
+                                              .description!,
+                                          fontSize: 10,
+                                          color: AppColor.whiteColor
+                                              .withOpacity(0.8)),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },
@@ -251,8 +264,9 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                           Container(
                             height: 30.h,
                             width: 100.w,
-                            decoration:
-                            BoxDecoration(color: AppColor.blackColor.withOpacity(0.4), borderRadius: BorderRadius.circular(25)),
+                            decoration: BoxDecoration(
+                                color: AppColor.blackColor.withOpacity(0.4),
+                                borderRadius: BorderRadius.circular(25)),
                           ),
                           Positioned(
                             bottom: 0,
@@ -262,19 +276,22 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-
-                                  CustomWidget.text(exploreController
-                                      .exploreCourseList[index].title!.capitalize!,
-                                      fontSize: 20, maxLine: 2,fontWeight: FontWeight.w600),
-                                  CustomWidget.text(exploreController
-                                      .exploreCourseList[index].description!.capitalize!,
+                                  CustomWidget.text(
+                                      exploreController.exploreCourseList[index]
+                                          .title!.capitalize!,
+                                      fontSize: 20,
+                                      maxLine: 2,
+                                      fontWeight: FontWeight.w600),
+                                  CustomWidget.text(
+                                      exploreController.exploreCourseList[index]
+                                          .description!.capitalize!,
                                       fontSize: 12,
-                                      color: AppColor.whiteColor.withOpacity(0.7)),
+                                      color:
+                                          AppColor.whiteColor.withOpacity(0.7)),
                                 ],
                               ),
                             ),
                           ),
-
                         ],
                       ),
                     ),

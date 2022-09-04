@@ -19,8 +19,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    authController.setCurrentUser();
-
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      authController.setCurrentUser();
+    });
     super.initState();
   }
 

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/authentication_controller.dart';
-import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
@@ -57,7 +55,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 onCodeChanged: (String code) {
                   //handle validation or checks here
                 },
-                //runs when every textfield is filled
                 onSubmit: (String value) {
                   verificationCode = value;
                   setState(() {});
@@ -65,19 +62,12 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               ),
             ),
             SizedBox(
-              height: 8.h,
-            ),
-            CustomWidget.text("Haven’t received the verification code?",
-                fontSize: 12, color: AppColor.whiteColor.withOpacity(0.6)),
-            CustomWidget.text("Resend",
-                fontSize: 14, color: AppColor.yellowColor),
-            SizedBox(
-              height: 7.h,
+              height: 15.h,
             ),
             CustomWidget.customButton(
                 callBack: () {
-                  Get.toNamed(Routes.setNewPasswordScreen);
-                  // authController.otpVerification({"otp": verificationCode});
+                  // Get.toNamed(Routes.setNewPasswordScreen);
+                  authController.otpVerification({"otp": verificationCode});
                 },
                 height: 6.h,
                 width: 70.w,

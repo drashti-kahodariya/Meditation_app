@@ -35,8 +35,11 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
             width: 100.w,
             color: AppColor.primaryColor,
             child: Center(
-              child: CustomWidget.text(
-                  "Find all your favorites meditation and exercirs here."),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CustomWidget.text(
+                    "Find all your favorites meditation and exercirs here."),
+              ),
             ),
           ),
           Expanded(
@@ -85,8 +88,15 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                 ],
                               ),
                               Spacer(),
-                              CustomWidget.customAssetImageWidget(
-                                  image: Assets.assetsHeart)
+                              GestureDetector(
+                                onTap: () async {
+                                  await homeController.addFavoriteList(
+                                      {"courseId": favouriteData.course!.sId!});
+                                  homeController.getFavoriteList();
+                                },
+                                child: CustomWidget.customAssetImageWidget(
+                                    image: Assets.assetsHeart),
+                              )
                             ],
                           ),
                           SizedBox(

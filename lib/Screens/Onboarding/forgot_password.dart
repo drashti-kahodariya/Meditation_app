@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
 import 'package:sizer/sizer.dart';
-
-import '../../Routes/routes.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -72,9 +69,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     callBack: () {
                       if (_emailController.text.isNotEmpty) {
                         print("ok");
-                        // authController.forgotPassword(
-                        //     {"email": "drashtikahodariya966@gmail.com"});
-                        Get.toNamed(Routes.otpVerificationScreen);
+                        authController
+                            .forgotPassword({"email": _emailController.text});
+                        // Get.toNamed(Routes.otpVerificationScreen);
                       } else {
                         CustomWidget.errorSnackBar(content: 'Enter email!');
                       }

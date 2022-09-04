@@ -215,26 +215,15 @@ class AuthenticationController extends GetxController {
   /// You have to use this method for otp verification
   ///
   Future<void> otpVerification(Map<String, String> params) async {
-    var otpVerificationData =
-        await authenticationRepository.otpVerificationApiCall(params);
-    Get.offAllNamed(Routes.dashboard);
-  }
-
-  ///
-  /// You have to use this method for resend otp verification
-  ///
-  Future<void> resendOtpVerification(Map<String, String> params) async {
-    var resendOtpVerificationData =
-        await authenticationRepository.resendOtpVerificationApiCall(params);
-    Get.offAllNamed(Routes.dashboard);
+    await authenticationRepository.otpVerificationApiCall(params);
+    Get.offAllNamed(Routes.setNewPasswordScreen);
   }
 
   ///
   /// You have to use this method for set new password
   ///
   Future<void> setNewPassword(Map<String, String> params) async {
-    var setNewPasswordData =
-        await authenticationRepository.setNewPasswordApiCall(params);
+    await authenticationRepository.setNewPasswordApiCall(params);
     Get.offAllNamed(Routes.dashboard);
   }
 

@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Controllers/home_controller.dart';
-import 'package:meditation_app/Data/Model/dashboard_meditation_model.dart';
 import 'package:meditation_app/Data/Model/episode_model.dart';
 import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:path/path.dart' as p;
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,9 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    authController.setCurrentUser();
-    homeController.getDashboardMeditation();
-
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      authController.setCurrentUser();
+      homeController.getDashboardMeditation();
+    });
     super.initState();
   }
 
@@ -59,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Get.toNamed(Routes.favouriteScreen);
                     },
                     child: CustomWidget.customAssetImageWidget(
-                        image: Assets.assetsHeart, height: 3.0),
+                        image: Assets.assetsHeartOutline, height: 3.0),
                   ),
                   SizedBox(width: 4.w),
                   GestureDetector(
@@ -97,6 +98,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           SizedBox(
                             height: 2.h,
                           ),
+                          // Timeline.tileBuilder(
+                          //   builder: TimelineTileBuilder.fromStyle(
+                          //     contentsAlign: ContentsAlign.alternating,
+                          //     contentsBuilder: (context, index) => Padding(
+                          //       padding: const EdgeInsets.all(24.0),
+                          //       child: Text('Timeline Event $index'),
+                          //     ),
+                          //     itemCount: 10,
+                          //   ),
+                          // ),
                           Obx(() {
                             return ListView.separated(
                               physics: const BouncingScrollPhysics(),
@@ -157,7 +168,13 @@ class _HomeScreenState extends State<HomeScreen> {
   GestureDetector dashboardCourseCard(EpisodeData course) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.musicPlayScreen, arguments: course);
+        homeController.addInRecent(course);
+        final extension = p.extension(course.audioOrVideo!);
+        if (extension == ".mp3") {
+          Get.toNamed(Routes.musicPlayScreen, arguments: course);
+        } else {
+          Get.toNamed(Routes.videoPlayScreen, arguments: course);
+        }
       },
       child: Container(
         height: 22.h,

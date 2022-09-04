@@ -143,8 +143,20 @@ class AuthenticationRepository {
   Future<CommonResponseModel> setNewPasswordApiCall(
       Map<String, String> params) async {
     var jsonResponse =
-        await apiManager.postAPICall("user/change_password", params);
+        await apiManager.postAPICall("user/reset_password", params);
     var forgotPasswordResponse = CommonResponseModel.fromJson(jsonResponse);
     return forgotPasswordResponse;
+  }
+
+  ///
+  /// this method is use for  get premium video
+  ///
+  Future<LoginSuccessResponseModel> getPremiumVideo({
+    required String? userId,
+  }) async {
+    var jsonResponse =
+        await apiManager.putAPICall("user/premium/add", {"userId": userId});
+    var getPremiumResponse = LoginSuccessResponseModel.fromJson(jsonResponse);
+    return getPremiumResponse;
   }
 }
