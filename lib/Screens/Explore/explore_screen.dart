@@ -36,6 +36,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: AppColor.backgroundColor,
       body: Padding(
         padding: const EdgeInsets.only(top: 35.0),

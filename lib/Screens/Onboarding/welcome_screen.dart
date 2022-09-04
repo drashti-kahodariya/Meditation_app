@@ -85,7 +85,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         image: Assets.assetsEmail, height: 6, width: 6),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ],
