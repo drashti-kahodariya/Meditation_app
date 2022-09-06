@@ -8,6 +8,7 @@ import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 class EditProfile extends StatefulWidget {
@@ -55,10 +56,9 @@ class _EditProfileState extends State<EditProfile> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CustomWidget.customAppBar(title: "Account Information"),
+            CustomWidget.customAppBar(title: S.of(context).accountInformation),
             GestureDetector(
               onTap: () async {
-                print("Done");
                 final ImagePicker _picker = ImagePicker();
                 selectedImage = await _picker.pickImage(
                     source: ImageSource.gallery, imageQuality: 1);
@@ -116,12 +116,12 @@ class _EditProfileState extends State<EditProfile> {
                     controller: _fnameController,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter first name';
+                        return S.of(context).enterFirstName;
                       }
                     },
                     style: TextStyle(color: AppColor.whiteColor),
                     decoration: CustomWidget.customInputDecoration(
-                        hintText: "First Name",
+                        hintText: S.of(context).firstName,
                         isFilled: true,
                         isPrefixShow: true,
                         prefixImage: Assets.assetsUser),
@@ -133,12 +133,12 @@ class _EditProfileState extends State<EditProfile> {
                     controller: _lnameController,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter last name';
+                        return S.of(context).enterLastName;
                       }
                     },
                     style: TextStyle(color: AppColor.whiteColor),
                     decoration: CustomWidget.customInputDecoration(
-                        hintText: "Last Name",
+                        hintText: S.of(context).lastName,
                         isFilled: true,
                         isPrefixShow: true,
                         prefixImage: Assets.assetsUser),
@@ -150,10 +150,10 @@ class _EditProfileState extends State<EditProfile> {
                     controller: _emailController,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter email';
+                        return S.of(context).enterEmail;
                       } else {
                         if (!emailRegex.hasMatch(value)) {
-                          return 'Enter valid email';
+                          return S.of(context).validEmail;
                         } else {
                           return null;
                         }
@@ -161,7 +161,7 @@ class _EditProfileState extends State<EditProfile> {
                     },
                     style: TextStyle(color: AppColor.whiteColor),
                     decoration: CustomWidget.customInputDecoration(
-                        hintText: "Email",
+                        hintText: S.of(context).emailAddress,
                         isFilled: true,
                         isPrefixShow: true,
                         prefixImage: Assets.assetsEmailIcon),
@@ -173,7 +173,7 @@ class _EditProfileState extends State<EditProfile> {
                     controller: _mobNoController,
                     style: TextStyle(color: AppColor.whiteColor),
                     decoration: CustomWidget.customInputDecoration(
-                      hintText: "Mobile No.",
+                      hintText: S.of(context).mobileNo,
                       isFilled: true,
                       isPrefixShow: true,
                       prefixImage: Assets.assetsPhone,
@@ -204,7 +204,7 @@ class _EditProfileState extends State<EditProfile> {
                 },
                 height: 6.h,
                 width: 70.w,
-                btnText: "Save",
+                btnText: S.of(context).save,
                 textColor: AppColor.whiteColor,
                 color: Color(0xffFFC700)),
           ],

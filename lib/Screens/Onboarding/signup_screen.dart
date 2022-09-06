@@ -4,6 +4,7 @@ import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -18,6 +19,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final _lNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _mobileNoController = TextEditingController();
   var authenticationController = Get.put(AuthenticationController());
   final _formKey = GlobalKey<FormState>();
   RegExp emailRegex = RegExp(
@@ -50,7 +52,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 7.h,
+                        height: 5.h,
                       ),
                       Container(
                         height: 19.h,
@@ -59,21 +61,21 @@ class _SignupScreenState extends State<SignupScreen> {
                           image: Assets.assetsLogo,
                         ),
                       ),
-                      CustomWidget.text("Register",
+                      CustomWidget.text(S.of(context).register,
                           fontSize: 30, fontWeight: FontWeight.w600),
                       SizedBox(
-                        height: 6.h,
+                        height: 3.h,
                       ),
                       TextFormField(
                         controller: _fNameController,
                         style: TextStyle(color: AppColor.whiteColor),
                         decoration: CustomWidget.customInputDecoration(
-                            hintText: "First Name"),
+                            hintText: S.of(context).firstName),
                         validator: (v) {
                           if (v!.isEmpty) {
-                            return "Please enter first name!";
+                            return S.of(context).enterFirstName;
                           } else if (v.startsWith(" ")) {
-                            return "Space not allow!";
+                            return S.of(context).spaceNotAllow;
                           }
                         },
                       ),
@@ -84,13 +86,13 @@ class _SignupScreenState extends State<SignupScreen> {
                         controller: _lNameController,
                         style: TextStyle(color: AppColor.whiteColor),
                         decoration: CustomWidget.customInputDecoration(
-                          hintText: "Last Name",
+                          hintText: S.of(context).lastName,
                         ),
                         validator: (v) {
                           if (v!.isEmpty) {
-                            return "Please enter last name!";
+                            return S.of(context).enterLastName;
                           } else if (v.startsWith(" ")) {
-                            return "Space not allow!";
+                            return S.of(context).spaceNotAllow;
                           }
                         },
                       ),
@@ -101,14 +103,29 @@ class _SignupScreenState extends State<SignupScreen> {
                         controller: _emailController,
                         style: TextStyle(color: AppColor.whiteColor),
                         decoration: CustomWidget.customInputDecoration(
-                            hintText: "Email Address"),
+                            hintText: S.of(context).emailAddress),
                         validator: (v) {
                           if (v!.isEmpty) {
-                            return "Please enter email address!";
+                            return S.of(context).enterEmail;
                           } else if (v.startsWith(" ")) {
-                            return "Space not allow!";
+                            return S.of(context).spaceNotAllow;
                           } else if (!emailRegex.hasMatch(v)) {
-                            return 'Enter valid email';
+                            return S.of(context).validEmail;
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        height: 2.5.h,
+                      ),
+                      TextFormField(
+                        controller: _mobileNoController,
+                        style: TextStyle(color: AppColor.whiteColor),
+                        keyboardType: TextInputType.number,
+                        decoration: CustomWidget.customInputDecoration(
+                            hintText: S.of(context).mobileNo),
+                        validator: (v) {
+                          if (v!.startsWith(" ")) {
+                            return S.of(context).spaceNotAllow;
                           }
                         },
                       ),
@@ -119,14 +136,14 @@ class _SignupScreenState extends State<SignupScreen> {
                         controller: _passwordController,
                         style: TextStyle(color: AppColor.whiteColor),
                         decoration: CustomWidget.customInputDecoration(
-                          hintText: "Password",
+                          hintText: S.of(context).password,
                         ),
                         obscureText: true,
                         validator: (v) {
                           if (v!.isEmpty) {
-                            return "Please enter password!";
+                            return S.of(context).enterPassword;
                           } else if (v.startsWith(" ")) {
-                            return "Space not allow!";
+                            return S.of(context).spaceNotAllow;
                           }
                         },
                       ),
@@ -146,7 +163,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           },
                           height: 6.h,
                           width: 70.w,
-                          btnText: "Register",
+                          btnText: S.of(context).register,
                           textColor: AppColor.whiteColor,
                           color: AppColor.primaryColor),
                       SizedBox(
@@ -155,13 +172,13 @@ class _SignupScreenState extends State<SignupScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CustomWidget.text("Already have an account?",
+                          CustomWidget.text(S.of(context).alreadyHaveAnAccount,
                               fontSize: 11),
                           GestureDetector(
                             onTap: () {
                               Get.back();
                             },
-                            child: CustomWidget.text("  Login",
+                            child: CustomWidget.text("  ${S.of(context).login}",
                                 fontSize: 11,
                                 color: AppColor.yellowColor,
                                 fontWeight: FontWeight.w600),

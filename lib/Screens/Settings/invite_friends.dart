@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:sizer/sizer.dart';
 
 class InviteFriends extends StatefulWidget {
@@ -18,7 +20,7 @@ class _InviteFriendsState extends State<InviteFriends> {
       backgroundColor: AppColor.backgroundColor,
       body: Column(
         children: [
-          CustomWidget.customAppBar(title: "Invite your friends"),
+          CustomWidget.customAppBar(title: S.of(context).inviteFriend),
           Column(
             children: [
               CustomWidget.customAssetImageWidget(
@@ -30,17 +32,21 @@ class _InviteFriendsState extends State<InviteFriends> {
                 height: 7.h,
               ),
               CustomWidget.text(
-                  "You’ve used all you invites. More to come at the appropriate time.",
+                  S
+                      .of(context)
+                      .youHaveUsedAllYouInvitesMoreToComeAtTheAppropriateTime,
                   fontSize: 10,
                   color: AppColor.whiteColor.withOpacity(0.8)),
               SizedBox(
                 height: 10.h,
               ),
               CustomWidget.customButton(
-                  callBack: () {},
+                  callBack: () {
+                    Share.share('check out my website https://example.com');
+                  },
                   height: 6.h,
                   width: 70.w,
-                  btnText: "Send Invite",
+                  btnText: S.of(context).sendInvite,
                   textColor: AppColor.whiteColor,
                   color: Color(0xffFFC700)),
             ],

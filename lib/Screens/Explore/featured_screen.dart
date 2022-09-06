@@ -18,7 +18,7 @@ class FeaturedScreen extends StatefulWidget {
 }
 
 class _FeaturedScreenState extends State<FeaturedScreen> {
-  var exploreController = ExploreController();
+  var exploreController = Get.put(ExploreController());
   RxInt page = 1.obs;
   RxString id = "".obs;
 
@@ -28,6 +28,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
     exploreController.getFeaturedData(
         {"categoryId": id.value, "page": page.value, "limit": 10});
     exploreController.getExploreCourseData(id.value);
+
     super.didChangeDependencies();
   }
 

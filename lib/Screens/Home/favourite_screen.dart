@@ -6,6 +6,7 @@ import 'package:meditation_app/Controllers/home_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 class FavouriteScreen extends StatefulWidget {
@@ -29,7 +30,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
       backgroundColor: AppColor.backgroundColor,
       body: Column(
         children: [
-          CustomWidget.customAppBar(title: "Favorite"),
+          CustomWidget.customAppBar(title: S.of(context).favorite),
           Container(
             height: 12.h,
             width: 100.w,
@@ -37,8 +38,9 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: CustomWidget.text(
-                    "Find all your favorites meditation and exercirs here."),
+                child: CustomWidget.text(S
+                    .of(context)
+                    .findAllYourFavoritesMeditationAndExerciesHere),
               ),
             ),
           ),

@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:meditation_app/Routes/pages.dart';
 import 'package:meditation_app/Screens/Onboarding/splash_screen.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 Future<void> main() async {
@@ -33,15 +34,13 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         builder: EasyLoading.init(),
-        localizationsDelegates: [
+        localizationsDelegates: const [
+          S.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: [
-          Locale('en', ''), // English, no country code
-          Locale('sv', ''), // Swedish, no country code
-        ],
+        supportedLocales: S.delegate.supportedLocales,
         home: SplashScreen(),
       );
     });

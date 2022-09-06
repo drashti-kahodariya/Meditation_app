@@ -50,10 +50,10 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Meditera. Var fokuserad.`
+  /// `Do meditation. Stay focused`
   String get doMeditationStayFocused {
     return Intl.message(
-      'Meditera. Var fokuserad.',
+      'Do meditation. Stay focused',
       name: 'doMeditationStayFocused',
       desc: '',
       args: [],
@@ -62,316 +62,340 @@ class S {
 
   // skipped getter for the 'liveAHealthyLife.' key
 
-  /// `Välkommen`
+  /// `Welcome`
   String get welcome {
     return Intl.message(
-      'Välkommen',
+      'Welcome',
       name: 'welcome',
       desc: '',
       args: [],
     );
   }
 
-  /// `Skapa ett konto och börja med din hälsa och glädje resa`
+  /// `Create an account to get started on your health and happiness journey`
   String get createAnAccountToGetStartedOnYourHealthAndHappinessJourney {
     return Intl.message(
-      'Skapa ett konto och börja med din hälsa och glädje resa',
+      'Create an account to get started on your health and happiness journey',
       name: 'createAnAccountToGetStartedOnYourHealthAndHappinessJourney',
       desc: '',
       args: [],
     );
   }
 
-  /// `Logga in`
+  /// `Login`
   String get login {
     return Intl.message(
-      'Logga in',
+      'Login',
       name: 'login',
       desc: '',
       args: [],
     );
   }
 
-  /// `Email adress`
+  /// `Email Address`
   String get emailAddress {
     return Intl.message(
-      'Email adress',
+      'Email Address',
       name: 'emailAddress',
       desc: '',
       args: [],
     );
   }
 
-  /// `Lösenord`
+  /// `Password`
   String get password {
     return Intl.message(
-      'Lösenord',
+      'Password',
       name: 'password',
       desc: '',
       args: [],
     );
   }
 
-  /// `Glömt lösenord?`
+  /// `Forgot Password`
   String get forgotPassword {
     return Intl.message(
-      'Glömt lösenord?',
+      'Forgot Password',
       name: 'forgotPassword',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'don’tHaveAnAccount' key
+  /// `Don’t have an account?`
+  String get dontHaveAnAccount {
+    return Intl.message(
+      'Don’t have an account?',
+      name: 'dontHaveAnAccount',
+      desc: '',
+      args: [],
+    );
+  }
 
-  /// `Registrera`
+  /// `Register`
   String get register {
     return Intl.message(
-      'Registrera',
+      'Register',
       name: 'register',
       desc: '',
       args: [],
     );
   }
 
-  /// `Förnamn`
+  /// `First Name`
   String get firstName {
     return Intl.message(
-      'Förnamn',
+      'First Name',
       name: 'firstName',
       desc: '',
       args: [],
     );
   }
 
-  /// `Efternamn`
+  /// `Last Name`
   String get lastName {
     return Intl.message(
-      'Efternamn',
+      'Last Name',
       name: 'lastName',
       desc: '',
       args: [],
     );
   }
 
-  /// `Har redan ett konto? Logga in`
+  /// `Already have an account?`
   String get alreadyHaveAnAccount {
     return Intl.message(
-      'Har redan ett konto? Logga in',
+      'Already have an account?',
       name: 'alreadyHaveAnAccount',
       desc: '',
       args: [],
     );
   }
 
-  /// `God morgon`
+  /// `Good morning`
   String get goodMorning {
     return Intl.message(
-      'God morgon',
+      'Good morning',
       name: 'goodMorning',
       desc: '',
       args: [],
     );
   }
 
-  /// `God eftermiddag`
+  /// `Good afternoon`
   String get goodAfternoon {
     return Intl.message(
-      'God eftermiddag',
+      'Good afternoon',
       name: 'goodAfternoon',
       desc: '',
       args: [],
     );
   }
 
-  /// `Godnatt`
+  /// `Good night`
   String get goodNight {
     return Intl.message(
-      'Godnatt',
+      'Good night',
       name: 'goodNight',
       desc: '',
       args: [],
     );
   }
 
-  /// `Starta din dag`
+  /// `Start Your Day`
   String get startYourDay {
     return Intl.message(
-      'Starta din dag',
+      'Start Your Day',
       name: 'startYourDay',
       desc: '',
       args: [],
     );
   }
 
-  /// `Din eftermiddags lyft`
+  /// `Your afternoon lift`
   String get yourAfternoonLift {
     return Intl.message(
-      'Din eftermiddags lyft',
+      'Your afternoon lift',
       name: 'yourAfternoonLift',
       desc: '',
       args: [],
     );
   }
 
-  /// `Till kvällen`
+  /// `At Night`
   String get atNight {
     return Intl.message(
-      'Till kvällen',
+      'At Night',
       name: 'atNight',
       desc: '',
       args: [],
     );
   }
 
-  /// `Idag`
+  /// `Today`
   String get today {
     return Intl.message(
-      'Idag',
+      'Today',
       name: 'today',
       desc: '',
       args: [],
     );
   }
 
-  /// `Utforsa`
+  /// `Explore`
   String get explore {
     return Intl.message(
-      'Utforsa',
+      'Explore',
       name: 'explore',
       desc: '',
       args: [],
     );
   }
 
-  /// `Favoriter`
+  /// `Favorite`
   String get favorite {
     return Intl.message(
-      'Favoriter',
+      'Favorite',
       name: 'favorite',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'findAllYourFavoritesMeditationAndExerciesHere.' key
+  /// `Find all your favorites meditation and exercirs here.`
+  String get findAllYourFavoritesMeditationAndExerciesHere {
+    return Intl.message(
+      'Find all your favorites meditation and exercirs here.',
+      name: 'findAllYourFavoritesMeditationAndExerciesHere',
+      desc: '',
+      args: [],
+    );
+  }
 
-  /// `Nydligen spelade`
+  /// `Recent`
   String get recent {
     return Intl.message(
-      'Nydligen spelade',
+      'Recent',
       name: 'recent',
       desc: '',
       args: [],
     );
   }
 
-  /// `Utvalda`
+  /// `Featured`
   String get featured {
     return Intl.message(
-      'Utvalda',
+      'Featured',
       name: 'featured',
       desc: '',
       args: [],
     );
   }
 
-  /// `Sömn`
+  /// `Sleep`
   String get sleep {
     return Intl.message(
-      'Sömn',
+      'Sleep',
       name: 'sleep',
       desc: '',
       args: [],
     );
   }
 
-  /// `Fokus`
+  /// `Focus`
   String get focus {
     return Intl.message(
-      'Fokus',
+      'Focus',
       name: 'focus',
       desc: '',
       args: [],
     );
   }
 
-  /// `Notifikation`
+  /// `Notification`
   String get notification {
     return Intl.message(
-      'Notifikation',
+      'Notification',
       name: 'notification',
       desc: '',
       args: [],
     );
   }
 
-  /// `Meditera`
+  /// `Meditate`
   String get meditate {
     return Intl.message(
-      'Meditera',
+      'Meditate',
       name: 'meditate',
       desc: '',
       args: [],
     );
   }
 
-  /// `Inställningar`
+  /// `Setting`
   String get setting {
     return Intl.message(
-      'Inställningar',
+      'Setting',
       name: 'setting',
       desc: '',
       args: [],
     );
   }
 
-  /// `Konto information`
+  /// `Account Information`
   String get accountInformation {
     return Intl.message(
-      'Konto information',
+      'Account Information',
       name: 'accountInformation',
       desc: '',
       args: [],
     );
   }
 
-  /// `Bjud in en vän`
+  /// `Invite Friend`
   String get inviteFriend {
     return Intl.message(
-      'Bjud in en vän',
+      'Invite Friend',
       name: 'inviteFriend',
       desc: '',
       args: [],
     );
   }
 
-  /// `Min data`
+  /// `My Data`
   String get myData {
     return Intl.message(
-      'Min data',
+      'My Data',
       name: 'myData',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'terms&Conditions' key
+  /// `Terms & Conditions`
+  String get termsConditions {
+    return Intl.message(
+      'Terms & Conditions',
+      name: 'termsConditions',
+      desc: '',
+      args: [],
+    );
+  }
 
-  /// `Nedladdningar`
+  /// `Downloads`
   String get downloads {
     return Intl.message(
-      'Nedladdningar',
+      'Downloads',
       name: 'downloads',
       desc: '',
       args: [],
     );
   }
 
-  /// `integritetspolicy`
+  /// `Privacy Policy`
   String get privacyPolicy {
     return Intl.message(
-      'integritetspolicy',
+      'Privacy Policy',
       name: 'privacyPolicy',
       desc: '',
       args: [],
@@ -388,32 +412,40 @@ class S {
     );
   }
 
-  /// `Logga ut`
+  /// `Log out`
   String get logOut {
     return Intl.message(
-      'Logga ut',
+      'Log out',
       name: 'logOut',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'you’veUsedAllYouInvitesMoreToComeAtTheAppropriateTime.' key
+  /// `You’ve used all you invites. More to come at\nthe appropriate time.`
+  String get youHaveUsedAllYouInvitesMoreToComeAtTheAppropriateTime {
+    return Intl.message(
+      'You’ve used all you invites. More to come at\nthe appropriate time.',
+      name: 'youHaveUsedAllYouInvitesMoreToComeAtTheAppropriateTime',
+      desc: '',
+      args: [],
+    );
+  }
 
-  /// `Skicka inbjudan`
+  /// `Send Invite`
   String get sendInvite {
     return Intl.message(
-      'Skicka inbjudan',
+      'Send Invite',
       name: 'sendInvite',
       desc: '',
       args: [],
     );
   }
 
-  /// `Har någon glömt sitt lösenord?`
+  /// `Did som!eone forget their password ?`
   String get didSomeoneForgetTheirPassword {
     return Intl.message(
-      'Har någon glömt sitt lösenord?',
+      'Did som!eone forget their password ?',
       name: 'didSomeoneForgetTheirPassword',
       desc: '',
       args: [],
@@ -422,11 +454,201 @@ class S {
 
   // skipped getter for the 'justEnterTheEmailAddressYou’veUsedToRegisterWithUsAndWe’llSendYouAResetLink' key
 
-  /// `Skicka in`
+  /// `Submit`
   String get submit {
     return Intl.message(
-      'Skicka in',
+      'Submit',
       name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter email address!`
+  String get enterEmail {
+    return Intl.message(
+      'Enter email address!',
+      name: 'enterEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Space not allow!`
+  String get spaceNotAllow {
+    return Intl.message(
+      'Space not allow!',
+      name: 'spaceNotAllow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter valid email address!`
+  String get validEmail {
+    return Intl.message(
+      'Enter valid email address!',
+      name: 'validEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter password!`
+  String get enterPassword {
+    return Intl.message(
+      'Enter password!',
+      name: 'enterPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter first name!`
+  String get enterFirstName {
+    return Intl.message(
+      'Enter first name!',
+      name: 'enterFirstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter last name!`
+  String get enterLastName {
+    return Intl.message(
+      'Enter last name!',
+      name: 'enterLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mobile No.`
+  String get mobileNo {
+    return Intl.message(
+      'Mobile No.',
+      name: 'mobileNo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `That's ok`
+  String get thatsOk {
+    return Intl.message(
+      'That\'s ok',
+      name: 'thatsOk',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Just enter the email address you’ve used \n to register with us and we’ll send you \n a reset link !`
+  String get forgotPasswordDescription {
+    return Intl.message(
+      'Just enter the email address you’ve used \\n to register with us and we’ll send you \\n a reset link !',
+      name: 'forgotPasswordDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message(
+      'Verify',
+      name: 'verify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Code has sent to \nyour email address`
+  String get codeHasSentToYourEmailAddress {
+    return Intl.message(
+      'Code has sent to \nyour email address',
+      name: 'codeHasSentToYourEmailAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset password`
+  String get resetPassword {
+    return Intl.message(
+      'Reset password',
+      name: 'resetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New password`
+  String get newPassword {
+    return Intl.message(
+      'New password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create new password`
+  String get createNewPassword {
+    return Intl.message(
+      'Create new password',
+      name: 'createNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your new  password must be different\nfrom previous used passwords.`
+  String get yourNewPasswordMustBeDifferentFromPreviousUsedPasswords {
+    return Intl.message(
+      'Your new  password must be different\nfrom previous used passwords.',
+      name: 'yourNewPasswordMustBeDifferentFromPreviousUsedPasswords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New password and confirm password should be same!`
+  String get newPasswordAndConfirmPasswordShouldBeSame {
+    return Intl.message(
+      'New password and confirm password should be same!',
+      name: 'newPasswordAndConfirmPasswordShouldBeSame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `profile`
+  String get profile {
+    return Intl.message(
+      'profile',
+      name: 'profile',
       desc: '',
       args: [],
     );

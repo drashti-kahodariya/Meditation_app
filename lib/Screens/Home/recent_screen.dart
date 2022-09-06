@@ -5,6 +5,7 @@ import 'package:meditation_app/Controllers/home_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 class RecentScreen extends StatefulWidget {
@@ -28,7 +29,7 @@ class _RecentScreenState extends State<RecentScreen> {
       backgroundColor: AppColor.backgroundColor,
       body: Column(
         children: [
-          CustomWidget.customAppBar(title: "Recent"),
+          CustomWidget.customAppBar(title: S.of(context).recent),
           Expanded(
             child: Obx(() {
               return ListView.separated(

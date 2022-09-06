@@ -1,6 +1,11 @@
+import 'dart:typed_data';
+
+import 'package:file_saver/file_saver.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 class DownloadsScreen extends StatefulWidget {
@@ -12,12 +17,28 @@ class DownloadsScreen extends StatefulWidget {
 
 class _DownloadsScreenState extends State<DownloadsScreen> {
   @override
+  void initState() {
+    downloads();
+    super.initState();
+  }
+
+  downloads() async {
+    Uint8List bytes = (await NetworkAssetBundle(Uri.parse(
+                "https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3"))
+            .load(
+                "https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3"))
+        .buffer
+        .asUint8List();
+    await FileSaver.instance.saveAs("download", bytes, 'mp3', MimeType.MP3);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
       body: Column(
         children: [
-          CustomWidget.customAppBar(title: "Downloads"),
+          CustomWidget.customAppBar(title: S.of(context).downloads),
           Expanded(
             child: ListView.builder(
                 physics: const BouncingScrollPhysics(),

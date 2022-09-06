@@ -7,6 +7,7 @@ import 'package:meditation_app/Screens/Home/home_screen.dart';
 import 'package:meditation_app/Screens/Settings/profile_screen.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:sizer/sizer.dart';
 
@@ -94,32 +95,32 @@ class _DashboardState extends State<Dashboard> {
   ///
   List<BottomNavigationBarItem> navBarsItems() {
     return <BottomNavigationBarItem>[
-      const BottomNavigationBarItem(
-        icon: NavBarItemImage(
+      BottomNavigationBarItem(
+        icon: const NavBarItemImage(
           image: Assets.assetsToday,
         ),
-        activeIcon: NavBarItemImage(
+        activeIcon: const NavBarItemImage(
           image: Assets.assetsSelectedToday,
           fromSelected: true,
         ),
-        label: "Today",
+        label: S.of(context).today,
       ),
-      const BottomNavigationBarItem(
-        icon: NavBarItemImage(
+      BottomNavigationBarItem(
+        icon: const NavBarItemImage(
           image: Assets.assetsSearch,
         ),
-        activeIcon: NavBarItemImage(
+        activeIcon: const NavBarItemImage(
             image: Assets.assetsSelectedExplore, fromSelected: true),
-        label: "Explore",
+        label: S.of(context).explore,
       ),
       BottomNavigationBarItem(
         icon: const NavBarItemImage(
           image: Assets.assetsProfileIcon,
         ),
-        activeIcon: NavBarItemImage(
+        activeIcon: const NavBarItemImage(
             image: Assets.assetsSelectedProfile, fromSelected: true),
         label: authController.currentUserData.value.firstName! == "null"
-            ? "Profile"
+            ? S.of(context).profile
             : "${authController.currentUserData.value.firstName}",
       ),
     ];

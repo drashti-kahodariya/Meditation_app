@@ -4,6 +4,7 @@ import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -23,7 +24,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CustomWidget.customAppBar(title: "Forgot Password"),
+            CustomWidget.customAppBar(title: S.of(context).forgotPassword),
             Column(
               children: [
                 CustomWidget.customAssetImageWidget(
@@ -34,22 +35,20 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 SizedBox(
                   height: 4.h,
                 ),
-                CustomWidget.text("Did someone forget their password ?",
+                CustomWidget.text(S.of(context).didSomeoneForgetTheirPassword,
                     fontSize: 13,
                     color: AppColor.whiteColor,
                     fontWeight: FontWeight.bold),
                 SizedBox(
                   height: 1.h,
                 ),
-                CustomWidget.text("That's ok",
+                CustomWidget.text(S.of(context).thatsOk,
                     fontSize: 10, color: AppColor.whiteColor.withOpacity(0.8)),
                 SizedBox(
                   height: 2.h,
                 ),
-                CustomWidget.text(
-                    "Just enter the email address you’ve used \n to register with us and we’ll send you \n a reset link !",
-                    fontSize: 10,
-                    color: AppColor.whiteColor.withOpacity(0.8)),
+                CustomWidget.text(S.of(context).forgotPasswordDescription,
+                    fontSize: 10, color: AppColor.whiteColor.withOpacity(0.8)),
                 SizedBox(
                   height: 2.h,
                 ),
@@ -59,7 +58,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     controller: _emailController,
                     style: const TextStyle(color: AppColor.whiteColor),
                     decoration: CustomWidget.customInputDecoration(
-                        hintText: "Email Address"),
+                        hintText: S.of(context).emailAddress),
                   ),
                 ),
                 SizedBox(
@@ -68,17 +67,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 CustomWidget.customButton(
                     callBack: () {
                       if (_emailController.text.isNotEmpty) {
-                        print("ok");
                         authController
                             .forgotPassword({"email": _emailController.text});
-                        // Get.toNamed(Routes.otpVerificationScreen);
                       } else {
-                        CustomWidget.errorSnackBar(content: 'Enter email!');
+                        CustomWidget.errorSnackBar(
+                            content: S.of(context).enterEmail);
                       }
                     },
                     height: 6.h,
                     width: 70.w,
-                    btnText: "Submit",
+                    btnText: S.of(context).submit,
                     textColor: AppColor.whiteColor,
                     color: Color(0xffFFC700)),
               ],

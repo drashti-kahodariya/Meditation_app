@@ -4,6 +4,7 @@ import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../Routes/routes.dart';
@@ -24,88 +25,88 @@ class _SettingScreenState extends State<SettingScreen> {
       backgroundColor: AppColor.backgroundColor,
       body: Column(
         children: [
-          CustomWidget.customAppBar(title: "Setting"),
+          CustomWidget.customAppBar(title: S.of(context).setting),
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: Column(
               children: [
                 customSettingTile(
                     icon: Assets.assetsSettingUser,
-                    title: "Account Information",
+                    title: S.of(context).accountInformation,
                     onTap: () {
                       Get.toNamed(Routes.editProfileScreen);
                     }),
                 SizedBox(
-                  height: 3.h,
+                  height: 4.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsInvite,
-                    title: "Invite Friend",
+                    title: S.of(context).inviteFriend,
                     onTap: () {
                       Get.toNamed(Routes.inviteFriendsScreen);
                     }),
                 SizedBox(
-                  height: 3.h,
+                  height: 4.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsNotification,
-                    title: "Notification",
+                    title: S.of(context).notification,
                     onTap: () {
                       Get.toNamed(Routes.notificationScreen);
                     }),
                 SizedBox(
-                  height: 3.h,
+                  height: 4.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsMyData,
-                    title: "My Data",
+                    title: S.of(context).myData,
                     onTap: () {
                       Get.toNamed(Routes.supportScreen, arguments: "My Data");
                     }),
                 SizedBox(
-                  height: 3.h,
+                  height: 4.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsTermsCondition,
-                    title: "Terms & Conditions",
+                    title: S.of(context).termsConditions,
                     onTap: () {
                       Get.toNamed(Routes.supportScreen,
                           arguments: "Terms & Conditions");
                     }),
                 SizedBox(
-                  height: 3.h,
+                  height: 4.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsDownload,
-                    title: "Downloads",
+                    title: S.of(context).downloads,
                     onTap: () {
                       Get.toNamed(Routes.downloadsScreen);
                     }),
                 SizedBox(
-                  height: 3.h,
+                  height: 4.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsPrivacyPolicy,
-                    title: "Privacy Policy",
+                    title: S.of(context).privacyPolicy,
                     onTap: () {
                       Get.toNamed(Routes.supportScreen,
                           arguments: "Privacy Policy");
                     }),
                 SizedBox(
-                  height: 3.h,
+                  height: 4.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsSupport,
-                    title: "Support",
+                    title: S.of(context).support,
                     onTap: () {
                       Get.toNamed(Routes.supportScreen, arguments: "Support");
                     }),
                 SizedBox(
-                  height: 3.h,
+                  height: 4.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsLogout,
-                    title: "Log Out",
+                    title: S.of(context).logOut,
                     onTap: () {
                       showDialog(
                           context: context,

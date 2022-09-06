@@ -9,6 +9,7 @@ import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:path/path.dart' as p;
 import 'package:sizer/sizer.dart';
 
@@ -48,12 +49,14 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(18.0),
               child: Row(
                 children: [
-                  CustomWidget.text(
-                      "${homeController.greetingMessage()}, ${authController.currentUserData.value.firstName}",
-                      textAlign: TextAlign.start,
-                      fontWeight: FontWeight.w400,
-                      color: AppColor.whiteColor,
-                      fontSize: 16),
+                  Obx(() {
+                    return CustomWidget.text(
+                        "${homeController.greetingMessage()}, ${authController.currentUserData.value.firstName}",
+                        textAlign: TextAlign.start,
+                        fontWeight: FontWeight.w400,
+                        color: AppColor.whiteColor,
+                        fontSize: 16);
+                  }),
                   Spacer(),
                   GestureDetector(
                     onTap: () {
@@ -92,22 +95,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CustomWidget.text("Start Your Day",
+                          CustomWidget.text(S.of(context).startYourDay,
                               textAlign: TextAlign.start,
                               fontWeight: FontWeight.w600),
                           SizedBox(
                             height: 2.h,
                           ),
-                          // Timeline.tileBuilder(
-                          //   builder: TimelineTileBuilder.fromStyle(
-                          //     contentsAlign: ContentsAlign.alternating,
-                          //     contentsBuilder: (context, index) => Padding(
-                          //       padding: const EdgeInsets.all(24.0),
-                          //       child: Text('Timeline Event $index'),
-                          //     ),
-                          //     itemCount: 10,
-                          //   ),
-                          // ),
                           Obx(() {
                             return ListView.separated(
                               physics: const BouncingScrollPhysics(),
@@ -133,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           SizedBox(
                             height: 2.h,
                           ),
-                          CustomWidget.text("Your afternoon lift",
+                          CustomWidget.text(S.of(context).yourAfternoonLift,
                               textAlign: TextAlign.start,
                               fontWeight: FontWeight.w600),
                           SizedBox(height: 2.h),
@@ -142,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 .dashboardMeditationList[0].afternoonLift![0]);
                           }),
                           SizedBox(height: 2.5.h),
-                          CustomWidget.text("At Night",
+                          CustomWidget.text(S.of(context).atNight,
                               textAlign: TextAlign.start,
                               fontWeight: FontWeight.w600),
                           SizedBox(

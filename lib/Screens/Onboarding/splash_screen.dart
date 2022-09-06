@@ -45,22 +45,22 @@ class _SplashScreenState extends State<SplashScreen> {
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 30.h,
-              width: 50.w,
-              child: CustomWidget.customAssetImageWidget(
-                image: Assets.assetsLogo,
-              ),
-            ),
-            CustomWidget.text("Meditation",
+            // Container(
+            //   height: 30.h,
+            //   width: 50.w,
+            //   child: CustomWidget.customAssetImageWidget(
+            //     image: Assets.assetsLogo,
+            //   ),
+            // ),
+            CustomWidget.text("Sinnesro",
                 fontSize: 30, fontWeight: FontWeight.w600),
-            SizedBox(
-              height: 2,
-            ),
-            CustomWidget.text(
-                "Do meditation. Stay focused.\nLive a healthy life.",
-                fontSize: 10,
-                fontWeight: FontWeight.normal),
+            // SizedBox(
+            //   height: 2,
+            // ),
+            // CustomWidget.text(
+            //     "Do meditation. Stay focused.\nLive a healthy life.",
+            //     fontSize: 10,
+            //     fontWeight: FontWeight.normal),
           ],
         ),
       ],

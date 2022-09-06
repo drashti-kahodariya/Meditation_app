@@ -6,6 +6,7 @@ import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -56,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         image: Assets.assetsLogo,
                       ),
                     ),
-                    CustomWidget.text("Login",
+                    CustomWidget.text(S.of(context).login,
                         fontSize: 30, fontWeight: FontWeight.w600),
                     SizedBox(
                       height: 6.h,
@@ -65,15 +66,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: _emailController,
                       style: const TextStyle(color: AppColor.whiteColor),
                       decoration: CustomWidget.customInputDecoration(
-                        hintText: "Email Address",
+                        hintText: S.of(context).emailAddress,
                       ),
                       validator: (v) {
                         if (v!.isEmpty) {
-                          return "Please enter email address!";
+                          return S.of(context).enterEmail;
                         } else if (v.startsWith(" ")) {
-                          return "Space not allow!";
+                          return S.of(context).spaceNotAllow;
                         } else if (!emailRegex.hasMatch(v)) {
-                          return 'Enter valid email';
+                          return S.of(context).validEmail;
                         }
                       },
                     ),
@@ -84,15 +85,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: _passwordController,
                       style: TextStyle(color: AppColor.whiteColor),
                       decoration: CustomWidget.customInputDecoration(
-                        hintText: "Password",
-                        suffixIcon: CupertinoIcons.eye,
+                        hintText: S.of(context).password,
                       ),
                       obscureText: true,
                       validator: (v) {
                         if (v!.isEmpty) {
-                          return "Please enter password!";
+                          return S.of(context).enterPassword;
                         } else if (v.startsWith(" ")) {
-                          return "Space not allow!";
+                          return S.of(context).spaceNotAllow;
                         }
                       },
                     ),
@@ -106,7 +106,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             onTap: () {
                               Get.toNamed(Routes.forgotPasswordScreen);
                             },
-                            child: CustomWidget.text("Forgot Password?",
+                            child: CustomWidget.text(
+                                S.of(context).forgotPassword + "?",
                                 fontSize: 11)),
                       ],
                     ),
@@ -124,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         height: 6.h,
                         width: 70.w,
-                        btnText: "Login",
+                        btnText: S.of(context).login,
                         textColor: AppColor.whiteColor,
                         color: AppColor.primaryColor),
                     SizedBox(
@@ -133,13 +134,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CustomWidget.text("Don’t have an account?",
+                        CustomWidget.text(S.of(context).dontHaveAnAccount,
                             fontSize: 11),
                         GestureDetector(
                           onTap: () {
                             Get.toNamed(Routes.signUpScreen);
                           },
-                          child: CustomWidget.text(" Register",
+                          child: CustomWidget.text(" ${S.of(context).register}",
                               fontSize: 11,
                               color: AppColor.yellowColor,
                               fontWeight: FontWeight.w600),

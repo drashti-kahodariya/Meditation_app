@@ -4,6 +4,7 @@ import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -39,7 +40,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   // fit: BoxFit.cover,
                 ),
               ),
-              CustomWidget.text("Welcome",
+              CustomWidget.text(S.of(context).welcome,
                   fontSize: 30, fontWeight: FontWeight.w600),
               SizedBox(
                 height: 2,
@@ -47,7 +48,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: CustomWidget.text(
-                    "Create an account to get started on your health and happiness journey ",
+                    S
+                        .of(context)
+                        .createAnAccountToGetStartedOnYourHealthAndHappinessJourney,
                     fontSize: 10,
                     fontWeight: FontWeight.normal),
               ),

@@ -23,51 +23,92 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accountInformation":
-            MessageLookupByLibrary.simpleMessage("Konto information"),
-        "alreadyHaveAnAccount": MessageLookupByLibrary.simpleMessage(
-            "Har redan ett konto? Logga in"),
-        "atNight": MessageLookupByLibrary.simpleMessage("Till kvällen"),
+            MessageLookupByLibrary.simpleMessage("Account Information"),
+        "alreadyHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "atNight": MessageLookupByLibrary.simpleMessage("At Night"),
+        "codeHasSentToYourEmailAddress": MessageLookupByLibrary.simpleMessage(
+            "Code has sent to \nyour email address"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
         "createAnAccountToGetStartedOnYourHealthAndHappinessJourney":
             MessageLookupByLibrary.simpleMessage(
-                "Skapa ett konto och börja med din hälsa och glädje resa"),
+                "Create an account to get started on your health and happiness journey"),
+        "createNewPassword":
+            MessageLookupByLibrary.simpleMessage("Create new password"),
         "didSomeoneForgetTheirPassword": MessageLookupByLibrary.simpleMessage(
-            "Har någon glömt sitt lösenord?"),
+            "Did som!eone forget their password ?"),
         "doMeditationStayFocused":
-            MessageLookupByLibrary.simpleMessage("Meditera. Var fokuserad."),
-        "downloads": MessageLookupByLibrary.simpleMessage("Nedladdningar"),
-        "emailAddress": MessageLookupByLibrary.simpleMessage("Email adress"),
-        "explore": MessageLookupByLibrary.simpleMessage("Utforsa"),
-        "favorite": MessageLookupByLibrary.simpleMessage("Favoriter"),
-        "featured": MessageLookupByLibrary.simpleMessage("Utvalda"),
-        "firstName": MessageLookupByLibrary.simpleMessage("Förnamn"),
-        "focus": MessageLookupByLibrary.simpleMessage("Fokus"),
+            MessageLookupByLibrary.simpleMessage("Do meditation. Stay focused"),
+        "dontHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Don’t have an account?"),
+        "downloads": MessageLookupByLibrary.simpleMessage("Downloads"),
+        "emailAddress": MessageLookupByLibrary.simpleMessage("Email Address"),
+        "enterEmail":
+            MessageLookupByLibrary.simpleMessage("Enter email address!"),
+        "enterFirstName":
+            MessageLookupByLibrary.simpleMessage("Enter first name!"),
+        "enterLastName":
+            MessageLookupByLibrary.simpleMessage("Enter last name!"),
+        "enterPassword":
+            MessageLookupByLibrary.simpleMessage("Enter password!"),
+        "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+        "favorite": MessageLookupByLibrary.simpleMessage("Favorite"),
+        "featured": MessageLookupByLibrary.simpleMessage("Featured"),
+        "findAllYourFavoritesMeditationAndExerciesHere":
+            MessageLookupByLibrary.simpleMessage(
+                "Find all your favorites meditation and exercirs here."),
+        "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
+        "focus": MessageLookupByLibrary.simpleMessage("Focus"),
         "forgotPassword":
-            MessageLookupByLibrary.simpleMessage("Glömt lösenord?"),
-        "goodAfternoon":
-            MessageLookupByLibrary.simpleMessage("God eftermiddag"),
-        "goodMorning": MessageLookupByLibrary.simpleMessage("God morgon"),
-        "goodNight": MessageLookupByLibrary.simpleMessage("Godnatt"),
-        "inviteFriend": MessageLookupByLibrary.simpleMessage("Bjud in en vän"),
-        "lastName": MessageLookupByLibrary.simpleMessage("Efternamn"),
-        "logOut": MessageLookupByLibrary.simpleMessage("Logga ut"),
-        "login": MessageLookupByLibrary.simpleMessage("Logga in"),
-        "meditate": MessageLookupByLibrary.simpleMessage("Meditera"),
-        "myData": MessageLookupByLibrary.simpleMessage("Min data"),
-        "notification": MessageLookupByLibrary.simpleMessage("Notifikation"),
-        "password": MessageLookupByLibrary.simpleMessage("Lösenord"),
-        "privacyPolicy":
-            MessageLookupByLibrary.simpleMessage("integritetspolicy"),
-        "recent": MessageLookupByLibrary.simpleMessage("Nydligen spelade"),
-        "register": MessageLookupByLibrary.simpleMessage("Registrera"),
-        "sendInvite": MessageLookupByLibrary.simpleMessage("Skicka inbjudan"),
-        "setting": MessageLookupByLibrary.simpleMessage("Inställningar"),
-        "sleep": MessageLookupByLibrary.simpleMessage("Sömn"),
-        "startYourDay": MessageLookupByLibrary.simpleMessage("Starta din dag"),
-        "submit": MessageLookupByLibrary.simpleMessage("Skicka in"),
+            MessageLookupByLibrary.simpleMessage("Forgot Password"),
+        "forgotPasswordDescription": MessageLookupByLibrary.simpleMessage(
+            "Just enter the email address you’ve used \\n to register with us and we’ll send you \\n a reset link !"),
+        "goodAfternoon": MessageLookupByLibrary.simpleMessage("Good afternoon"),
+        "goodMorning": MessageLookupByLibrary.simpleMessage("Good morning"),
+        "goodNight": MessageLookupByLibrary.simpleMessage("Good night"),
+        "inviteFriend": MessageLookupByLibrary.simpleMessage("Invite Friend"),
+        "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "meditate": MessageLookupByLibrary.simpleMessage("Meditate"),
+        "mobileNo": MessageLookupByLibrary.simpleMessage("Mobile No."),
+        "myData": MessageLookupByLibrary.simpleMessage("My Data"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
+        "newPasswordAndConfirmPasswordShouldBeSame":
+            MessageLookupByLibrary.simpleMessage(
+                "New password and confirm password should be same!"),
+        "notification": MessageLookupByLibrary.simpleMessage("Notification"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "profile": MessageLookupByLibrary.simpleMessage("profile"),
+        "recent": MessageLookupByLibrary.simpleMessage("Recent"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "sendInvite": MessageLookupByLibrary.simpleMessage("Send Invite"),
+        "setting": MessageLookupByLibrary.simpleMessage("Setting"),
+        "sleep": MessageLookupByLibrary.simpleMessage("Sleep"),
+        "spaceNotAllow":
+            MessageLookupByLibrary.simpleMessage("Space not allow!"),
+        "startYourDay": MessageLookupByLibrary.simpleMessage("Start Your Day"),
+        "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "support": MessageLookupByLibrary.simpleMessage("Support"),
-        "today": MessageLookupByLibrary.simpleMessage("Idag"),
-        "welcome": MessageLookupByLibrary.simpleMessage("Välkommen"),
+        "termsConditions":
+            MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
+        "thatsOk": MessageLookupByLibrary.simpleMessage("That\'s ok"),
+        "today": MessageLookupByLibrary.simpleMessage("Today"),
+        "validEmail":
+            MessageLookupByLibrary.simpleMessage("Enter valid email address!"),
+        "verify": MessageLookupByLibrary.simpleMessage("Verify"),
+        "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+        "youHaveUsedAllYouInvitesMoreToComeAtTheAppropriateTime":
+            MessageLookupByLibrary.simpleMessage(
+                "You’ve used all you invites. More to come at\nthe appropriate time."),
         "yourAfternoonLift":
-            MessageLookupByLibrary.simpleMessage("Din eftermiddags lyft")
+            MessageLookupByLibrary.simpleMessage("Your afternoon lift"),
+        "yourNewPasswordMustBeDifferentFromPreviousUsedPasswords":
+            MessageLookupByLibrary.simpleMessage(
+                "Your new  password must be different\nfrom previous used passwords.")
       };
 }

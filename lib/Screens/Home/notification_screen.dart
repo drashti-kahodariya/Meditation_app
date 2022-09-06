@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       backgroundColor: AppColor.backgroundColor,
       body: Column(
         children: [
-          CustomWidget.customAppBar(title: "Notification"),
+          CustomWidget.customAppBar(title: S.of(context).notification),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),

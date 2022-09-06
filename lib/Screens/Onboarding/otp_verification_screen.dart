@@ -4,6 +4,7 @@ import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
@@ -33,7 +34,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             SizedBox(
               height: 2.h,
             ),
-            CustomWidget.text("Code has sent to your email address",
+            CustomWidget.text(S.of(context).codeHasSentToYourEmailAddress,
                 fontSize: 15),
             SizedBox(
               height: 2.h,
@@ -71,7 +72,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 },
                 height: 6.h,
                 width: 70.w,
-                btnText: "Verify",
+                btnText: S.of(context).verify,
                 textColor: AppColor.whiteColor,
                 color: AppColor.primaryColor),
           ],
