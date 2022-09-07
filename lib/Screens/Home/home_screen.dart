@@ -35,124 +35,127 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 3.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Row(
-                children: [
-                  Obx(() {
-                    return CustomWidget.text(
-                        "${homeController.greetingMessage()}, ${authController.currentUserData.value.firstName}",
-                        textAlign: TextAlign.start,
-                        fontWeight: FontWeight.w400,
-                        color: AppColor.whiteColor,
-                        fontSize: 16);
-                  }),
-                  Spacer(),
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routes.favouriteScreen);
-                    },
-                    child: CustomWidget.customAssetImageWidget(
-                        image: Assets.assetsHeartOutline, height: 3.0),
-                  ),
-                  SizedBox(width: 4.w),
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routes.recentScreen);
-                    },
-                    child: CustomWidget.customAssetImageWidget(
-                        image: Assets.assetsRecent, height: 3.0),
-                  ),
-                  SizedBox(
-                    width: 4.w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routes.notificationScreen);
-                    },
-                    child: CustomWidget.customAssetImageWidget(
-                        image: Assets.assetsNotification, height: 3.0),
-                  )
-                ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColor.backgroundColor,
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 3.h,
               ),
-            ),
-            Obx(
-              () => homeController.dashboardMeditationList.isEmpty
-                  ? Container()
-                  : Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 28.0, vertical: 8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomWidget.text(S.of(context).startYourDay,
-                              textAlign: TextAlign.start,
-                              fontWeight: FontWeight.w600),
-                          SizedBox(
-                            height: 2.h,
-                          ),
-                          Obx(() {
-                            return ListView.separated(
-                              physics: const BouncingScrollPhysics(),
-                              shrinkWrap: true,
-                              padding: EdgeInsets.zero,
-                              itemCount: homeController
-                                  .dashboardMeditationList[0]
-                                  .startYourDay!
-                                  .length,
-                              itemBuilder: (context, index) {
-                                return dashboardCourseCard(homeController
-                                    .dashboardMeditationList[0]
-                                    .startYourDay![index]);
-                              },
-                              separatorBuilder:
-                                  (BuildContext context, int index) {
-                                return SizedBox(
-                                  height: 2.h,
-                                );
-                              },
-                            );
-                          }),
-                          SizedBox(
-                            height: 2.h,
-                          ),
-                          CustomWidget.text(S.of(context).yourAfternoonLift,
-                              textAlign: TextAlign.start,
-                              fontWeight: FontWeight.w600),
-                          SizedBox(height: 2.h),
-                          Obx(() {
-                            return dashboardCourseCard(homeController
-                                .dashboardMeditationList[0].afternoonLift![0]);
-                          }),
-                          SizedBox(height: 2.5.h),
-                          CustomWidget.text(S.of(context).atNight,
-                              textAlign: TextAlign.start,
-                              fontWeight: FontWeight.w600),
-                          SizedBox(
-                            height: 2.5.h,
-                          ),
-                          Obx(() {
-                            return dashboardCourseCard(homeController
-                                .dashboardMeditationList[0].atNight![0]);
-                          }),
-                          SizedBox(
-                            height: 2.5.h,
-                          ),
-                        ],
-                      ),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Row(
+                  children: [
+                    Obx(() {
+                      return CustomWidget.text(
+                          "${homeController.greetingMessage()}, ${authController.currentUserData.value.firstName}",
+                          textAlign: TextAlign.start,
+                          fontWeight: FontWeight.w400,
+                          color: AppColor.whiteColor,
+                          fontSize: 16);
+                    }),
+                    Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.favouriteScreen);
+                      },
+                      child: CustomWidget.customAssetImageWidget(
+                          image: Assets.assetsHeartOutline, height: 3.0),
                     ),
-            ),
-          ],
+                    SizedBox(width: 4.w),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.recentScreen);
+                      },
+                      child: CustomWidget.customAssetImageWidget(
+                          image: Assets.assetsRecent, height: 3.0),
+                    ),
+                    SizedBox(
+                      width: 4.w,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.notificationScreen);
+                      },
+                      child: CustomWidget.customAssetImageWidget(
+                          image: Assets.assetsNotification, height: 3.0),
+                    )
+                  ],
+                ),
+              ),
+              Obx(
+                () => homeController.dashboardMeditationList.isEmpty
+                    ? Container()
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 28.0, vertical: 8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomWidget.text(S.of(context).startYourDay,
+                                textAlign: TextAlign.start,
+                                fontWeight: FontWeight.w600),
+                            SizedBox(
+                              height: 2.h,
+                            ),
+                            Obx(() {
+                              return ListView.separated(
+                                physics: const BouncingScrollPhysics(),
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                itemCount: homeController
+                                    .dashboardMeditationList[0]
+                                    .startYourDay!
+                                    .length,
+                                itemBuilder: (context, index) {
+                                  return dashboardCourseCard(homeController
+                                      .dashboardMeditationList[0]
+                                      .startYourDay![index]);
+                                },
+                                separatorBuilder:
+                                    (BuildContext context, int index) {
+                                  return SizedBox(
+                                    height: 2.h,
+                                  );
+                                },
+                              );
+                            }),
+                            SizedBox(
+                              height: 2.h,
+                            ),
+                            CustomWidget.text(S.of(context).yourAfternoonLift,
+                                textAlign: TextAlign.start,
+                                fontWeight: FontWeight.w600),
+                            SizedBox(height: 2.h),
+                            Obx(() {
+                              return dashboardCourseCard(homeController
+                                  .dashboardMeditationList[0]
+                                  .afternoonLift![0]);
+                            }),
+                            SizedBox(height: 2.5.h),
+                            CustomWidget.text(S.of(context).atNight,
+                                textAlign: TextAlign.start,
+                                fontWeight: FontWeight.w600),
+                            SizedBox(
+                              height: 2.5.h,
+                            ),
+                            Obx(() {
+                              return dashboardCourseCard(homeController
+                                  .dashboardMeditationList[0].atNight![0]);
+                            }),
+                            SizedBox(
+                              height: 2.5.h,
+                            ),
+                          ],
+                        ),
+                      ),
+              ),
+            ],
+          ),
         ),
       ),
     );

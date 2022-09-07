@@ -119,12 +119,10 @@ class AuthenticationRepository {
   ///
   ///Otp verification API calling
   ///
-  Future<CommonResponseModel> otpVerificationApiCall(
-      Map<String, String> params) async {
+  Future otpVerificationApiCall(Map<String, String> params) async {
     var jsonResponse =
         await apiManager.postAPICall("user/otp_verification", params);
-    var otpResponse = CommonResponseModel.fromJson(jsonResponse);
-    return otpResponse;
+    return jsonResponse;
   }
 
   ///

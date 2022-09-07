@@ -13,7 +13,9 @@ class DashboardMeditationModel {
     if (json['data'] != null) {
       dashboardList = <DashboardData>[];
       json['data'].forEach((v) {
-        dashboardList!.add(DashboardData.fromJson(v));
+        if (v is Map<String, dynamic>) {
+          dashboardList!.add(DashboardData.fromJson(v));
+        }
       });
     }
   }

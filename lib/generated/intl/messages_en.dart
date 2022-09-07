@@ -24,9 +24,14 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accountInformation":
             MessageLookupByLibrary.simpleMessage("Account Information"),
+        "allYouNeedIsaFewMinuteADayToStartYourBestStreakEver":
+            MessageLookupByLibrary.simpleMessage(
+                "All you need is a few\nminutes a day to start\nyour best streak ever."),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "atNight": MessageLookupByLibrary.simpleMessage("At Night"),
+        "averageMeditationLength":
+            MessageLookupByLibrary.simpleMessage("Average meditation length"),
         "codeHasSentToYourEmailAddress": MessageLookupByLibrary.simpleMessage(
             "Code has sent to \nyour email address"),
         "confirmPassword":
@@ -63,7 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
         "forgotPasswordDescription": MessageLookupByLibrary.simpleMessage(
-            "Just enter the email address you’ve used \\n to register with us and we’ll send you \\n a reset link !"),
+            "Just enter the email address you’ve used \n to register with us and we’ll send you \n a reset link !"),
         "goodAfternoon": MessageLookupByLibrary.simpleMessage("Good afternoon"),
         "goodMorning": MessageLookupByLibrary.simpleMessage("Good morning"),
         "goodNight": MessageLookupByLibrary.simpleMessage("Good night"),
@@ -85,19 +90,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "recent": MessageLookupByLibrary.simpleMessage("Recent"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
+        "runStreak": MessageLookupByLibrary.simpleMessage("Run Streak"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "sendInvite": MessageLookupByLibrary.simpleMessage("Send Invite"),
+        "sessionsCompleted":
+            MessageLookupByLibrary.simpleMessage("Sessions completed"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
         "sleep": MessageLookupByLibrary.simpleMessage("Sleep"),
         "spaceNotAllow":
             MessageLookupByLibrary.simpleMessage("Space not allow!"),
         "startYourDay": MessageLookupByLibrary.simpleMessage("Start Your Day"),
+        "stats": MessageLookupByLibrary.simpleMessage("Stats"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "support": MessageLookupByLibrary.simpleMessage("Support"),
         "termsConditions":
             MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
         "thatsOk": MessageLookupByLibrary.simpleMessage("That\'s ok"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
+        "totalMeditationTime":
+            MessageLookupByLibrary.simpleMessage("Total meditation time"),
         "validEmail":
             MessageLookupByLibrary.simpleMessage("Enter valid email address!"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),

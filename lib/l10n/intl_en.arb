@@ -50,7 +50,7 @@
   "enterLastName": "Enter last name!",
   "mobileNo": "Mobile No.",
   "thatsOk": "That's ok",
-  "forgotPasswordDescription": "Just enter the email address you’ve used \\n to register with us and we’ll send you \\n a reset link !",
+  "forgotPasswordDescription": "Just enter the email address you’ve used \n to register with us and we’ll send you \n a reset link !",
   "verify": "Verify",
   "codeHasSentToYourEmailAddress": "Code has sent to \nyour email address",
   "resetPassword": "Reset password",
@@ -60,5 +60,11 @@
   "yourNewPasswordMustBeDifferentFromPreviousUsedPasswords": "Your new  password must be different\nfrom previous used passwords.",
   "newPasswordAndConfirmPasswordShouldBeSame": "New password and confirm password should be same!",
   "save": "Save",
-  "profile": "profile"
+  "profile": "profile",
+  "stats": "Stats",
+  "averageMeditationLength": "Average meditation length",
+  "totalMeditationTime": "Total meditation time",
+  "sessionsCompleted": "Sessions completed",
+  "runStreak": "Run Streak",
+  "allYouNeedIsaFewMinuteADayToStartYourBestStreakEver": "All you need is a few\nminutes a day to start\nyour best streak ever."
 }

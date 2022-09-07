@@ -24,9 +24,14 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accountInformation":
             MessageLookupByLibrary.simpleMessage("Konto information"),
+        "allYouNeedIsaFewMinuteADayToStartYourBestStreakEver":
+            MessageLookupByLibrary.simpleMessage(
+                "Allt du behöver är några\nminuter om dagen för att börja\ndin bästa serie någonsin."),
         "alreadyHaveAnAccount": MessageLookupByLibrary.simpleMessage(
             "Har redan ett konto? Logga in"),
         "atNight": MessageLookupByLibrary.simpleMessage("Till kvällen"),
+        "averageMeditationLength": MessageLookupByLibrary.simpleMessage(
+            "Genomsnittlig meditationslängd"),
         "codeHasSentToYourEmailAddress": MessageLookupByLibrary.simpleMessage(
             "Koden har skickats till\ndin e-postadress"),
         "confirmPassword":
@@ -62,7 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Glömt lösenord"),
         "forgotPasswordDescription": MessageLookupByLibrary.simpleMessage(
-            "Ange bara e-postadressen du har använt \\n för att registrera dig hos oss så skickar vi \\n en återställningslänk till dig!"),
+            "Ange bara e-postadressen du har använt \n för att registrera dig hos oss så skickar vi \n en återställningslänk till dig!"),
         "goodAfternoon":
             MessageLookupByLibrary.simpleMessage("God eftermiddag"),
         "goodMorning": MessageLookupByLibrary.simpleMessage("God morgon"),
@@ -87,19 +92,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Registrera"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Återställ lösenord"),
+        "runStreak": MessageLookupByLibrary.simpleMessage("Kör Streak"),
         "save": MessageLookupByLibrary.simpleMessage("Spara"),
         "sendInvite": MessageLookupByLibrary.simpleMessage("Skicka inbjudan"),
+        "sessionsCompleted":
+            MessageLookupByLibrary.simpleMessage("Sessioner avslutade"),
         "setting": MessageLookupByLibrary.simpleMessage("Inställningar"),
         "sleep": MessageLookupByLibrary.simpleMessage("Sömn"),
         "spaceNotAllow":
             MessageLookupByLibrary.simpleMessage("Utrymme tillåts inte!"),
         "startYourDay": MessageLookupByLibrary.simpleMessage("Starta din dag"),
+        "stats": MessageLookupByLibrary.simpleMessage("Statistik"),
         "submit": MessageLookupByLibrary.simpleMessage("Skicka in"),
         "support": MessageLookupByLibrary.simpleMessage("Support"),
         "termsConditions":
             MessageLookupByLibrary.simpleMessage("Allmänna Villkor"),
         "thatsOk": MessageLookupByLibrary.simpleMessage("Det är ok"),
         "today": MessageLookupByLibrary.simpleMessage("Idag"),
+        "totalMeditationTime":
+            MessageLookupByLibrary.simpleMessage("Total meditationstid"),
         "validEmail":
             MessageLookupByLibrary.simpleMessage("Ange giltig e-postadress!"),
         "verify": MessageLookupByLibrary.simpleMessage("Kontrollera"),

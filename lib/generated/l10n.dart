@@ -547,7 +547,7 @@ class S {
   /// `Just enter the email address you’ve used \n to register with us and we’ll send you \n a reset link !`
   String get forgotPasswordDescription {
     return Intl.message(
-      'Just enter the email address you’ve used \\n to register with us and we’ll send you \\n a reset link !',
+      'Just enter the email address you’ve used \n to register with us and we’ll send you \n a reset link !',
       name: 'forgotPasswordDescription',
       desc: '',
       args: [],
@@ -649,6 +649,66 @@ class S {
     return Intl.message(
       'profile',
       name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stats`
+  String get stats {
+    return Intl.message(
+      'Stats',
+      name: 'stats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Average meditation length`
+  String get averageMeditationLength {
+    return Intl.message(
+      'Average meditation length',
+      name: 'averageMeditationLength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total meditation time`
+  String get totalMeditationTime {
+    return Intl.message(
+      'Total meditation time',
+      name: 'totalMeditationTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sessions completed`
+  String get sessionsCompleted {
+    return Intl.message(
+      'Sessions completed',
+      name: 'sessionsCompleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Run Streak`
+  String get runStreak {
+    return Intl.message(
+      'Run Streak',
+      name: 'runStreak',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All you need is a few\nminutes a day to start\nyour best streak ever.`
+  String get allYouNeedIsaFewMinuteADayToStartYourBestStreakEver {
+    return Intl.message(
+      'All you need is a few\nminutes a day to start\nyour best streak ever.',
+      name: 'allYouNeedIsaFewMinuteADayToStartYourBestStreakEver',
       desc: '',
       args: [],
     );

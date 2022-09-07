@@ -50,7 +50,7 @@
   "enterLastName": "Ange efternamn!",
   "mobileNo": "Mobilnummer.",
   "thatsOk": "Det är ok",
-  "forgotPasswordDescription": "Ange bara e-postadressen du har använt \\n för att registrera dig hos oss så skickar vi \\n en återställningslänk till dig!",
+  "forgotPasswordDescription": "Ange bara e-postadressen du har använt \n för att registrera dig hos oss så skickar vi \n en återställningslänk till dig!",
   "verify": "Kontrollera",
   "codeHasSentToYourEmailAddress": "Koden har skickats till\ndin e-postadress",
   "resetPassword": "Återställ lösenord",
@@ -60,6 +60,11 @@
   "yourNewPasswordMustBeDifferentFromPreviousUsedPasswords": "Ditt nya lösenord måste vara ett annat\nfrån tidigare använda lösenord.",
   "newPasswordAndConfirmPasswordShouldBeSame": "Nytt lösenord och bekräfta lösenord bör vara samma!",
   "save": "Spara",
-  "profile": "Profil"
-
+  "profile": "Profil",
+  "stats": "Statistik",
+  "averageMeditationLength": "Genomsnittlig meditationslängd",
+  "totalMeditationTime": "Total meditationstid",
+  "sessionsCompleted": "Sessioner avslutade",
+  "runStreak": "Kör Streak",
+  "allYouNeedIsaFewMinuteADayToStartYourBestStreakEver": "Allt du behöver är några\nminuter om dagen för att börja\ndin bästa serie någonsin."
 }

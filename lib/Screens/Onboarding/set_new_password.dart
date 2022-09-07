@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
@@ -18,6 +19,12 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
   final _passwordController = TextEditingController();
   final _newPasswordController = TextEditingController();
   var authController = AuthenticationController();
+  RxString id = "".obs;
+  @override
+  void initState() {
+    id.value = Get.arguments;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,8 +94,8 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
             CustomWidget.customButton(
                 callBack: () {
                   if (_newPasswordController.text == _passwordController.text) {
-                    authController
-                        .setNewPassword({"password": _passwordController.text});
+                    authController.setNewPassword(
+                        {"id": id.value, "password": _passwordController.text});
                   } else {
                     CustomWidget.errorSnackBar(
                         content: S

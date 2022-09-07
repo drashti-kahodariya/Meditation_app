@@ -4,7 +4,9 @@ class Assets {
 
   static const String assetsApple = 'assets/apple.png';
   static const String assetsBackward = 'assets/backward.png';
+  static const String assetsChronometer = 'assets/chronometer.png';
   static const String assetsClock = 'assets/clock.png';
+  static const String assetsDeadline = 'assets/deadline.png';
   static const String assetsDownload = 'assets/download.png';
   static const String assetsDummy = 'assets/dummy.png';
   static const String assetsDummy2 = 'assets/dummy2.png';
@@ -38,10 +40,12 @@ class Assets {
   static const String assetsPause = 'assets/Pause.png';
   static const String assetsPhone = 'assets/phone.png';
   static const String assetsPlay = 'assets/play.png';
+  static const String assetsPlayButton = 'assets/play_button.png';
   static const String assetsPracticesIcon = 'assets/practices_icon.png';
   static const String assetsPrivacyPolicy = 'assets/privacy_policy.png';
   static const String assetsProfileIcon = 'assets/profile_icon.png';
   static const String assetsRecent = 'assets/recent.png';
+  static const String assetsRunning = 'assets/running.png';
   static const String assetsSearch = 'assets/search.png';
   static const String assetsSelectedExplore = 'assets/selected_explore.png';
   static const String assetsSelectedProfile = 'assets/selected_profile.png';

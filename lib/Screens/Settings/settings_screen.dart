@@ -99,7 +99,8 @@ class _SettingScreenState extends State<SettingScreen> {
                     icon: Assets.assetsSupport,
                     title: S.of(context).support,
                     onTap: () {
-                      Get.toNamed(Routes.supportScreen, arguments: "Support");
+                      Get.updateLocale(const Locale('sv'));
+                      // Get.toNamed(Routes.supportScreen, arguments: "Support");
                     }),
                 SizedBox(
                   height: 4.h,
