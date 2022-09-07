@@ -119,7 +119,7 @@ class _DashboardState extends State<Dashboard> {
         ),
         activeIcon: const NavBarItemImage(
             image: Assets.assetsSelectedProfile, fromSelected: true),
-        label: authController.currentUserData.value.firstName! == "null"
+        label: authController.currentUserData.value.firstName == "null"
             ? S.of(context).profile
             : "${authController.currentUserData.value.firstName}",
       ),

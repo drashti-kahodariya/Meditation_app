@@ -202,6 +202,16 @@ class S {
     );
   }
 
+  /// `Good evening`
+  String get goodEvening {
+    return Intl.message(
+      'Good evening',
+      name: 'goodEvening',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Start Your Day`
   String get startYourDay {
     return Intl.message(

@@ -70,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPasswordDescription": MessageLookupByLibrary.simpleMessage(
             "Just enter the email address you’ve used \n to register with us and we’ll send you \n a reset link !"),
         "goodAfternoon": MessageLookupByLibrary.simpleMessage("Good afternoon"),
+        "goodEvening": MessageLookupByLibrary.simpleMessage("Good evening"),
         "goodMorning": MessageLookupByLibrary.simpleMessage("Good morning"),
         "goodNight": MessageLookupByLibrary.simpleMessage("Good night"),
         "inviteFriend": MessageLookupByLibrary.simpleMessage("Invite Friend"),

@@ -70,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Ange bara e-postadressen du har använt \n för att registrera dig hos oss så skickar vi \n en återställningslänk till dig!"),
         "goodAfternoon":
             MessageLookupByLibrary.simpleMessage("God eftermiddag"),
+        "goodEvening": MessageLookupByLibrary.simpleMessage("God kväll"),
         "goodMorning": MessageLookupByLibrary.simpleMessage("God morgon"),
         "goodNight": MessageLookupByLibrary.simpleMessage("Godnatt"),
         "inviteFriend": MessageLookupByLibrary.simpleMessage("Bjud in en vän"),

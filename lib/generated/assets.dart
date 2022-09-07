@@ -28,6 +28,7 @@ class Assets {
   static const String assetsHeartOutline = 'assets/heart_outline.png';
   static const String assetsInvitationImage = 'assets/invitation_image.png';
   static const String assetsInvite = 'assets/invite.png';
+  static const String assetsLanguage = 'assets/language.png';
   static const String assetsLoginBg = 'assets/login_bg.png';
   static const String assetsLogo = 'assets/Logo.png';
   static const String assetsLogout = 'assets/logout.png';
@@ -50,6 +51,7 @@ class Assets {
   static const String assetsSelectedExplore = 'assets/selected_explore.png';
   static const String assetsSelectedProfile = 'assets/selected_profile.png';
   static const String assetsSelectedToday = 'assets/selected_today.png';
+  static const String assetsSettingBg = 'assets/setting_bg.png';
   static const String assetsSettingIcon = 'assets/setting_icon.png';
   static const String assetsSettingUser = 'assets/setting_user.png';
   static const String assetsSleepExplore = 'assets/sleep_explore.png';

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/authentication_controller.dart';
@@ -18,6 +19,7 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> {
   var authController = Get.put(AuthenticationController());
+  var isEnglish = true.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,37 @@ class _SettingScreenState extends State<SettingScreen> {
                     onTap: () {
                       Get.toNamed(Routes.editProfileScreen);
                     }),
+                SizedBox(
+                  height: 4.h,
+                ),
+                Obx(() {
+                  return Row(
+                    children: [
+                      Image.asset(
+                        Assets.assetsLanguage,
+                        height: 30,
+                        width: 30,
+                        color: AppColor.whiteColor,
+                      ),
+                      SizedBox(width: 3.w),
+                      CustomWidget.text(
+                          isEnglish.value ? "English" : "Swedish"),
+                      const Spacer(),
+                      CupertinoSwitch(
+                        value: isEnglish.value,
+                        thumbColor: AppColor.whiteColor,
+                        trackColor: AppColor.primaryColor.withOpacity(0.5),
+                        activeColor: AppColor.primaryColor,
+                        onChanged: (bool? value) {
+                          isEnglish.value = value!;
+                          !isEnglish.value
+                              ? Get.updateLocale(const Locale('sv'))
+                              : Get.updateLocale(const Locale('en'));
+                        },
+                      ),
+                    ],
+                  );
+                }),
                 SizedBox(
                   height: 4.h,
                 ),
@@ -99,8 +132,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     icon: Assets.assetsSupport,
                     title: S.of(context).support,
                     onTap: () {
-                      Get.updateLocale(const Locale('sv'));
-                      // Get.toNamed(Routes.supportScreen, arguments: "Support");
+                      Get.toNamed(Routes.supportScreen, arguments: "Support");
                     }),
                 SizedBox(
                   height: 4.h,
@@ -131,12 +163,10 @@ class _SettingScreenState extends State<SettingScreen> {
       child: Row(
         children: [
           Image.asset(icon, height: 30, width: 30),
-          SizedBox(
-            width: 3.w,
-          ),
+          SizedBox(width: 3.w),
           CustomWidget.text(title, fontSize: 15),
-          Spacer(),
-          Icon(
+          const Spacer(),
+          const Icon(
             Icons.arrow_forward_ios,
             color: AppColor.whiteColor,
             size: 22,

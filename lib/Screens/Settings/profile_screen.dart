@@ -31,79 +31,138 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+      body: Stack(
+        children: [
+          Image.asset(
+            Assets.assetsSettingBg,
+            height: 100.0.h,
+            width: 100.0.w,
+            fit: BoxFit.cover,
+            alignment: Alignment.topCenter,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed(Routes.settingScreen);
-                  },
-                  child: Image.asset(
-                    Assets.assetsSettingIcon,
-                    height: 30,
-                    width: 30,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 6.h,
-            ),
-            authController.currentUserData.value.image == null
-                ? Center(
-                    child: CircleAvatar(
-                      backgroundColor: AppColor.whiteColor.withOpacity(0.2),
-                      maxRadius: 60,
-                      child: Padding(
-                        padding: const EdgeInsets.all(33.0),
-                        child: Image.asset(
-                          Assets.assetsEditUser,
-                          color: AppColor.primaryColor,
-                        ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.settingScreen);
+                      },
+                      child: Image.asset(
+                        Assets.assetsSettingIcon,
+                        height: 30,
+                        width: 30,
                       ),
                     ),
-                  )
-                : Center(
-                    child: CircleAvatar(
-                      maxRadius: 60,
-                      backgroundColor: AppColor.primaryColor,
-                      backgroundImage: NetworkImage(
-                          authController.currentUserData.value.image!),
-                    ),
-                  ),
-            CustomWidget.text(S.of(context).stats),
-            SizedBox(
-              height: 2.5.h
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  Assets.assetsChronometer,
-                  height: 45,
-                  width: 45,
+                  ],
                 ),
                 SizedBox(
-                  width: 10,
+                  height: 6.h,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                authController.currentUserData.value.image == null
+                    ? Center(
+                        child: CircleAvatar(
+                          backgroundColor: AppColor.whiteColor.withOpacity(0.2),
+                          maxRadius: 60,
+                          child: Padding(
+                            padding: const EdgeInsets.all(33.0),
+                            child: Image.asset(
+                              Assets.assetsEditUser,
+                              color: AppColor.primaryColor,
+                            ),
+                          ),
+                        ),
+                      )
+                    : Center(
+                        child: CircleAvatar(
+                          maxRadius: 60,
+                          backgroundColor: AppColor.primaryColor,
+                          backgroundImage: NetworkImage(
+                              authController.currentUserData.value.image!),
+                        ),
+                      ),
+                CustomWidget.text(S.of(context).stats),
+                SizedBox(height: 2.5.h),
+                Row(
                   children: [
-                    CustomWidget.text("7 Minutes", fontSize: 12),
-                    CustomWidget.text(S.of(context).averageMeditationLength,
-                        fontSize: 10,
-                        color: AppColor.whiteColor.withOpacity(0.5)),
+                    Image.asset(
+                      Assets.assetsChronometer,
+                      height: 45,
+                      width: 45,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomWidget.text("7 Minutes", fontSize: 12),
+                        CustomWidget.text(S.of(context).averageMeditationLength,
+                            fontSize: 10,
+                            color: AppColor.whiteColor.withOpacity(0.5)),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 3.h,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      Assets.assetsDeadline,
+                      height: 45,
+                      width: 45,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomWidget.text("30 Minutes", fontSize: 12),
+                        CustomWidget.text(S.of(context).totalMeditationTime,
+                            fontSize: 10,
+                            color: AppColor.whiteColor.withOpacity(0.5)),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 3.h,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      Assets.assetsPlayButton,
+                      height: 45,
+                      width: 45,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomWidget.text("2 Sessions", fontSize: 12),
+                        CustomWidget.text(S.of(context).sessionsCompleted,
+                            fontSize: 10,
+                            color: AppColor.whiteColor.withOpacity(0.5)),
+                      ],
+                    )
                   ],
                 )
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }

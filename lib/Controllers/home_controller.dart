@@ -5,6 +5,7 @@ import 'package:meditation_app/Data/Model/episode_model.dart';
 import 'package:meditation_app/Data/Model/favourite_model.dart';
 import 'package:meditation_app/Repository/home_repository.dart';
 import 'package:meditation_app/Utils/constant.dart';
+import 'package:meditation_app/generated/l10n.dart';
 
 class HomeController extends GetxController {
   final homeRepository = HomeRepository();
@@ -17,13 +18,13 @@ class HomeController extends GetxController {
     var timeNow = DateTime.now().hour;
     printInfo(info: timeNow.toString());
     if (timeNow <= 12) {
-      return 'Good Morning';
+      return S.of(Get.context!).goodMorning;
     } else if ((timeNow > 12) && (timeNow <= 16)) {
-      return 'Good Afternoon';
+      return S.of(Get.context!).goodAfternoon;
     } else if ((timeNow > 16) && (timeNow < 20)) {
-      return 'Good Evening';
+      return S.of(Get.context!).goodMorning;
     } else {
-      return 'Good Night';
+      return S.of(Get.context!).goodNight;
     }
   }
 
@@ -45,8 +46,17 @@ class HomeController extends GetxController {
   }
 
   addInRecent(EpisodeData course) {
-    recentList.add(course);
-    GetStorage().write(AppPreferencesHelper.recent, recentList);
+    var tempRecentList = <Map<String, dynamic>>[].obs;
+    tempRecentList.add(course.toJson());
+    GetStorage().write(AppPreferencesHelper.recent, tempRecentList);
     print("RECENT LIST:: ${GetStorage().read(AppPreferencesHelper.recent)}");
+  }
+
+  getAndSetRecent() {
+    recentList.clear();
+    List<dynamic> tempRecent = GetStorage().read(AppPreferencesHelper.recent);
+    for (var i = 0; i < tempRecent.length; i++) {
+      recentList.add(EpisodeData.fromJson(tempRecent[i]));
+    }
   }
 }
