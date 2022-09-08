@@ -189,10 +189,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomWidget.text(course.title!,
-                        maxLine: 3,
-                        textAlign: TextAlign.start,
-                        fontWeight: FontWeight.w600),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(
+                          CupertinoIcons.lock,
+                          color: AppColor.whiteColor,
+                        ),
+                        Container(
+                          width: 30.w,
+                          child: CustomWidget.text(course.title!,
+                              maxLine: 3,
+                              textAlign: TextAlign.start,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
                     SizedBox(
                       height: 0.5.h,
                     ),

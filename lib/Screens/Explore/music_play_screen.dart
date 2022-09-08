@@ -90,7 +90,7 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
             Padding(
               padding: const EdgeInsets.only(top: 0.0, right: 18, left: 18),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,
@@ -105,18 +105,61 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                     ),
                   ),
                   SizedBox(
-                    height: 64.h,
+                    height: 20.h,
                   ),
                   CustomWidget.text("${audioData.value.title}",
                       fontWeight: FontWeight.w500,
-                      fontSize: 15,
+                      fontSize: 20,
                       color: Colors.white),
                   CustomWidget.text("${audioData.value.description}",
                       fontWeight: FontWeight.w400,
-                      fontSize: 10,
+                      fontSize: 15,
                       color: AppColor.whiteColor.withOpacity(0.8)),
                   // const Spacer(),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20.h),
+                  StreamBuilder<PlayerState>(
+                    stream: _player!.playerStateStream,
+                    builder: (context, snapshot) {
+                      final playerState = snapshot.data;
+                      final processingState = playerState?.processingState;
+                      final playing = playerState?.playing;
+                      if (processingState == ProcessingState.loading ||
+                          processingState == ProcessingState.buffering) {
+                        return Container(
+                          margin: const EdgeInsets.all(8.0),
+                          height: 9.0.h,
+                          width: 9.0.h,
+                          child: const CupertinoActivityIndicator(),
+                        );
+                      } else if (playing != true) {
+                        return GestureDetector(
+                            onTap: _player!.play,
+                            child: CustomWidget.customAssetImageWidget(
+                              height: 8.0,
+                              width: 8.0,
+                              image: Assets.assetsPlay,
+                            ));
+                      } else if (processingState != ProcessingState.completed) {
+                        return GestureDetector(
+                            onTap: _player!.pause,
+                            child: CustomWidget.customAssetImageWidget(
+                                height: 8.0,
+                                width: 8.0,
+                                image: Assets.assetsPause,
+                                color: AppColor.whiteColor));
+                      } else {
+                        return IconButton(
+                          icon: const Icon(
+                            Icons.replay,
+                            color: AppColor.whiteColor,
+                          ),
+                          iconSize: 64.0,
+                          onPressed: () => _player!.seek(Duration.zero),
+                        );
+                      }
+                    },
+                  ),
+                  Spacer(),
                   StreamBuilder<DurationState>(
                     stream: _durationState,
                     builder: (context, snapshot) {
@@ -127,92 +170,28 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                       final total = durationState?.total ?? Duration.zero;
                       return Theme(
                         data: ThemeData.dark(),
-                        child: ProgressBar(
-                          progress: progress!,
-                          buffered: buffered,
-                          barHeight: 3,
-                          thumbRadius: 6,
-                          progressBarColor: Colors.white.withOpacity(1),
-                          baseBarColor: Colors.white.withOpacity(0.1),
-                          bufferedBarColor: Colors.white.withOpacity(0.4),
-                          thumbColor: Colors.white,
-                          total: total,
-                          onSeek: (duration) {
-                            _player!.seek(duration);
-                          },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                          child: ProgressBar(
+                            progress: progress!,
+                            buffered: buffered,
+                            barHeight: 3,
+                            thumbRadius: 6,
+                            progressBarColor: Colors.white.withOpacity(1),
+                            baseBarColor: Colors.white.withOpacity(0.1),
+                            bufferedBarColor: Colors.white.withOpacity(0.4),
+                            thumbColor: Colors.white,
+                            total: total,
+                            onSeek: (duration) {
+                              _player!.seek(duration);
+                            },
+                          ),
                         ),
                       );
                     },
                   ),
-                  const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Spacer(),
-                      GestureDetector(
-                          onTap: () => progress!.inSeconds < 10
-                              ? () {}
-                              : _player!.seek(
-                                  Duration(seconds: progress!.inSeconds - 10)),
-                          child: CustomWidget.customAssetImageWidget(
-                              height: 3.0,
-                              width: 3.0,
-                              image: Assets.assetsBackward,
-                              color: AppColor.whiteColor)),
-                      Spacer(),
-                      StreamBuilder<PlayerState>(
-                        stream: _player!.playerStateStream,
-                        builder: (context, snapshot) {
-                          final playerState = snapshot.data;
-                          final processingState = playerState?.processingState;
-                          final playing = playerState?.playing;
-                          if (processingState == ProcessingState.loading ||
-                              processingState == ProcessingState.buffering) {
-                            return Container(
-                              margin: const EdgeInsets.all(8.0),
-                              height: 9.0.h,
-                              width: 9.0.h,
-                              child: const CupertinoActivityIndicator(),
-                            );
-                          } else if (playing != true) {
-                            return GestureDetector(
-                                onTap: _player!.play,
-                                child: CustomWidget.customAssetImageWidget(
-                                  height: 8.0,
-                                  width: 8.0,
-                                  image: Assets.assetsPlay,
-                                ));
-                          } else if (processingState !=
-                              ProcessingState.completed) {
-                            return GestureDetector(
-                                onTap: _player!.pause,
-                                child: CustomWidget.customAssetImageWidget(
-                                    height: 8.0,
-                                    width: 8.0,
-                                    image: Assets.assetsPause,
-                                    color: AppColor.whiteColor));
-                          } else {
-                            return IconButton(
-                              icon: const Icon(
-                                Icons.replay,
-                                color: AppColor.whiteColor,
-                              ),
-                              iconSize: 64.0,
-                              onPressed: () => _player!.seek(Duration.zero),
-                            );
-                          }
-                        },
-                      ),
-                      Spacer(),
-                      GestureDetector(
-                          onTap: () => _player!.seek(
-                              Duration(seconds: progress!.inSeconds + 10)),
-                          child: CustomWidget.customAssetImageWidget(
-                              height: 3.0,
-                              width: 3.0,
-                              image: Assets.assetsForward,
-                              color: AppColor.whiteColor)),
-                      Spacer(),
-                    ],
+                  SizedBox(
+                    height: 5.h,
                   ),
                 ],
               ),

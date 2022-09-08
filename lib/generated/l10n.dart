@@ -72,11 +72,11 @@ class S {
     );
   }
 
-  /// `Create an account to get started on your health and happiness journey`
-  String get createAnAccountToGetStartedOnYourHealthAndHappinessJourney {
+  /// `Create an account and start meditating`
+  String get createAnAccountAndStartMeditating {
     return Intl.message(
-      'Create an account to get started on your health and happiness journey',
-      name: 'createAnAccountToGetStartedOnYourHealthAndHappinessJourney',
+      'Create an account and start meditating',
+      name: 'createAnAccountAndStartMeditating',
       desc: '',
       args: [],
     );
@@ -322,11 +322,11 @@ class S {
     );
   }
 
-  /// `Notification`
-  String get notification {
+  /// `Inbox`
+  String get inbox {
     return Intl.message(
-      'Notification',
-      name: 'notification',
+      'Inbox',
+      name: 'inbox',
       desc: '',
       args: [],
     );
@@ -719,6 +719,16 @@ class S {
     return Intl.message(
       'All you need is a few\nminutes a day to start\nyour best streak ever.',
       name: 'allYouNeedIsaFewMinuteADayToStartYourBestStreakEver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recommended for you`
+  String get recommendedForYou {
+    return Intl.message(
+      'Recommended for you',
+      name: 'recommendedForYou',
       desc: '',
       args: [],
     );

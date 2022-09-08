@@ -2,7 +2,7 @@
   "doMeditationStayFocused": "Do meditation. Stay focused",
   "liveAHealthyLife.":"Live a healthy life.",
   "welcome":"Welcome",
-  "createAnAccountToGetStartedOnYourHealthAndHappinessJourney":"Create an account to get started on your health and happiness journey",
+  "createAnAccountAndStartMeditating":"Create an account and start meditating",
   "login":"Login",
   "emailAddress":"Email Address",
   "password":"Password",
@@ -27,7 +27,7 @@
   "featured":"Featured",
   "sleep":"Sleep",
   "focus":"Focus",
-  "notification":"Notification",
+  "inbox":"Inbox",
   "meditate":"Meditate",
   "setting":"Setting",
   "accountInformation":"Account Information",
@@ -67,5 +67,6 @@
   "totalMeditationTime": "Total meditation time",
   "sessionsCompleted": "Sessions completed",
   "runStreak": "Run Streak",
-  "allYouNeedIsaFewMinuteADayToStartYourBestStreakEver": "All you need is a few\nminutes a day to start\nyour best streak ever."
+  "allYouNeedIsaFewMinuteADayToStartYourBestStreakEver": "All you need is a few\nminutes a day to start\nyour best streak ever.",
+  "recommendedForYou": "Recommended for you"
 }

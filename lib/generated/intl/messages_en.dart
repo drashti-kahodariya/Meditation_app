@@ -36,9 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Code has sent to \nyour email address"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
-        "createAnAccountToGetStartedOnYourHealthAndHappinessJourney":
+        "createAnAccountAndStartMeditating":
             MessageLookupByLibrary.simpleMessage(
-                "Create an account to get started on your health and happiness journey"),
+                "Create an account and start meditating"),
         "createNewPassword":
             MessageLookupByLibrary.simpleMessage("Create new password"),
         "didSomeoneForgetTheirPassword": MessageLookupByLibrary.simpleMessage(
@@ -73,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "goodEvening": MessageLookupByLibrary.simpleMessage("Good evening"),
         "goodMorning": MessageLookupByLibrary.simpleMessage("Good morning"),
         "goodNight": MessageLookupByLibrary.simpleMessage("Good night"),
+        "inbox": MessageLookupByLibrary.simpleMessage("Inbox"),
         "inviteFriend": MessageLookupByLibrary.simpleMessage("Invite Friend"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
@@ -84,11 +85,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "newPasswordAndConfirmPasswordShouldBeSame":
             MessageLookupByLibrary.simpleMessage(
                 "New password and confirm password should be same!"),
-        "notification": MessageLookupByLibrary.simpleMessage("Notification"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "profile": MessageLookupByLibrary.simpleMessage("profile"),
         "recent": MessageLookupByLibrary.simpleMessage("Recent"),
+        "recommendedForYou":
+            MessageLookupByLibrary.simpleMessage("Recommended for you"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
         "runStreak": MessageLookupByLibrary.simpleMessage("Run Streak"),

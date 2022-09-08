@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-        home: SplashScreen(),
+        home: const SplashScreen(),
       );
     });
   }

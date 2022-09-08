@@ -18,4 +18,5 @@ class AppColor {
 class AppPreferencesHelper {
   static const String pUser = "User";
   static const String recent = "Recent";
+  static const String language = "Language";
 }

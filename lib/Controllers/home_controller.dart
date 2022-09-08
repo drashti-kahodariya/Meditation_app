@@ -12,6 +12,7 @@ class HomeController extends GetxController {
   var dashboardMeditationList = <DashboardData>[].obs;
   var favouriteList = <FavouriteData>[].obs;
   var recentList = <EpisodeData>[].obs;
+  var notificationList = <EpisodeData>[].obs;
 
   /// Get the greeting from the current time of user
   String greetingMessage() {
@@ -37,12 +38,14 @@ class HomeController extends GetxController {
   }
 
   getFavoriteList() async {
+    favouriteList.clear();
     final getFavouriteListResponse = await homeRepository.getFavouriteApiCall();
     favouriteList.addAll(getFavouriteListResponse.favouriteList!);
   }
 
   addFavoriteList(Map<String, String> params) async {
     await homeRepository.addFavouriteApiCall(params);
+    getFavoriteList();
   }
 
   addInRecent(EpisodeData course) {
@@ -58,5 +61,12 @@ class HomeController extends GetxController {
     for (var i = 0; i < tempRecent.length; i++) {
       recentList.add(EpisodeData.fromJson(tempRecent[i]));
     }
+  }
+
+  getNotificationList() async {
+    notificationList.clear();
+    final getNotificationListResponse =
+        await homeRepository.getNotificationApiCall();
+    notificationList.addAll(getNotificationListResponse.episodeList!);
   }
 }

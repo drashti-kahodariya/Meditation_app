@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
@@ -22,6 +23,11 @@ class _SettingScreenState extends State<SettingScreen> {
   var isEnglish = true.obs;
 
   @override
+  void initState() {
+    isEnglish.value = GetStorage().read(AppPreferencesHelper.language);
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
@@ -64,6 +70,10 @@ class _SettingScreenState extends State<SettingScreen> {
                           !isEnglish.value
                               ? Get.updateLocale(const Locale('sv'))
                               : Get.updateLocale(const Locale('en'));
+                          GetStorage().write(
+                              AppPreferencesHelper.language, isEnglish.value);
+                          print(
+                              GetStorage().read(AppPreferencesHelper.language));
                         },
                       ),
                     ],
@@ -83,7 +93,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
                 customSettingTile(
                     icon: Assets.assetsNotification,
-                    title: S.of(context).notification,
+                    title: S.of(context).inbox,
                     onTap: () {
                       Get.toNamed(Routes.notificationScreen);
                     }),

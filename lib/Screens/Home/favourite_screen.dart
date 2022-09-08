@@ -17,7 +17,7 @@ class FavouriteScreen extends StatefulWidget {
 }
 
 class _FavouriteScreenState extends State<FavouriteScreen> {
-  var homeController = HomeController();
+  var homeController = Get.put(HomeController());
   @override
   void initState() {
     homeController.getFavoriteList();
@@ -95,11 +95,10 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                 ),
                                 Spacer(),
                                 GestureDetector(
-                                  onTap: () async {
-                                    await homeController.addFavoriteList({
+                                  onTap: () {
+                                    homeController.addFavoriteList({
                                       "courseId": favouriteData.course!.sId!
                                     });
-                                    homeController.getFavoriteList();
                                   },
                                   child: CustomWidget.customAssetImageWidget(
                                       image: Assets.assetsHeart),

@@ -48,9 +48,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: CustomWidget.text(
-                    S
-                        .of(context)
-                        .createAnAccountToGetStartedOnYourHealthAndHappinessJourney,
+                    S.of(context).createAnAccountAndStartMeditating,
                     fontSize: 10,
                     fontWeight: FontWeight.normal),
               ),

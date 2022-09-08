@@ -36,9 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Koden har skickats till\ndin e-postadress"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Bekräfta lösenord"),
-        "createAnAccountToGetStartedOnYourHealthAndHappinessJourney":
+        "createAnAccountAndStartMeditating":
             MessageLookupByLibrary.simpleMessage(
-                "Skapa ett konto och börja med din hälsa och glädje resa"),
+                "Skapa ett konto och börja meditera"),
         "createNewPassword":
             MessageLookupByLibrary.simpleMessage("Skapa nytt lösenord"),
         "didSomeoneForgetTheirPassword": MessageLookupByLibrary.simpleMessage(
@@ -46,7 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "doMeditationStayFocused":
             MessageLookupByLibrary.simpleMessage("Meditera. Var fokuserad."),
         "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
-            "Saknar ett konto? Skapa ett här?"),
+            "Saknar ett konto? Skapa ett här"),
         "downloads": MessageLookupByLibrary.simpleMessage("Nedladdningar"),
         "emailAddress": MessageLookupByLibrary.simpleMessage("Email adress"),
         "enterEmail":
@@ -73,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "goodEvening": MessageLookupByLibrary.simpleMessage("God kväll"),
         "goodMorning": MessageLookupByLibrary.simpleMessage("God morgon"),
         "goodNight": MessageLookupByLibrary.simpleMessage("Godnatt"),
+        "inbox": MessageLookupByLibrary.simpleMessage("inkorg"),
         "inviteFriend": MessageLookupByLibrary.simpleMessage("Bjud in en vän"),
         "lastName": MessageLookupByLibrary.simpleMessage("Efternamn"),
         "logOut": MessageLookupByLibrary.simpleMessage("Logga ut"),
@@ -84,12 +85,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "newPasswordAndConfirmPasswordShouldBeSame":
             MessageLookupByLibrary.simpleMessage(
                 "Nytt lösenord och bekräfta lösenord bör vara samma!"),
-        "notification": MessageLookupByLibrary.simpleMessage("Notifikation"),
         "password": MessageLookupByLibrary.simpleMessage("Lösenord"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("integritetspolicy"),
         "profile": MessageLookupByLibrary.simpleMessage("Profil"),
         "recent": MessageLookupByLibrary.simpleMessage("Nydligen spelade"),
+        "recommendedForYou":
+            MessageLookupByLibrary.simpleMessage("Rekommenderat för dig"),
         "register": MessageLookupByLibrary.simpleMessage("Registrera"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("Återställ lösenord"),

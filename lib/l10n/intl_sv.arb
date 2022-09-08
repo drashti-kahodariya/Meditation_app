@@ -2,12 +2,12 @@
   "doMeditationStayFocused": "Meditera. Var fokuserad.",
   "liveAHealthyLife.":"Lev ett hälsosamt liv.",
   "welcome":"Välkommen",
-  "createAnAccountToGetStartedOnYourHealthAndHappinessJourney":"Skapa ett konto och börja med din hälsa och glädje resa",
+  "createAnAccountAndStartMeditating":"Skapa ett konto och börja meditera",
   "login":"Logga in",
   "emailAddress":"Email adress",
   "password":"Lösenord",
   "forgotPassword":"Glömt lösenord",
-  "dontHaveAnAccount":"Saknar ett konto? Skapa ett här?",
+  "dontHaveAnAccount":"Saknar ett konto? Skapa ett här",
   "register":"Registrera",
   "firstName":"Förnamn",
   "lastName":"Efternamn",
@@ -27,7 +27,7 @@
   "featured":"Utvalda",
   "sleep":"Sömn",
   "focus":"Fokus",
-  "notification":"Notifikation",
+  "inbox":"inkorg",
   "meditate":"Meditera",
   "setting":"Inställningar",
   "accountInformation":"Konto information",
@@ -67,5 +67,7 @@
   "totalMeditationTime": "Total meditationstid",
   "sessionsCompleted": "Sessioner avslutade",
   "runStreak": "Kör Streak",
-  "allYouNeedIsaFewMinuteADayToStartYourBestStreakEver": "Allt du behöver är några\nminuter om dagen för att börja\ndin bästa serie någonsin."
+  "allYouNeedIsaFewMinuteADayToStartYourBestStreakEver": "Allt du behöver är några\nminuter om dagen för att börja\ndin bästa serie någonsin.",
+  "recommendedForYou": "Rekommenderat för dig"
+
 }
