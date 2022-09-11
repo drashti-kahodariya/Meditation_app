@@ -3,7 +3,6 @@ import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Screens/Explore/course_screen.dart';
 import 'package:meditation_app/Screens/Explore/episode_screen.dart';
 import 'package:meditation_app/Screens/Explore/explore_screen.dart';
-import 'package:meditation_app/Screens/Explore/featured_screen.dart';
 import 'package:meditation_app/Screens/Explore/music_play_screen.dart';
 import 'package:meditation_app/Screens/Explore/video_play_screen.dart';
 import 'package:meditation_app/Screens/Home/favourite_screen.dart';
@@ -79,7 +78,7 @@ class AppPages {
         transition: transition),
     GetPage(
         name: Routes.videoPlayScreen,
-        page: () =>  VideoPlayScreen(),
+        page: () => VideoPlayScreen(),
         transition: transition),
     GetPage(
         name: Routes.settingScreen,
@@ -108,10 +107,6 @@ class AppPages {
     GetPage(
         name: Routes.subscriptionScreen,
         page: () => const SubScriptionScreen(),
-        transition: transition),
-    GetPage(
-        name: Routes.featuredScreen,
-        page: () => const FeaturedScreen(),
         transition: transition),
     GetPage(
         name: Routes.supportScreen,

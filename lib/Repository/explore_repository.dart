@@ -12,7 +12,16 @@ class ExploreRepository {
   /// Get the data of Explore Screen
   ///
   Future<ExploreModel> exploreApiCall() async {
-    var json = await apiManager.getAPICall("user/category");
+    // var json = await apiManager.getAPICall("user/category");
+    var json = {
+      "status": 200,
+      "message": "Category successfully retrieved!",
+      "data": [
+        {"name": "focus", "_id": "62ebe866fa49320178ad75bc"},
+        {"name": "sleep", "_id": "62ebe85ffa49320178ad75b8"},
+        {"name": "meditation", "_id": "62ebe859fa49320178ad75b4"}
+      ]
+    };
     var response = ExploreModel.fromJson(json);
 
     return response;

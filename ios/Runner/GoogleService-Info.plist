@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>742445721696-6s2eenbcgdfqvjl7pv9ro8hl8s2m786n.apps.googleusercontent.com</string>
+	<string>742445721696-farqtf5p7qujo2ojmlnbanfmka5ide0a.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.742445721696-6s2eenbcgdfqvjl7pv9ro8hl8s2m786n</string>
+	<string>com.googleusercontent.apps.742445721696-farqtf5p7qujo2ojmlnbanfmka5ide0a</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>742445721696-o2hnj9io9jaerf1he5v9105earl8b03h.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.meditationApp</string>
+	<string>com.felix.meditate</string>
 	<key>PROJECT_ID</key>
 	<string>sinnesro-75dff</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:742445721696:ios:464b181d8327dfa1bdbb05</string>
+	<string>1:742445721696:ios:2b0ad5ec07997c08bdbb05</string>
 </dict>
 </plist>

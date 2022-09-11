@@ -32,6 +32,7 @@ class EpisodeData {
   String? image;
   String? description;
   String? audioOrVideo;
+  double? duration;
   int? isMorning;
   int? isAfternoon;
   int? isNight;
@@ -49,6 +50,7 @@ class EpisodeData {
       this.image,
       this.description,
       this.audioOrVideo,
+      this.duration,
       this.isMorning,
       this.isAfternoon,
       this.isNight,
@@ -66,6 +68,7 @@ class EpisodeData {
     image = json['image'];
     description = json['description'];
     audioOrVideo = json['audioOrVideo'];
+    duration = json['duration'];
     isMorning = json['isMorning'];
     isAfternoon = json['isAfternoon'];
     isNight = json['isNight'];
@@ -85,6 +88,7 @@ class EpisodeData {
     data['image'] = this.image;
     data['description'] = this.description;
     data['audioOrVideo'] = this.audioOrVideo;
+    data['duration'] = this.duration;
     data['isMorning'] = this.isMorning;
     data['isAfternoon'] = this.isAfternoon;
     data['isNight'] = this.isNight;

@@ -24,7 +24,9 @@ class _SettingScreenState extends State<SettingScreen> {
 
   @override
   void initState() {
-    isEnglish.value = GetStorage().read(AppPreferencesHelper.language);
+    if (GetStorage().read(AppPreferencesHelper.language) != null) {
+      isEnglish.value = GetStorage().read(AppPreferencesHelper.language);
+    }
     super.initState();
   }
 

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/authentication_controller.dart';
-import 'package:meditation_app/Screens/Explore/explore_screen.dart';
+import 'package:meditation_app/Screens/Explore/featured_screen.dart';
 import 'package:meditation_app/Screens/Home/home_screen.dart';
 import 'package:meditation_app/Screens/Settings/profile_screen.dart';
 import 'package:meditation_app/Utils/constant.dart';
@@ -24,43 +24,6 @@ class _DashboardState extends State<Dashboard> {
   var authController = Get.put(AuthenticationController());
 
   final _selectedIndex = 0.obs;
-
-  List<PersistentBottomNavBarItem> _navBarsItems() {
-    return [
-      PersistentBottomNavBarItem(
-        icon: const Icon(
-          Icons.home,
-          size: 30,
-        ),
-        title: ("Home"),
-        activeColorPrimary: AppColor.lightPinkColor,
-        inactiveColorPrimary: AppColor.whiteColor,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(
-          Icons.search,
-          size: 30,
-        ),
-        title: ("Explore"),
-        activeColorPrimary: AppColor.lightPinkColor,
-        inactiveColorPrimary: AppColor.whiteColor,
-        // onPressed: (context) async {
-        //   var videoController = Get.put(VideoController());
-        //   await videoController.getFavouriteVideoList();
-        //   _controller.index = 1;
-        // },
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(
-          Icons.person,
-          size: 30,
-        ),
-        title: ("Settings"),
-        activeColorPrimary: AppColor.lightPinkColor,
-        inactiveColorPrimary: AppColor.whiteColor,
-      ),
-    ];
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +48,18 @@ class _DashboardState extends State<Dashboard> {
   List<Widget> buildScreens() {
     return [
       const HomeScreen(),
-      const ExploreScreen(),
+      const FeaturedScreen(
+          id: "62ebe866fa49320178ad75bc",
+          image: Assets.assetsMeditateImage,
+          name: "Focus"),
+      const FeaturedScreen(
+          id: "62ebe85ffa49320178ad75b8",
+          image: Assets.assetsSleepImage,
+          name: "Sleep"),
+      const FeaturedScreen(
+          id: "62ebe859fa49320178ad75b4",
+          image: Assets.assetsFocusImage,
+          name: "Meditate"),
       const ProfileScreen(),
     ];
   }
@@ -107,11 +81,27 @@ class _DashboardState extends State<Dashboard> {
       ),
       BottomNavigationBarItem(
         icon: const NavBarItemImage(
-          image: Assets.assetsSearch,
+          image: Assets.assetsFocusIcon,
         ),
         activeIcon: const NavBarItemImage(
-            image: Assets.assetsSelectedExplore, fromSelected: true),
-        label: S.of(context).explore,
+            image: Assets.assetsFocusIcon, fromSelected: true),
+        label: S.of(context).focus,
+      ),
+      BottomNavigationBarItem(
+        icon: const NavBarItemImage(
+          image: Assets.assetsSleepIcon,
+        ),
+        activeIcon: const NavBarItemImage(
+            image: Assets.assetsSleepIcon, fromSelected: true),
+        label: S.of(context).sleep,
+      ),
+      BottomNavigationBarItem(
+        icon: const NavBarItemImage(
+          image: Assets.assetsMeditateIcon,
+        ),
+        activeIcon: const NavBarItemImage(
+            image: Assets.assetsMeditateIcon, fromSelected: true),
+        label: S.of(context).meditate,
       ),
       BottomNavigationBarItem(
         icon: const NavBarItemImage(

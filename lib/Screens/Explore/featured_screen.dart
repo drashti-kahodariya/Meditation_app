@@ -11,7 +11,12 @@ import 'package:meditation_app/generated/assets.dart';
 import 'package:sizer/sizer.dart';
 
 class FeaturedScreen extends StatefulWidget {
-  const FeaturedScreen({Key? key}) : super(key: key);
+  const FeaturedScreen(
+      {Key? key, required this.id, required this.image, required this.name})
+      : super(key: key);
+  final String id;
+  final String image;
+  final String name;
 
   @override
   _FeaturedScreenState createState() => _FeaturedScreenState();
@@ -20,14 +25,12 @@ class FeaturedScreen extends StatefulWidget {
 class _FeaturedScreenState extends State<FeaturedScreen> {
   var exploreController = Get.put(ExploreController());
   RxInt page = 1.obs;
-  RxString id = "".obs;
 
   @override
   void didChangeDependencies() {
-    id.value = Get.arguments;
     exploreController.getFeaturedData(
-        {"categoryId": id.value, "page": page.value, "limit": 10});
-    exploreController.getExploreCourseData(id.value);
+        {"categoryId": widget.id, "page": page.value, "limit": 10});
+    exploreController.getExploreCourseData(widget.id);
 
     super.didChangeDependencies();
   }
@@ -49,40 +52,10 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                     Get.toNamed(Routes.subscriptionScreen);
                   },
                   child: Image.asset(
-                    Assets.assetsDummy4,
+                    widget.image,
                     height: 40.h,
                     width: 100.w,
                     fit: BoxFit.cover,
-                  ),
-                ),
-                // Image.network(
-                //  ,
-                //   height: 40.h,
-                //   width: 100.w,
-                //   fit: BoxFit.cover,
-                // ),
-                GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 28.0, horizontal: 13),
-                    child: Container(
-                      height: 45,
-                      width: 45,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: AppColor.whiteColor)),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Center(
-                            child: Icon(
-                          Icons.arrow_back_ios,
-                          color: AppColor.whiteColor,
-                        )),
-                      ),
-                    ),
                   ),
                 ),
               ],
@@ -108,7 +81,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                   SizedBox(
                     height: 2.h,
                   ),
-                  CustomWidget.text("Night Island", fontSize: 20),
+                  CustomWidget.text(widget.name, fontSize: 20),
                   SizedBox(
                     height: 2.h,
                   ),
@@ -138,7 +111,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                   onEndOfPage: () {
                     page.value += 1;
                     exploreController.getFeaturedData({
-                      "categoryId": id.value,
+                      "categoryId": widget.id,
                       "page": page.value,
                       "limit": 10
                     });
@@ -224,7 +197,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),
               child: CustomWidget.text(
-                "Explore Sleep ",
+                "Explore ${widget.name}",
                 fontSize: 20,
                 color: AppColor.whiteColor,
               ),
