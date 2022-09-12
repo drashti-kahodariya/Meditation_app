@@ -106,8 +106,11 @@ class _CourseScreenState extends State<CourseScreen> {
                                         {"courseId": courseData[index].sId!});
                                     // homeController.getFavoriteList();
                                   },
-                                  child: CustomWidget.customAssetImageWidget(
-                                      image: Assets.assetsHeartOutline),
+                                  child: courseData[index].isFavorite!
+                                      ? CustomWidget.customAssetImageWidget(
+                                          image: Assets.assetsHeart)
+                                      : CustomWidget.customAssetImageWidget(
+                                          image: Assets.assetsHeartOutline),
                                 )
                               ],
                             ),

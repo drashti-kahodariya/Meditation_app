@@ -22,6 +22,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: Define the routes and set logic accordingly
+    if (GetStorage().read(AppPreferencesHelper.language) == false) {
+      Get.updateLocale(const Locale('sv'));
+    } else {
+      Get.updateLocale(const Locale('en'));
+    }
     Timer(
         const Duration(seconds: 3),
         () => GetStorage().read(AppPreferencesHelper.pUser) == null

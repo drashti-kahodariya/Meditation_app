@@ -84,7 +84,7 @@ class _DashboardState extends State<Dashboard> {
           image: Assets.assetsFocusIcon,
         ),
         activeIcon: const NavBarItemImage(
-            image: Assets.assetsFocusIcon, fromSelected: true),
+            image: Assets.assetsSelectedFocus, fromSelected: true),
         label: S.of(context).focus,
       ),
       BottomNavigationBarItem(
@@ -92,7 +92,7 @@ class _DashboardState extends State<Dashboard> {
           image: Assets.assetsSleepIcon,
         ),
         activeIcon: const NavBarItemImage(
-            image: Assets.assetsSleepIcon, fromSelected: true),
+            image: Assets.assetsSelectedSleep, fromSelected: true),
         label: S.of(context).sleep,
       ),
       BottomNavigationBarItem(
@@ -100,7 +100,7 @@ class _DashboardState extends State<Dashboard> {
           image: Assets.assetsMeditateIcon,
         ),
         activeIcon: const NavBarItemImage(
-            image: Assets.assetsMeditateIcon, fromSelected: true),
+            image: Assets.assetsSelectedMeditate, fromSelected: true),
         label: S.of(context).meditate,
       ),
       BottomNavigationBarItem(

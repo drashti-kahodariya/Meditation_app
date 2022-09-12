@@ -66,8 +66,8 @@ class CustomWidget {
         width: width,
         decoration: BoxDecoration(
           color: color,
-          border: Border.all(
-              color: textColor == AppColor.whiteColor ? color : textColor),
+          // border: Border.all(
+          //     color: textColor == AppColor.whiteColor ? color : textColor),
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: Center(

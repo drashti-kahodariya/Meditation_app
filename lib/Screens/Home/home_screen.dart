@@ -10,7 +10,6 @@ import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
 import 'package:meditation_app/generated/l10n.dart';
-import 'package:path/path.dart' as p;
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -164,13 +163,15 @@ class _HomeScreenState extends State<HomeScreen> {
   GestureDetector dashboardCourseCard(EpisodeData course) {
     return GestureDetector(
       onTap: () {
-        homeController.addInRecent(course);
-        final extension = p.extension(course.audioOrVideo!);
-        if (extension == ".mp3") {
-          Get.toNamed(Routes.musicPlayScreen, arguments: course);
-        } else {
-          Get.toNamed(Routes.videoPlayScreen, arguments: course);
-        }
+        Get.toNamed(Routes.subscriptionScreen);
+
+        // homeController.addInRecent(course);
+        // final extension = p.extension(course.audioOrVideo!);
+        // if (extension == ".mp3") {
+        //   Get.toNamed(Routes.musicPlayScreen, arguments: course);
+        // } else {
+        //   Get.toNamed(Routes.videoPlayScreen, arguments: course);
+        // }
       },
       child: Container(
         height: 22.h,

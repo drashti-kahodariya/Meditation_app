@@ -19,7 +19,7 @@ class PremiumController extends GetxController {
   static const bool _kAutoConsume = true;
 
   static const String _kConsumableAndroidId = 'com.peter.relax_music.premium';
-  static const String _kConsumableIOSId = "com.peter.relexmusic.premium";
+  static const String _kConsumableIOSId = "com.felix.meditate.monthly";
 
   static const List<String> _kProductIds = <String>[
     _kConsumableAndroidId,

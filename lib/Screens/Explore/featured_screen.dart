@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:meditation_app/Controllers/explore_controller.dart';
+import 'package:meditation_app/Controllers/home_controller.dart';
 import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
@@ -24,6 +25,7 @@ class FeaturedScreen extends StatefulWidget {
 
 class _FeaturedScreenState extends State<FeaturedScreen> {
   var exploreController = Get.put(ExploreController());
+  var homeController = Get.put(HomeController());
   RxInt page = 1.obs;
 
   @override
@@ -48,9 +50,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
             Stack(
               children: [
                 GestureDetector(
-                  onTap: () {
-                    Get.toNamed(Routes.subscriptionScreen);
-                  },
+                  onTap: () {},
                   child: Image.asset(
                     widget.image,
                     height: 40.h,
@@ -135,21 +135,52 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: CachedNetworkImage(
-                                      imageUrl: exploreController
-                                          .featuredCourseList[index].image!,
-                                      fit: BoxFit.cover,
-                                      height: 15.h,
-                                      width: 100.w,
-                                      progressIndicatorBuilder:
-                                          (context, url, downloadProgress) =>
+                                Stack(
+                                  alignment: Alignment.bottomRight,
+                                  children: [
+                                    ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: CachedNetworkImage(
+                                          imageUrl: exploreController
+                                              .featuredCourseList[index].image!,
+                                          fit: BoxFit.cover,
+                                          height: 15.h,
+                                          width: 100.w,
+                                          progressIndicatorBuilder: (context,
+                                                  url, downloadProgress) =>
                                               const CupertinoActivityIndicator(
                                                   color: Colors.white),
-                                      errorWidget: (context, url, error) =>
-                                          Icon(Icons.error),
-                                    )),
+                                          errorWidget: (context, url, error) =>
+                                              Icon(Icons.error),
+                                        )),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: GestureDetector(
+                                        onTap: () async {
+                                          await homeController.addFavoriteList({
+                                            "courseId": exploreController
+                                                .featuredCourseList[index].sId!
+                                          });
+                                          exploreController.getFeaturedData({
+                                            "categoryId": widget.id,
+                                            "page": page.value,
+                                            "limit": 10
+                                          });
+                                        },
+                                        child: exploreController
+                                                .featuredCourseList[index]
+                                                .isFavorite!
+                                            ? CustomWidget
+                                                .customAssetImageWidget(
+                                                    image: Assets.assetsHeart)
+                                            : CustomWidget
+                                                .customAssetImageWidget(
+                                                    image: Assets
+                                                        .assetsHeartOutline),
+                                      ),
+                                    )
+                                  ],
+                                ),
                                 Padding(
                                   padding:
                                       EdgeInsets.symmetric(horizontal: 8.0),

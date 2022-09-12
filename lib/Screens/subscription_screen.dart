@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/premium_controller.dart';
@@ -30,55 +31,86 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
       body: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            CustomWidget.customAssetImageWidget(
-              image: Assets.assetsLogo,
-              height: 3.h,
-              width: 10.w,
+            GestureDetector(
+              onTap: () {
+                Get.back();
+              },
+              child: Container(
+                height: 45,
+                width: 45,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: AppColor.whiteColor)),
+                child: const Padding(
+                  padding: EdgeInsets.only(left: 8.0),
+                  child: Center(
+                      child: Icon(
+                    Icons.arrow_back_ios,
+                    color: AppColor.whiteColor,
+                  )),
+                ),
+              ),
             ),
-            CustomWidget.text("Unlock Mindfulness",
-                fontSize: 20, fontWeight: FontWeight.w500),
-            SizedBox(
-              height: 1.h,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CustomWidget.text("Unlock Mindfulness",
+                    fontSize: 20, fontWeight: FontWeight.w500),
+                SizedBox(
+                  height: 1.h,
+                ),
+                CustomWidget.text(
+                    "Subscribe now to get full access to the Sinnesro app.",
+                    fontSize: 9,
+                    color: AppColor.whiteColor.withOpacity(0.8)),
+                SizedBox(
+                  height: 4.h,
+                ),
+                customeSubscriptionDetails(
+                    title: "Unlock  the full Sinnesro experience"),
+                SizedBox(
+                  height: 2.h,
+                ),
+                customeSubscriptionDetails(title: "A new meditation every day"),
+                SizedBox(
+                  height: 2.h,
+                ),
+                customeSubscriptionDetails(
+                    title: "Sleep sound and bedtime exercises"),
+                SizedBox(
+                  height: 2.h,
+                ),
+                customeSubscriptionDetails(
+                    title: "Move mode for mind and body fitness"),
+                SizedBox(
+                  height: 5.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(Assets.assetsMonthly),
+                    Image.asset(Assets.assetsYearly)
+                  ],
+                ),
+                SizedBox(
+                  height: 5.h,
+                ),
+                CustomWidget.customButton(
+                    callBack: () {
+                      premiumController
+                          .getPremium()
+                          .then((value) => setState(() {}));
+                    },
+                    height: 6.h,
+                    width: 70.w,
+                    btnText: "Try free and subscribe",
+                    textColor: AppColor.whiteColor,
+                    color: Color(0xffFFC700)),
+              ],
             ),
-            CustomWidget.text(
-                "Subscribe now to get full access to the headspace app.",
-                fontSize: 9,
-                color: AppColor.whiteColor.withOpacity(0.8)),
-            SizedBox(
-              height: 4.h,
-            ),
-            customeSubscriptionDetails(
-                title: "Unlock  the full Headspace experience"),
-            SizedBox(
-              height: 2.h,
-            ),
-            customeSubscriptionDetails(title: "A new meditation every day"),
-            SizedBox(
-              height: 2.h,
-            ),
-            customeSubscriptionDetails(
-                title: "Sleep sound and bedtime exercises"),
-            SizedBox(
-              height: 2.h,
-            ),
-            customeSubscriptionDetails(
-                title: "Move mode for mind and body fitness"),
-            SizedBox(
-              height: 5.h,
-            ),
-            CustomWidget.customButton(
-                callBack: () {
-                  premiumController
-                      .getPremium()
-                      .then((value) => setState(() {}));
-                },
-                height: 6.h,
-                width: 70.w,
-                btnText: "Try free and subscribe",
-                textColor: AppColor.whiteColor,
-                color: Color(0xffFFC700)),
           ],
         ),
       ),

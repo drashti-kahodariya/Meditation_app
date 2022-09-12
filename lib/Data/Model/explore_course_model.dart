@@ -96,14 +96,17 @@ class CourseData {
   String? title;
   String? image;
   String? description;
+  bool? isFavorite;
 
-  CourseData({this.sId, this.title, this.image, this.description});
+  CourseData(
+      {this.sId, this.title, this.image, this.description, this.isFavorite});
 
   CourseData.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     title = json['title'];
     image = json['image'];
     description = json['description'];
+    isFavorite = json['isFavorite'];
   }
 
   Map<String, dynamic> toJson() {
@@ -112,6 +115,7 @@ class CourseData {
     data['title'] = this.title;
     data['image'] = this.image;
     data['description'] = this.description;
+    data['isFavorite'] = this.isFavorite;
     return data;
   }
 }

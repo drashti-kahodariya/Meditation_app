@@ -1,5 +1,4 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -64,139 +63,145 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        // backgroundColor: Colors.black26,
-        body: Stack(
-          children: [
-            Container(
-              height: 100.h,
-              width: 100.w,
-              child: CachedNetworkImage(
-                maxHeightDiskCache: 1000,
-                imageUrl: audioData.value.image!,
-                placeholder: (_, String s) => CupertinoActivityIndicator(),
-                errorWidget: (_, __, ___) => CupertinoActivityIndicator(),
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
+      child: SafeArea(
+        child: Scaffold(
+          // backgroundColor: Colors.black26,
+          body: Stack(
+            children: [
+              Container(
+                height: 100.h,
+                width: 100.w,
+                child: Image.asset(
+                  Assets.assetsMusicPlayBg,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            Container(
-              height: 100.h,
-              width: 100.w,
-              decoration:
-                  BoxDecoration(color: AppColor.blackColor.withOpacity(0.4)),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 0.0, right: 18, left: 18),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      icon: Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        color: AppColor.whiteColor,
+              Container(
+                height: 100.h,
+                width: 100.w,
+                decoration:
+                    BoxDecoration(color: AppColor.blackColor.withOpacity(0.4)),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 0.0, right: 18, left: 18),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Container(
+                          height: 45,
+                          width: 45,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: AppColor.whiteColor)),
+                          child: Center(
+                              child: Icon(
+                            Icons.close,
+                            color: AppColor.whiteColor,
+                          )),
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  CustomWidget.text("${audioData.value.title}",
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                      color: Colors.white),
-                  CustomWidget.text("${audioData.value.description}",
-                      fontWeight: FontWeight.w400,
-                      fontSize: 15,
-                      color: AppColor.whiteColor.withOpacity(0.8)),
-                  // const Spacer(),
-                  SizedBox(height: 20.h),
-                  StreamBuilder<PlayerState>(
-                    stream: _player!.playerStateStream,
-                    builder: (context, snapshot) {
-                      final playerState = snapshot.data;
-                      final processingState = playerState?.processingState;
-                      final playing = playerState?.playing;
-                      if (processingState == ProcessingState.loading ||
-                          processingState == ProcessingState.buffering) {
-                        return Container(
-                          margin: const EdgeInsets.all(8.0),
-                          height: 9.0.h,
-                          width: 9.0.h,
-                          child: const CupertinoActivityIndicator(),
-                        );
-                      } else if (playing != true) {
-                        return GestureDetector(
-                            onTap: _player!.play,
-                            child: CustomWidget.customAssetImageWidget(
-                              height: 8.0,
-                              width: 8.0,
-                              image: Assets.assetsPlay,
-                            ));
-                      } else if (processingState != ProcessingState.completed) {
-                        return GestureDetector(
-                            onTap: _player!.pause,
-                            child: CustomWidget.customAssetImageWidget(
-                                height: 8.0,
-                                width: 8.0,
+                    SizedBox(
+                      height: 12.h,
+                    ),
+                    CustomWidget.text("${audioData.value.title}",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                        color: Colors.white),
+                    CustomWidget.text("${audioData.value.description}",
+                        fontWeight: FontWeight.w400,
+                        fontSize: 15,
+                        color: AppColor.whiteColor.withOpacity(0.8)),
+                    // const Spacer(),
+                    SizedBox(height: 15.h),
+                    StreamBuilder<PlayerState>(
+                      stream: _player!.playerStateStream,
+                      builder: (context, snapshot) {
+                        final playerState = snapshot.data;
+                        final processingState = playerState?.processingState;
+                        final playing = playerState?.playing;
+                        if (processingState == ProcessingState.loading ||
+                            processingState == ProcessingState.buffering) {
+                          return Container(
+                            margin: const EdgeInsets.all(8.0),
+                            height: 10.0.h,
+                            width: 10.0.h,
+                            child: const CupertinoActivityIndicator(),
+                          );
+                        } else if (playing != true) {
+                          return GestureDetector(
+                              onTap: _player!.play,
+                              child: CustomWidget.customAssetImageWidget(
+                                height: 10.0,
+                                width: 10.0,
+                                image: Assets.assetsPlay,
+                              ));
+                        } else if (processingState !=
+                            ProcessingState.completed) {
+                          return GestureDetector(
+                              onTap: _player!.pause,
+                              child: CustomWidget.customAssetImageWidget(
+                                height: 10.0,
+                                width: 10.0,
                                 image: Assets.assetsPause,
-                                color: AppColor.whiteColor));
-                      } else {
-                        return IconButton(
-                          icon: const Icon(
-                            Icons.replay,
-                            color: AppColor.whiteColor,
-                          ),
-                          iconSize: 64.0,
-                          onPressed: () => _player!.seek(Duration.zero),
-                        );
-                      }
-                    },
-                  ),
-                  Spacer(),
-                  StreamBuilder<DurationState>(
-                    stream: _durationState,
-                    builder: (context, snapshot) {
-                      final durationState = snapshot.data;
+                              ));
+                        } else {
+                          return GestureDetector(
+                              onTap: () => _player!.seek(Duration.zero),
+                              child: CustomWidget.customAssetImageWidget(
+                                height: 10.0,
+                                width: 10.0,
+                                image: Assets.assetsPause,
+                              ));
+                        }
+                      },
+                    ),
+                    Spacer(),
+                    StreamBuilder<DurationState>(
+                      stream: _durationState,
+                      builder: (context, snapshot) {
+                        final durationState = snapshot.data;
 
-                      progress = durationState?.progress ?? Duration.zero;
-                      buffered = durationState?.buffered ?? Duration.zero;
-                      final total = durationState?.total ?? Duration.zero;
-                      return Theme(
-                        data: ThemeData.dark(),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                          child: ProgressBar(
-                            progress: progress!,
-                            buffered: buffered,
-                            barHeight: 3,
-                            thumbRadius: 6,
-                            progressBarColor: Colors.white.withOpacity(1),
-                            baseBarColor: Colors.white.withOpacity(0.1),
-                            bufferedBarColor: Colors.white.withOpacity(0.4),
-                            thumbColor: Colors.white,
-                            total: total,
-                            onSeek: (duration) {
-                              _player!.seek(duration);
-                            },
+                        progress = durationState?.progress ?? Duration.zero;
+                        buffered = durationState?.buffered ?? Duration.zero;
+                        final total = durationState?.total ?? Duration.zero;
+                        return Theme(
+                          data: ThemeData.dark(),
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 18.0),
+                            child: ProgressBar(
+                              progress: progress!,
+                              buffered: buffered,
+                              barHeight: 3,
+                              thumbRadius: 6,
+                              progressBarColor: Colors.white.withOpacity(1),
+                              baseBarColor: Colors.white.withOpacity(0.1),
+                              bufferedBarColor: Colors.white.withOpacity(0.4),
+                              thumbColor: Colors.white,
+                              total: total,
+                              onSeek: (duration) {
+                                _player!.seek(duration);
+                              },
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                ],
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
