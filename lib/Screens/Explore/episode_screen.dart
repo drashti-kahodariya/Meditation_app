@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/explore_controller.dart';
+import 'package:meditation_app/Controllers/home_controller.dart';
 import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
@@ -18,7 +19,7 @@ class EpisodeScreen extends StatefulWidget {
 class _EpisodeScreenState extends State<EpisodeScreen> {
   RxString id = "".obs;
   var exploreController = ExploreController();
-
+  HomeController homeController = Get.find();
   @override
   void didChangeDependencies() {
     id.value = Get.arguments;
@@ -42,8 +43,11 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                   itemCount: exploreController.episodeList.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () => Get.toNamed(Routes.musicPlayScreen,
-                          arguments: exploreController.episodeList[index]),
+                      onTap: () {
+                        homeController.addInRecent(exploreController.episodeList[index]);
+                        Get.toNamed(Routes.musicPlayScreen,
+                          arguments: exploreController.episodeList[index]);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 18.0),
                         child: Column(

@@ -10,11 +10,11 @@ import 'package:in_app_purchase_storekit/store_kit_wrappers.dart';
 
 const bool _kAutoConsume = true;
 
-const String _kConsumableId = 'com.peter.relax_music.premium';
+const String _kConsumableId = 'com.felix.meditate.monthly';
 
 const List<String> _kProductIds = <String>[
   _kConsumableId,
-  "com.peter.relexmusic.premium"
+  "com.felix.meditate.monthly"
 ];
 
 class InAppPurchaseScreen extends StatefulWidget {
@@ -74,6 +74,7 @@ class InAppPurchaseScreenState extends State<InAppPurchaseScreen> {
     }
     ProductDetailsResponse productDetailResponse =
         await _inAppPurchase.queryProductDetails(_kProductIds.toSet());
+    print("TENI ${productDetailResponse.notFoundIDs}");
     if (productDetailResponse.error != null) {
       setState(() {
         _queryProductError = productDetailResponse.error!.message;
@@ -133,7 +134,7 @@ class InAppPurchaseScreenState extends State<InAppPurchaseScreen> {
           children: [
             _buildConnectionCheckTile(),
             _buildProductList(),
-            _buildConsumableBox(),
+            // _buildConsumableBox(),
             _buildRestoreButton(),
           ],
         ),

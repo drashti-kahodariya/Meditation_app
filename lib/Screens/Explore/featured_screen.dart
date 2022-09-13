@@ -129,7 +129,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                                     .featuredCourseList[index].sId);
                           },
                           child: Container(
-                            height: 22.h,
+                            height: 25.h,
                             width: 47.w,
                             // color: AppColor.blackColor,
                             child: Column(

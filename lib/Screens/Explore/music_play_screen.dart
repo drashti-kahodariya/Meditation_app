@@ -29,6 +29,7 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
+
     audioData.value = Get.arguments;
     _player = AudioPlayer();
     _durationState =

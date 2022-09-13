@@ -174,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
         // }
       },
       child: Container(
-        height: 22.h,
+        height: 23.h,
         width: 100.w,
         decoration: CustomWidget.customBoxDecoration(
             borderRadius: 10,
@@ -228,7 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: 0.5.h,
+                      height: 0.h,
                     ),
                     Row(
                       children: [
@@ -246,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                height: 18.h,
+                height: 19.h,
                 width: 40.w,
                 decoration: CustomWidget.customBoxDecoration(
                   borderRadius: 10,

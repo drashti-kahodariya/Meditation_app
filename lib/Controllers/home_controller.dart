@@ -48,16 +48,18 @@ class HomeController extends GetxController {
     getFavoriteList();
   }
 
-  addInRecent(EpisodeData course) {
-    var tempRecentList = <Map<String, dynamic>>[].obs;
-    tempRecentList.add(course.toJson());
+  addInRecent(EpisodeData episode) {
+    var tempRecentList = [].obs;
+    tempRecentList.addAll(GetStorage().read(AppPreferencesHelper.recent));
+    tempRecentList.add(episode.toJson());
+
     GetStorage().write(AppPreferencesHelper.recent, tempRecentList);
     print("RECENT LIST:: ${GetStorage().read(AppPreferencesHelper.recent)}");
   }
 
   getAndSetRecent() {
     recentList.clear();
-    List<dynamic> tempRecent = GetStorage().read(AppPreferencesHelper.recent);
+    List<dynamic> tempRecent = GetStorage().read(AppPreferencesHelper.recent) ?? [];
     for (var i = 0; i < tempRecent.length; i++) {
       recentList.add(EpisodeData.fromJson(tempRecent[i]));
     }
