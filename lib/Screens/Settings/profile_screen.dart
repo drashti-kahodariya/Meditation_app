@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/authentication_controller.dart';
+import 'package:meditation_app/Controllers/home_controller.dart';
 import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
@@ -18,6 +19,8 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   var authController = Get.put(AuthenticationController());
+  var homeController = Get.put(HomeController());
+
 
   @override
   void initState() {
@@ -151,7 +154,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomWidget.text("2 Sessions", fontSize: 12),
+                        CustomWidget.text("${homeController.recentList.length} Sessions", fontSize: 12),
                         CustomWidget.text(S.of(context).sessionsCompleted,
                             fontSize: 10,
                             color: AppColor.whiteColor.withOpacity(0.5)),

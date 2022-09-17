@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:meditation_app/Controllers/authentication_controller.dart';
+import 'package:meditation_app/Controllers/home_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
@@ -20,6 +21,7 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> {
   var authController = Get.put(AuthenticationController());
+
   var isEnglish = true.obs;
 
   @override
@@ -27,6 +29,7 @@ class _SettingScreenState extends State<SettingScreen> {
     if (GetStorage().read(AppPreferencesHelper.language) != null) {
       isEnglish.value = GetStorage().read(AppPreferencesHelper.language);
     }
+
     super.initState();
   }
 
@@ -47,7 +50,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       Get.toNamed(Routes.editProfileScreen);
                     }),
                 SizedBox(
-                  height: 4.h,
+                  height: 3.h,
                 ),
                 Obx(() {
                   return Row(
@@ -82,7 +85,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   );
                 }),
                 SizedBox(
-                  height: 4.h,
+                  height: 3.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsInvite,
@@ -91,7 +94,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       Get.toNamed(Routes.inviteFriendsScreen);
                     }),
                 SizedBox(
-                  height: 4.h,
+                  height: 3.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsNotification,
@@ -100,7 +103,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       Get.toNamed(Routes.notificationScreen);
                     }),
                 SizedBox(
-                  height: 4.h,
+                  height: 3.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsMyData,
@@ -109,7 +112,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       Get.toNamed(Routes.supportScreen, arguments: "My Data");
                     }),
                 SizedBox(
-                  height: 4.h,
+                  height: 3.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsTermsCondition,
@@ -119,7 +122,7 @@ class _SettingScreenState extends State<SettingScreen> {
                           arguments: "Terms & Conditions");
                     }),
                 SizedBox(
-                  height: 4.h,
+                  height: 3.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsDownload,
@@ -128,7 +131,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       Get.toNamed(Routes.downloadsScreen);
                     }),
                 SizedBox(
-                  height: 4.h,
+                  height: 3.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsPrivacyPolicy,
@@ -138,7 +141,7 @@ class _SettingScreenState extends State<SettingScreen> {
                           arguments: "Privacy Policy");
                     }),
                 SizedBox(
-                  height: 4.h,
+                  height: 3.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsSupport,
@@ -147,7 +150,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       Get.toNamed(Routes.supportScreen, arguments: "Support");
                     }),
                 SizedBox(
-                  height: 4.h,
+                  height: 3.h,
                 ),
                 customSettingTile(
                     icon: Assets.assetsLogout,

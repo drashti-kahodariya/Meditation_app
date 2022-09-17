@@ -88,25 +88,30 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Container(
-                          height: 45,
-                          width: 45,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(color: AppColor.whiteColor)),
-                          child: Center(
-                              child: Icon(
-                            Icons.close,
-                            color: AppColor.whiteColor,
-                          )),
+                    Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.back();
+                            },
+                            child: Container(
+                              height: 45,
+                              width: 45,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: AppColor.whiteColor)),
+                              child: Center(
+                                  child: Icon(
+                                Icons.close,
+                                color: AppColor.whiteColor,
+                              )),
+                            ),
+                          ),
                         ),
-                      ),
+                        Image.asset(Assets.assetsDownload)
+                      ],
                     ),
                     SizedBox(
                       height: 12.h,

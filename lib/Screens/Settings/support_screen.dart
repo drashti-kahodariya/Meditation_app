@@ -34,7 +34,7 @@ class _SupportScreenState extends State<SupportScreen> {
   @override
   Widget build(BuildContext context) {
     return WebView(
-      initialUrl: url,
+      initialUrl: "https://flutter.dev/",
     );
   }
 }

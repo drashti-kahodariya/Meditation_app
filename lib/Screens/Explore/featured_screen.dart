@@ -30,6 +30,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
 
   @override
   void didChangeDependencies() {
+    print("ok");
     exploreController.getFeaturedData(
         {"categoryId": widget.id, "page": page.value, "limit": 10});
     exploreController.getExploreCourseData(widget.id);
@@ -105,7 +106,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
             Padding(
               padding: const EdgeInsets.only(left: 18.0),
               child: Container(
-                height: 22.h,
+                height: 23.h,
                 width: 100.w,
                 child: LazyLoadScrollView(
                   onEndOfPage: () {

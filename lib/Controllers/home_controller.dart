@@ -50,7 +50,7 @@ class HomeController extends GetxController {
 
   addInRecent(EpisodeData episode) {
     var tempRecentList = [].obs;
-    tempRecentList.addAll(GetStorage().read(AppPreferencesHelper.recent));
+    tempRecentList.addAll(GetStorage().read(AppPreferencesHelper.recent) ?? []);
     tempRecentList.add(episode.toJson());
 
     GetStorage().write(AppPreferencesHelper.recent, tempRecentList);

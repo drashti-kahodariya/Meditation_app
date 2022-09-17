@@ -41,7 +41,7 @@ dependencies:
   google_sign_in: ^5.4.0
   the_apple_sign_in: ^1.1.1
   persistent_bottom_nav_bar:
-  webview_flutter: ^3.0.4
+  webview_flutter: ^3.0.1
   cached_network_image: ^3.2.1
   just_audio: ^0.9.28
   audio_video_progress_bar: ^0.10.0

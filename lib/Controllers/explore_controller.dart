@@ -26,6 +26,7 @@ class ExploreController extends GetxController {
   }
 
   getExploreCourseData(String id) async {
+    exploreCourseList.clear();
     final getExploreCourseResponse =
         await exploreRepository.exploreCourseApiCall(id);
     exploreCourseList.addAll(getExploreCourseResponse.exploreCourseList!);
