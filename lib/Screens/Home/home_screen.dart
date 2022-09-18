@@ -10,6 +10,7 @@ import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
 import 'package:meditation_app/generated/l10n.dart';
+import 'package:path/path.dart' as p;
 import 'package:sizer/sizer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
@@ -237,9 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 shrinkWrap: true,
                                 padding: EdgeInsets.zero,
                                 itemCount: homeController
-                                    .dashboardMeditationList[0]
-                                    .atNight!
-                                    .length!,
+                                    .dashboardMeditationList[0].atNight!.length,
                                 itemBuilder: (BuildContext context, int index) {
                                   return TimelineTile(
                                     alignment: TimelineAlign.manual,
@@ -300,15 +299,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         GestureDetector(
           onTap: () {
-            Get.toNamed(Routes.subscriptionScreen);
+            // Get.toNamed(Routes.subscriptionScreen);
 
-            // homeController.addInRecent(course);
-            // final extension = p.extension(course.audioOrVideo!);
-            // if (extension == ".mp3") {
-            //   Get.toNamed(Routes.musicPlayScreen, arguments: course);
-            // } else {
-            //   Get.toNamed(Routes.videoPlayScreen, arguments: course);
-            // }
+            homeController.addInRecent(course);
+            final extension = p.extension(course.audioOrVideo!);
+            if (extension == ".mp3") {
+              Get.toNamed(Routes.musicPlayScreen, arguments: course);
+            } else {
+              Get.toNamed(Routes.videoPlayScreen, arguments: course);
+            }
           },
           child: Container(
             width: 80.w,
@@ -372,7 +371,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 image: Assets.assetsClock,
                                 color: AppColor.whiteColor.withOpacity(0.5),
                                 height: 2),
-                            CustomWidget.text("1 - 2 Min",
+                            CustomWidget.text("${course.duration}",
                                 textAlign: TextAlign.start,
                                 fontSize: 10,
                                 color: AppColor.whiteColor.withOpacity(0.5)),

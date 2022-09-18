@@ -21,11 +21,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   var authController = Get.put(AuthenticationController());
   var homeController = Get.put(HomeController());
 
-
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       authController.setCurrentUser();
+      homeController.getAndSetRecent();
     });
     super.initState();
   }
@@ -150,16 +150,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(
                       width: 10,
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomWidget.text("${homeController.recentList.length} Sessions", fontSize: 12),
-                        CustomWidget.text(S.of(context).sessionsCompleted,
-                            fontSize: 10,
-                            color: AppColor.whiteColor.withOpacity(0.5)),
-                      ],
-                    )
+                    Obx(() {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomWidget.text(
+                              "${homeController.recentList.length} Sessions",
+                              fontSize: 12),
+                          CustomWidget.text(S.of(context).sessionsCompleted,
+                              fontSize: 10,
+                              color: AppColor.whiteColor.withOpacity(0.5)),
+                        ],
+                      );
+                    })
                   ],
                 )
               ],

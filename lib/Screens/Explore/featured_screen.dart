@@ -26,14 +26,10 @@ class FeaturedScreen extends StatefulWidget {
 class _FeaturedScreenState extends State<FeaturedScreen> {
   var exploreController = Get.put(ExploreController());
   var homeController = Get.put(HomeController());
-  RxInt page = 1.obs;
 
   @override
   void didChangeDependencies() {
     print("ok");
-    exploreController.getFeaturedData(
-        {"categoryId": widget.id, "page": page.value, "limit": 10});
-    exploreController.getExploreCourseData(widget.id);
 
     super.didChangeDependencies();
   }
@@ -110,10 +106,10 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                 width: 100.w,
                 child: LazyLoadScrollView(
                   onEndOfPage: () {
-                    page.value += 1;
+                    exploreController.page.value += 1;
                     exploreController.getFeaturedData({
                       "categoryId": widget.id,
-                      "page": page.value,
+                      "page": exploreController.page.value,
                       "limit": 10
                     });
                   },
@@ -164,7 +160,8 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                                           });
                                           exploreController.getFeaturedData({
                                             "categoryId": widget.id,
-                                            "page": page.value,
+                                            "page":
+                                                exploreController.page.value,
                                             "limit": 10
                                           });
                                         },

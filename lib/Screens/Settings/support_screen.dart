@@ -11,7 +11,6 @@ class SupportScreen extends StatefulWidget {
 class _SupportScreenState extends State<SupportScreen> {
   String url = "";
   @override
-  @override
   void didChangeDependencies() {
     WebView.platform = AndroidWebView();
     String argument = ModalRoute.of(context)!.settings.arguments as String;
@@ -34,7 +33,7 @@ class _SupportScreenState extends State<SupportScreen> {
   @override
   Widget build(BuildContext context) {
     return WebView(
-      initialUrl: "https://flutter.dev/",
+      initialUrl: url,
     );
   }
 }

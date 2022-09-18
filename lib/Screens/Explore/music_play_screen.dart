@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:meditation_app/Controllers/home_controller.dart';
 import 'package:meditation_app/Data/Model/episode_model.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
@@ -25,6 +26,7 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
   Duration? buffered;
   AudioPlayer? _player;
   Stream<DurationState>? _durationState;
+  var homeController = Get.put(HomeController());
 
   @override
   void initState() {
@@ -88,30 +90,25 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.back();
-                            },
-                            child: Container(
-                              height: 45,
-                              width: 45,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(color: AppColor.whiteColor)),
-                              child: Center(
-                                  child: Icon(
-                                Icons.close,
-                                color: AppColor.whiteColor,
-                              )),
-                            ),
-                          ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Container(
+                          height: 45,
+                          width: 45,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: AppColor.whiteColor)),
+                          child: Center(
+                              child: Icon(
+                            Icons.close,
+                            color: AppColor.whiteColor,
+                          )),
                         ),
-                        Image.asset(Assets.assetsDownload)
-                      ],
+                      ),
                     ),
                     SizedBox(
                       height: 12.h,
@@ -144,8 +141,8 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                           return GestureDetector(
                               onTap: _player!.play,
                               child: CustomWidget.customAssetImageWidget(
-                                height: 10.0,
-                                width: 10.0,
+                                height: 15,
+                                width: 15,
                                 image: Assets.assetsPlay,
                               ));
                         } else if (processingState !=
@@ -153,22 +150,40 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                           return GestureDetector(
                               onTap: _player!.pause,
                               child: CustomWidget.customAssetImageWidget(
-                                height: 10.0,
-                                width: 10.0,
+                                height: 15,
+                                width: 15,
                                 image: Assets.assetsPause,
                               ));
                         } else {
                           return GestureDetector(
                               onTap: () => _player!.seek(Duration.zero),
                               child: CustomWidget.customAssetImageWidget(
-                                height: 10.0,
-                                width: 10.0,
+                                height: 15,
+                                width: 15,
                                 image: Assets.assetsPause,
                               ));
                         }
                       },
                     ),
                     Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () async {
+                          homeController.downloadFile(audioData.value);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(
+                              Icons.download,
+                              color: AppColor.whiteColor.withOpacity(0.7),
+                              size: 30,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     StreamBuilder<DurationState>(
                       stream: _durationState,
                       builder: (context, snapshot) {
@@ -211,19 +226,6 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
         ),
       ),
     );
-    // return Scaffold(
-    //   backgroundColor: AppColor.backgroundColor,
-    //   body: Stack(
-    //     children: [
-    //       Image.asset(
-    //         Assets.assetsDummy3,
-    //         height: 100.h,
-    //         width: 100.w,
-    //         fit: BoxFit.cover,
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 }
 

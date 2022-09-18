@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:meditation_app/Data/Model/dashboard_meditation_model.dart';
@@ -6,6 +9,7 @@ import 'package:meditation_app/Data/Model/favourite_model.dart';
 import 'package:meditation_app/Repository/home_repository.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/generated/l10n.dart';
+import 'package:path_provider/path_provider.dart';
 
 class HomeController extends GetxController {
   final homeRepository = HomeRepository();
@@ -13,6 +17,7 @@ class HomeController extends GetxController {
   var favouriteList = <FavouriteData>[].obs;
   var recentList = <EpisodeData>[].obs;
   var notificationList = <EpisodeData>[].obs;
+  var downloadList = EpisodeData().obs;
 
   /// Get the greeting from the current time of user
   String greetingMessage() {
@@ -59,7 +64,8 @@ class HomeController extends GetxController {
 
   getAndSetRecent() {
     recentList.clear();
-    List<dynamic> tempRecent = GetStorage().read(AppPreferencesHelper.recent) ?? [];
+    List<dynamic> tempRecent =
+        GetStorage().read(AppPreferencesHelper.recent) ?? [];
     for (var i = 0; i < tempRecent.length; i++) {
       recentList.add(EpisodeData.fromJson(tempRecent[i]));
     }
@@ -70,5 +76,32 @@ class HomeController extends GetxController {
     final getNotificationListResponse =
         await homeRepository.getNotificationApiCall();
     notificationList.addAll(getNotificationListResponse.episodeList!);
+  }
+
+  downloadFile(EpisodeData audioData) async {
+    final appStorage = await getApplicationDocumentsDirectory();
+    final file = File("${appStorage.path}/${audioData.sId}");
+
+    final response = await Dio().get(
+      audioData.audioOrVideo!,
+      options: Options(
+          responseType: ResponseType.bytes,
+          followRedirects: false,
+          validateStatus: (status) {
+            return status! < 500;
+          }),
+    );
+    final raf = file.openSync(mode: FileMode.write);
+    raf.writeFromSync(response.data);
+    await raf.close();
+    downloadList.value = EpisodeData(
+        audioOrVideo: file.path,
+        title: audioData.title,
+        image: audioData.image,
+        description: audioData.description,
+        courseId: audioData.courseId);
+    print("download ${downloadList.value.audioOrVideo}");
+
+    // return file;
   }
 }

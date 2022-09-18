@@ -1,8 +1,5 @@
-import 'dart:typed_data';
-
-import 'package:file_saver/file_saver.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/l10n.dart';
@@ -18,19 +15,39 @@ class DownloadsScreen extends StatefulWidget {
 class _DownloadsScreenState extends State<DownloadsScreen> {
   @override
   void initState() {
-    downloads();
+    // openFile(
+    //     url:
+    //         "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    //     fileName: "video.mp4");
     super.initState();
   }
 
-  downloads() async {
-    Uint8List bytes = (await NetworkAssetBundle(Uri.parse(
-                "https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3"))
-            .load(
-                "https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3"))
-        .buffer
-        .asUint8List();
-    await FileSaver.instance.saveAs("download", bytes, 'mp3', MimeType.MP3);
-  }
+  // Future openFile({required String url, required String fileName}) async {
+  //   final name = fileName ?? url.split('/').last;
+  //   final file = await downloadFile(url, name);
+  //   print("Path::${file!.path}");
+  //   OpenFile.open(file!.path);
+  // }
+
+  // Future<File>? downloadFile(String url, String name) async {
+  //   final appStorage = await getApplicationDocumentsDirectory();
+  //   final file = File("${appStorage.path}/${name}");
+  //
+  //   final response = await Dio().get(
+  //     url,
+  //     options: Options(
+  //         responseType: ResponseType.bytes,
+  //         followRedirects: false,
+  //         validateStatus: (status) {
+  //           return status! < 500;
+  //         }),
+  //   );
+  //   final raf = file.openSync(mode: FileMode.write);
+  //   // response.data is List<int> type
+  //   raf.writeFromSync(response.data);
+  //   await raf.close();
+  //   return file;
+  // }
 
   @override
   Widget build(BuildContext context) {

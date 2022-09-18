@@ -10,6 +10,7 @@ class ExploreController extends GetxController {
   var featuredCourseList = <CourseData>[].obs;
   var exploreCourseList = <ExploreCourseData>[].obs;
   var episodeList = <EpisodeData>[].obs;
+  var page = 1.obs;
 
   getExploreData() async {
     final getExploreResponse = await exploreRepository.exploreApiCall();

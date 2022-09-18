@@ -25,7 +25,6 @@ class _DashboardState extends State<Dashboard> {
   var authController = Get.put(AuthenticationController());
   var exploreController = Get.put(ExploreController());
 
-
   final _selectedIndex = 0.obs;
 
   @override
@@ -35,6 +34,31 @@ class _DashboardState extends State<Dashboard> {
           currentIndex: _selectedIndex.value,
           onTap: (int index) {
             _selectedIndex.value = index;
+            if (_selectedIndex.value == 1) {
+              exploreController.getFeaturedData({
+                "categoryId": "62ebe866fa49320178ad75bc",
+                "page": exploreController.page.value,
+                "limit": 10
+              });
+              exploreController
+                  .getExploreCourseData("62ebe866fa49320178ad75bc");
+            } else if (_selectedIndex.value == 2) {
+              exploreController.getFeaturedData({
+                "categoryId": "62ebe85ffa49320178ad75b8",
+                "page": exploreController.page.value,
+                "limit": 10
+              });
+              exploreController
+                  .getExploreCourseData("62ebe85ffa49320178ad75b8");
+            } else {
+              exploreController.getFeaturedData({
+                "categoryId": "62ebe859fa49320178ad75b4",
+                "page": exploreController.page.value,
+                "limit": 10
+              });
+              exploreController
+                  .getExploreCourseData("62ebe859fa49320178ad75b4");
+            }
           },
           selectedItemColor: AppColor.lightPinkColor,
           unselectedItemColor: AppColor.whiteColor.withOpacity(0.7),
@@ -51,15 +75,15 @@ class _DashboardState extends State<Dashboard> {
   List<Widget> buildScreens() {
     return [
       const HomeScreen(),
-       FeaturedScreen(
+      const FeaturedScreen(
           id: "62ebe866fa49320178ad75bc",
           image: Assets.assetsMeditateImage,
           name: "Focus"),
-       FeaturedScreen(
+      const FeaturedScreen(
           id: "62ebe85ffa49320178ad75b8",
           image: Assets.assetsSleepImage,
           name: "Sleep"),
-       FeaturedScreen(
+      const FeaturedScreen(
           id: "62ebe859fa49320178ad75b4",
           image: Assets.assetsFocusImage,
           name: "Meditate"),
