@@ -147,9 +147,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                     beforeLineStyle: LineStyle(
                                         color: Colors.white.withOpacity(0.2),
                                         thickness: 3),
-                                    endChild: dashboardCourseCard(homeController
-                                        .dashboardMeditationList[0]
-                                        .startYourDay![index]),
+                                    endChild: Column(
+                                      children: [
+                                        dashboardCourseCard(homeController
+                                            .dashboardMeditationList[0]
+                                            .startYourDay![index]),
+                                        SizedBox(
+                                          height: 2.h,
+                                        )
+                                      ],
+                                    ),
                                   );
                                 },
                               ),

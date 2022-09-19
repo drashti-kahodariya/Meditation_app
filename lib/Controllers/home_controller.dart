@@ -17,7 +17,7 @@ class HomeController extends GetxController {
   var favouriteList = <FavouriteData>[].obs;
   var recentList = <EpisodeData>[].obs;
   var notificationList = <EpisodeData>[].obs;
-  var downloadList = EpisodeData().obs;
+  var downloadList = <EpisodeData>[].obs;
 
   /// Get the greeting from the current time of user
   String greetingMessage() {
@@ -94,13 +94,13 @@ class HomeController extends GetxController {
     final raf = file.openSync(mode: FileMode.write);
     raf.writeFromSync(response.data);
     await raf.close();
-    downloadList.value = EpisodeData(
+    downloadList.add(EpisodeData(
         audioOrVideo: file.path,
         title: audioData.title,
         image: audioData.image,
         description: audioData.description,
-        courseId: audioData.courseId);
-    print("download ${downloadList.value.audioOrVideo}");
+        courseId: audioData.courseId));
+    print("download ${downloadList.value}");
 
     // return file;
   }
