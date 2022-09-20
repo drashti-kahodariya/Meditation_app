@@ -36,12 +36,12 @@ class _DashboardState extends State<Dashboard> {
             _selectedIndex.value = index;
             if (_selectedIndex.value == 1) {
               exploreController.getFeaturedData({
-                "categoryId": "62ebe866fa49320178ad75bc",
+                "categoryId": "62ebe859fa49320178ad75b4",
                 "page": exploreController.page.value,
                 "limit": 10
               });
               exploreController
-                  .getExploreCourseData("62ebe866fa49320178ad75bc");
+                  .getExploreCourseData("62ebe859fa49320178ad75b4");
             } else if (_selectedIndex.value == 2) {
               exploreController.getFeaturedData({
                 "categoryId": "62ebe85ffa49320178ad75b8",
@@ -52,12 +52,12 @@ class _DashboardState extends State<Dashboard> {
                   .getExploreCourseData("62ebe85ffa49320178ad75b8");
             } else {
               exploreController.getFeaturedData({
-                "categoryId": "62ebe859fa49320178ad75b4",
+                "categoryId": "62ebe866fa49320178ad75bc",
                 "page": exploreController.page.value,
                 "limit": 10
               });
               exploreController
-                  .getExploreCourseData("62ebe859fa49320178ad75b4");
+                  .getExploreCourseData("62ebe866fa49320178ad75bc");
             }
           },
           selectedItemColor: AppColor.lightPinkColor,
@@ -76,17 +76,17 @@ class _DashboardState extends State<Dashboard> {
     return [
       const HomeScreen(),
       const FeaturedScreen(
-          id: "62ebe866fa49320178ad75bc",
-          image: Assets.assetsMeditateImage,
-          name: "Focus"),
+          id: "62ebe859fa49320178ad75b4",
+          image: Assets.assetsFocusImage,
+          name: "Meditate"),
       const FeaturedScreen(
           id: "62ebe85ffa49320178ad75b8",
           image: Assets.assetsSleepImage,
           name: "Sleep"),
       const FeaturedScreen(
-          id: "62ebe859fa49320178ad75b4",
-          image: Assets.assetsFocusImage,
-          name: "Meditate"),
+          id: "62ebe866fa49320178ad75bc",
+          image: Assets.assetsMeditateImage,
+          name: "Focus"),
       const ProfileScreen(),
     ];
   }
@@ -108,11 +108,11 @@ class _DashboardState extends State<Dashboard> {
       ),
       BottomNavigationBarItem(
         icon: const NavBarItemImage(
-          image: Assets.assetsFocusIcon,
+          image: Assets.assetsMeditateIcon,
         ),
         activeIcon: const NavBarItemImage(
-            image: Assets.assetsSelectedFocus, fromSelected: true),
-        label: S.of(context).focus,
+            image: Assets.assetsSelectedMeditate, fromSelected: true),
+        label: S.of(context).meditate,
       ),
       BottomNavigationBarItem(
         icon: const NavBarItemImage(
@@ -124,11 +124,11 @@ class _DashboardState extends State<Dashboard> {
       ),
       BottomNavigationBarItem(
         icon: const NavBarItemImage(
-          image: Assets.assetsMeditateIcon,
+          image: Assets.assetsFocusIcon,
         ),
         activeIcon: const NavBarItemImage(
-            image: Assets.assetsSelectedMeditate, fromSelected: true),
-        label: S.of(context).meditate,
+            image: Assets.assetsSelectedFocus, fromSelected: true),
+        label: S.of(context).focus,
       ),
       BottomNavigationBarItem(
         icon: const NavBarItemImage(

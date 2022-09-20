@@ -40,6 +40,7 @@ class _VideoPlayScreenState extends State<VideoPlayScreen> {
     return OrientationBuilder(builder: (context, orientation) {
       return SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.black,
           body: Center(
             child: _controller!.value.isInitialized
                 ? AspectRatio(

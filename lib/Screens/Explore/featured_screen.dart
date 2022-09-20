@@ -9,6 +9,7 @@ import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
+import 'package:meditation_app/generated/l10n.dart';
 import 'package:sizer/sizer.dart';
 
 class FeaturedScreen extends StatefulWidget {
@@ -71,7 +72,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                     decoration: CustomWidget.customBoxDecoration(
                         borderRadius: 10,
                         borderColor: AppColor.whiteColor.withOpacity(0.6)),
-                    child: CustomWidget.text("Featured",
+                    child: CustomWidget.text(S.of(context).featured,
                         fontSize: 10,
                         color: AppColor.whiteColor.withOpacity(0.6)),
                   ),

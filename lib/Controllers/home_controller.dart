@@ -94,14 +94,32 @@ class HomeController extends GetxController {
     final raf = file.openSync(mode: FileMode.write);
     raf.writeFromSync(response.data);
     await raf.close();
-    downloadList.add(EpisodeData(
-        audioOrVideo: file.path,
-        title: audioData.title,
-        image: audioData.image,
-        description: audioData.description,
-        courseId: audioData.courseId));
-    print("download ${downloadList.value}");
+    addInDownloads(path: file.path, audioData: audioData);
+  }
 
-    // return file;
+  addInDownloads({required EpisodeData audioData, required String path}) {
+    var tempDownloadsList = [].obs;
+    tempDownloadsList
+        .addAll(GetStorage().read(AppPreferencesHelper.downloads) ?? []);
+    print("PATH:::${path}");
+    tempDownloadsList.add(EpisodeData(
+            audioOrVideo: path,
+            title: audioData.title,
+            image: audioData.image,
+            description: audioData.description,
+            courseId: audioData.courseId)
+        .toJson());
+
+    GetStorage().write(AppPreferencesHelper.downloads, tempDownloadsList);
+    print("DOWNLOADS LIST:: ${GetStorage().read(AppPreferencesHelper.recent)}");
+  }
+
+  getAndSetDownloads() {
+    downloadList.clear();
+    List<dynamic> tempDownload =
+        GetStorage().read(AppPreferencesHelper.recent) ?? [];
+    for (var i = 0; i < tempDownload.length; i++) {
+      recentList.add(EpisodeData.fromJson(tempDownload[i]));
+    }
   }
 }
