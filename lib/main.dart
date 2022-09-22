@@ -15,6 +15,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await GetStorage.init();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // GetStorage().erase();
   runApp(const MyApp());
 }
 

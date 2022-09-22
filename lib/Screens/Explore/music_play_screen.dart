@@ -133,9 +133,11 @@ class _MusicPlayScreenState extends State<MusicPlayScreen>
                             processingState == ProcessingState.buffering) {
                           return Container(
                             margin: const EdgeInsets.all(8.0),
-                            height: 10.0.h,
-                            width: 10.0.h,
-                            child: const CupertinoActivityIndicator(),
+                            height: 20.0.h,
+                            width: 20.0.h,
+                            child: const CupertinoActivityIndicator(
+                              color: AppColor.whiteColor,
+                            ),
                           );
                         } else if (playing != true) {
                           return GestureDetector(

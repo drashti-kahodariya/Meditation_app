@@ -7,6 +7,7 @@ import 'package:meditation_app/Routes/routes.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/l10n.dart';
+import 'package:path/path.dart' as p;
 import 'package:sizer/sizer.dart';
 
 class DownloadsScreen extends StatefulWidget {
@@ -18,8 +19,12 @@ class DownloadsScreen extends StatefulWidget {
 
 class _DownloadsScreenState extends State<DownloadsScreen> {
   var homeController = Get.put(HomeController());
+
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      homeController.getAndSetDownloads();
+    });
     super.initState();
   }
 
@@ -30,26 +35,6 @@ class _DownloadsScreenState extends State<DownloadsScreen> {
   //   OpenFile.open(file!.path);
   // }
 
-  // Future<File>? downloadFile(String url, String name) async {
-  //   final appStorage = await getApplicationDocumentsDirectory();
-  //   final file = File("${appStorage.path}/${name}");
-  //
-  //   final response = await Dio().get(
-  //     url,
-  //     options: Options(
-  //         responseType: ResponseType.bytes,
-  //         followRedirects: false,
-  //         validateStatus: (status) {
-  //           return status! < 500;
-  //         }),
-  //   );
-  //   final raf = file.openSync(mode: FileMode.write);
-  //   // response.data is List<int> type
-  //   raf.writeFromSync(response.data);
-  //   await raf.close();
-  //   return file;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,83 +42,93 @@ class _DownloadsScreenState extends State<DownloadsScreen> {
       body: Column(
         children: [
           CustomWidget.customAppBar(title: S.of(context).downloads),
-          Expanded(
-            child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: homeController.downloadList.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      // final extension = p.extension(
-                      //     homeController.downloadList[index].audioOrVideo!);
-                      //
-                      // if (extension == ".mp3") {
-                      Get.toNamed(Routes.musicPlayScreen,
-                          arguments: homeController.downloadList[index]);
-                      // } else {
-                      //   Get.toNamed(Routes.videoPlayScreen,
-                      //       arguments: homeController.downloadList[index]);
-                      // }
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                height: 9.h,
-                                width: 25.w,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(12),
-                                  child: CachedNetworkImage(
-                                    imageUrl: homeController
-                                        .downloadList[index].image!,
-                                    fit: BoxFit.cover,
-                                    progressIndicatorBuilder:
-                                        (context, url, downloadProgress) =>
-                                            CupertinoActivityIndicator(),
-                                    errorWidget: (context, url, error) =>
-                                        Icon(Icons.error),
+          Obx(() {
+            return Expanded(
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: homeController.downloadList.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        final extension = p.extension(
+                            homeController.downloadList[index].audioOrVideo!);
+
+                        if (extension == ".mp3") {
+                          Get.toNamed(Routes.musicPlayScreen,
+                              arguments: homeController.downloadList[index]);
+                        } else {
+                          Get.toNamed(Routes.videoPlayScreen,
+                              arguments: homeController.downloadList[index]);
+                        }
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  height: 9.h,
+                                  width: 25.w,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: CachedNetworkImage(
+                                      imageUrl: homeController
+                                          .downloadList[index].image!,
+                                      fit: BoxFit.cover,
+                                      progressIndicatorBuilder:
+                                          (context, url, downloadProgress) =>
+                                              CupertinoActivityIndicator(),
+                                      errorWidget: (context, url, error) =>
+                                          Icon(Icons.error),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 2.w,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomWidget.text(
-                                      homeController.downloadList[index].title!,
-                                      fontSize: 15),
-                                  CustomWidget.text(
-                                      homeController
-                                          .downloadList[index].description!,
-                                      fontSize: 11,
-                                      color:
-                                          AppColor.whiteColor.withOpacity(0.7)),
-                                ],
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 1.h,
-                          ),
-                          const Divider(
-                            color: AppColor.blackColor,
-                            thickness: 0.2,
-                          ),
-                          SizedBox(
-                            height: 0.5.h,
-                          ),
-                        ],
+                                SizedBox(
+                                  width: 2.w,
+                                ),
+                                Container(
+                                  width: 60.w,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      CustomWidget.text(
+                                          homeController
+                                              .downloadList[index].title!,
+                                          fontSize: 15,
+                                          maxLine: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.left),
+                                      CustomWidget.text(
+                                          homeController
+                                              .downloadList[index].description!,
+                                          fontSize: 11,
+                                          color: AppColor.whiteColor
+                                              .withOpacity(0.7)),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 1.h,
+                            ),
+                            const Divider(
+                              color: AppColor.blackColor,
+                              thickness: 0.2,
+                            ),
+                            SizedBox(
+                              height: 0.5.h,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                }),
-          )
+                    );
+                  }),
+            );
+          })
         ],
       ),
     );

@@ -55,11 +55,15 @@ class HomeController extends GetxController {
 
   addInRecent(EpisodeData episode) {
     var tempRecentList = [].obs;
+    var recentList = GetStorage().read(AppPreferencesHelper.recent) ?? [];
     tempRecentList.addAll(GetStorage().read(AppPreferencesHelper.recent) ?? []);
-    tempRecentList.add(episode.toJson());
-
-    GetStorage().write(AppPreferencesHelper.recent, tempRecentList);
-    print("RECENT LIST:: ${GetStorage().read(AppPreferencesHelper.recent)}");
+    Map isEpisodeAvailable = tempRecentList.firstWhere(
+        (element) => element['_id'] == episode.sId,
+        orElse: () => {});
+    if (isEpisodeAvailable.isEmpty) {
+      tempRecentList.add(episode.toJson());
+      GetStorage().write(AppPreferencesHelper.recent, tempRecentList);
+    }
   }
 
   getAndSetRecent() {
@@ -101,7 +105,6 @@ class HomeController extends GetxController {
     var tempDownloadsList = [].obs;
     tempDownloadsList
         .addAll(GetStorage().read(AppPreferencesHelper.downloads) ?? []);
-    print("PATH:::${path}");
     tempDownloadsList.add(EpisodeData(
             audioOrVideo: path,
             title: audioData.title,
@@ -109,9 +112,7 @@ class HomeController extends GetxController {
             description: audioData.description,
             courseId: audioData.courseId)
         .toJson());
-
     GetStorage().write(AppPreferencesHelper.downloads, tempDownloadsList);
-    print("DOWNLOADS LIST:: ${GetStorage().read(AppPreferencesHelper.recent)}");
   }
 
   getAndSetDownloads() {
@@ -119,7 +120,7 @@ class HomeController extends GetxController {
     List<dynamic> tempDownload =
         GetStorage().read(AppPreferencesHelper.recent) ?? [];
     for (var i = 0; i < tempDownload.length; i++) {
-      recentList.add(EpisodeData.fromJson(tempDownload[i]));
+      downloadList.add(EpisodeData.fromJson(tempDownload[i]));
     }
   }
 }

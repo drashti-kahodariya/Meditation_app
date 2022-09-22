@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Controllers/home_controller.dart';
 import 'package:meditation_app/Data/Model/explore_course_model.dart';
 import 'package:meditation_app/Routes/routes.dart';
@@ -20,6 +21,7 @@ class CourseScreen extends StatefulWidget {
 class _CourseScreenState extends State<CourseScreen> {
   var courseData = <CourseData>[];
   var homeController = Get.put(HomeController());
+  var authController = Get.put(AuthenticationController());
   @override
   void initState() {
     courseData = Get.arguments;
@@ -42,8 +44,12 @@ class _CourseScreenState extends State<CourseScreen> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    Get.toNamed(Routes.episodeScreen,
-                        arguments: courseData[index].sId);
+                    if (authController.currentUserData.value.isUserPremium!) {
+                      Get.toNamed(Routes.episodeScreen,
+                          arguments: courseData[index].sId);
+                    } else {
+                      Get.toNamed(Routes.subscriptionScreen);
+                    }
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18.0),
@@ -100,18 +106,35 @@ class _CourseScreenState extends State<CourseScreen> {
                                     ],
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: () async {
-                                    await homeController.addFavoriteList(
-                                        {"courseId": courseData[index].sId!});
-                                    // homeController.getFavoriteList();
-                                  },
-                                  child: courseData[index].isFavorite!
-                                      ? CustomWidget.customAssetImageWidget(
-                                          image: Assets.assetsHeart)
-                                      : CustomWidget.customAssetImageWidget(
-                                          image: Assets.assetsHeartOutline),
-                                )
+                                authController
+                                        .currentUserData.value.isUserPremium!
+                                    ? GestureDetector(
+                                        onTap: () async {
+                                          await homeController.addFavoriteList({
+                                            "courseId": courseData[index].sId!
+                                          });
+                                          // homeController.getFavoriteList();
+                                        },
+                                        child: courseData[index].isFavorite!
+                                            ? CustomWidget
+                                                .customAssetImageWidget(
+                                                    image: Assets.assetsHeart)
+                                            : CustomWidget
+                                                .customAssetImageWidget(
+                                                    image: Assets
+                                                        .assetsHeartOutline),
+                                      )
+                                    : GestureDetector(
+                                        onTap: () {
+                                          Get.toNamed(
+                                              Routes.subscriptionScreen);
+                                        },
+                                        child: Icon(
+                                          CupertinoIcons.lock,
+                                          color: AppColor.whiteColor,
+                                          size: 30,
+                                        ),
+                                      ),
                               ],
                             ),
                           ),

@@ -135,7 +135,9 @@ class _RecentScreenState extends State<RecentScreen> {
                                                       image: Assets.assetsClock,
                                                       height: 2),
                                               CustomWidget.text(
-                                                "1 - 2 Min",
+                                                homeController
+                                                    .recentList[index].duration
+                                                    .toString(),
                                                 textAlign: TextAlign.start,
                                                 fontSize: 10,
                                               ),

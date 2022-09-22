@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
+import 'package:meditation_app/Controllers/authentication_controller.dart';
 import 'package:meditation_app/Controllers/explore_controller.dart';
 import 'package:meditation_app/Controllers/home_controller.dart';
 import 'package:meditation_app/Routes/routes.dart';
@@ -27,6 +28,7 @@ class FeaturedScreen extends StatefulWidget {
 class _FeaturedScreenState extends State<FeaturedScreen> {
   var exploreController = Get.put(ExploreController());
   var homeController = Get.put(HomeController());
+  var authController = Get.put(AuthenticationController());
 
   @override
   void didChangeDependencies() {
@@ -122,9 +124,14 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            Get.toNamed(Routes.episodeScreen,
-                                arguments: exploreController
-                                    .featuredCourseList[index].sId);
+                            if (authController
+                                .currentUserData.value.isUserPremium!) {
+                              Get.toNamed(Routes.episodeScreen,
+                                  arguments: exploreController
+                                      .featuredCourseList[index].sId);
+                            } else {
+                              Get.toNamed(Routes.subscriptionScreen);
+                            }
                           },
                           child: Container(
                             height: 25.h,
@@ -153,30 +160,46 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                                         )),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: GestureDetector(
-                                        onTap: () async {
-                                          await homeController.addFavoriteList({
-                                            "courseId": exploreController
-                                                .featuredCourseList[index].sId!
-                                          });
-                                          exploreController.getFeaturedData({
-                                            "categoryId": widget.id,
-                                            "page":
-                                                exploreController.page.value,
-                                            "limit": 10
-                                          });
-                                        },
-                                        child: exploreController
-                                                .featuredCourseList[index]
-                                                .isFavorite!
-                                            ? CustomWidget
-                                                .customAssetImageWidget(
-                                                    image: Assets.assetsHeart)
-                                            : CustomWidget
-                                                .customAssetImageWidget(
-                                                    image: Assets
-                                                        .assetsHeartOutline),
-                                      ),
+                                      child: authController.currentUserData
+                                              .value.isUserPremium!
+                                          ? GestureDetector(
+                                              onTap: () async {
+                                                await homeController
+                                                    .addFavoriteList({
+                                                  "courseId": exploreController
+                                                      .featuredCourseList[index]
+                                                      .sId!
+                                                });
+                                                exploreController
+                                                    .getFeaturedData({
+                                                  "categoryId": widget.id,
+                                                  "page": exploreController
+                                                      .page.value,
+                                                  "limit": 10
+                                                });
+                                              },
+                                              child: exploreController
+                                                      .featuredCourseList[index]
+                                                      .isFavorite!
+                                                  ? CustomWidget
+                                                      .customAssetImageWidget(
+                                                          image: Assets
+                                                              .assetsHeart)
+                                                  : CustomWidget
+                                                      .customAssetImageWidget(
+                                                          image: Assets
+                                                              .assetsHeartOutline),
+                                            )
+                                          : GestureDetector(
+                                              onTap: () {
+                                                Get.toNamed(
+                                                    Routes.subscriptionScreen);
+                                              },
+                                              child: Icon(
+                                                CupertinoIcons.lock,
+                                                color: AppColor.whiteColor,
+                                              ),
+                                            ),
                                     )
                                   ],
                                 ),

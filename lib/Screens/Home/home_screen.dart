@@ -306,14 +306,16 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         GestureDetector(
           onTap: () {
-            // Get.toNamed(Routes.subscriptionScreen);
-
-            homeController.addInRecent(course);
-            final extension = p.extension(course.audioOrVideo!);
-            if (extension == ".mp3") {
-              Get.toNamed(Routes.musicPlayScreen, arguments: course);
+            if (authController.currentUserData.value.isUserPremium!) {
+              homeController.addInRecent(course);
+              final extension = p.extension(course.audioOrVideo!);
+              if (extension == ".mp3") {
+                Get.toNamed(Routes.musicPlayScreen, arguments: course);
+              } else {
+                Get.toNamed(Routes.videoPlayScreen, arguments: course);
+              }
             } else {
-              Get.toNamed(Routes.videoPlayScreen, arguments: course);
+              Get.toNamed(Routes.subscriptionScreen);
             }
           },
           child: Container(
@@ -335,10 +337,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Icon(
-                              CupertinoIcons.lock,
-                              color: AppColor.whiteColor,
-                            ),
+                            authController.currentUserData.value.isUserPremium!
+                                ? Container()
+                                : Icon(
+                                    CupertinoIcons.lock,
+                                    color: AppColor.whiteColor,
+                                  ),
                             Container(
                               width: 30.w,
                               child: CustomWidget.text(course.title!,

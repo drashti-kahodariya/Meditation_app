@@ -37,6 +37,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18.0),
                   child: ListView.separated(
+                    physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: homeController.notificationList.length,
