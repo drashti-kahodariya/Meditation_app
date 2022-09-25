@@ -30,7 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       authController.setCurrentUser();
       homeController.getDashboardMeditation();
+      homeController.getAndSetRecent();
     });
+
     super.initState();
   }
 
@@ -61,16 +63,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     }),
                     Spacer(),
                     GestureDetector(
-                      onTap: () {
-                        Get.toNamed(Routes.favouriteScreen);
+                      onTap: () async {
+                        await Get.toNamed(Routes.favouriteScreen);
+                        homeController.getDashboardMeditation();
                       },
                       child: CustomWidget.customAssetImageWidget(
                           image: Assets.assetsHeartOutline, height: 3.0),
                     ),
                     SizedBox(width: 4.w),
                     GestureDetector(
-                      onTap: () {
-                        Get.toNamed(Routes.recentScreen);
+                      onTap: () async {
+                        await Get.toNamed(Routes.recentScreen);
+                        homeController.getDashboardMeditation();
                       },
                       child: CustomWidget.customAssetImageWidget(
                           image: Assets.assetsRecent, height: 3.0),
@@ -117,6 +121,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                     .startYourDay!
                                     .length,
                                 itemBuilder: (BuildContext context, int index) {
+                                  EpisodeData isEpisodeAvailable =
+                                      homeController.recentList.firstWhere(
+                                          (element) =>
+                                              element.sId ==
+                                              homeController
+                                                  .dashboardMeditationList[0]
+                                                  .startYourDay![index]
+                                                  .sId,
+                                          orElse: () => EpisodeData());
                                   return TimelineTile(
                                     alignment: TimelineAlign.manual,
                                     lineXY: 0.0,
@@ -132,12 +145,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                       height: 20,
                                       indicator: Container(
                                         decoration: BoxDecoration(
-                                          color: AppColor.lightPinkColor,
+                                          color: isEpisodeAvailable.sId != null
+                                              ? AppColor.lightPinkColor
+                                              : Colors.transparent,
                                           shape: BoxShape.circle,
                                           border: Border.fromBorderSide(
                                             BorderSide(
                                               color:
-                                                  Colors.white.withOpacity(0.2),
+                                                  isEpisodeAvailable.sId != null
+                                                      ? AppColor.lightPinkColor
+                                                      : Colors.white
+                                                          .withOpacity(0.2),
                                               width: 2,
                                             ),
                                           ),
@@ -318,14 +336,16 @@ class _HomeScreenState extends State<HomeScreen> {
           width: 4.w,
         ),
         GestureDetector(
-          onTap: () {
+          onTap: () async {
             if (!authController.currentUserData.value.isUserPremium!) {
               homeController.addInRecent(course);
               final extension = p.extension(course.audioOrVideo!);
               if (extension == ".mp3") {
-                Get.toNamed(Routes.musicPlayScreen, arguments: course);
+                await Get.toNamed(Routes.musicPlayScreen, arguments: course);
+                homeController.getAndSetRecent();
               } else {
-                Get.toNamed(Routes.videoPlayScreen, arguments: course);
+                await Get.toNamed(Routes.videoPlayScreen, arguments: course);
+                homeController.getAndSetRecent();
               }
             } else {
               Get.toNamed(Routes.subscriptionScreen);
