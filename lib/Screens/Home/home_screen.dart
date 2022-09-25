@@ -132,6 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       height: 20,
                                       indicator: Container(
                                         decoration: BoxDecoration(
+                                          color: AppColor.lightPinkColor,
                                           shape: BoxShape.circle,
                                           border: Border.fromBorderSide(
                                             BorderSide(
@@ -187,6 +188,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                     .afternoonLift!
                                     .length,
                                 itemBuilder: (BuildContext context, int index) {
+                                  Map isEpisodeAvailable =
+                                      homeController.tempRecentList.firstWhere(
+                                          (element) =>
+                                              element['_id'] ==
+                                              homeController
+                                                  .dashboardMeditationList[0]
+                                                  .afternoonLift![0]
+                                                  .sId,
+                                          orElse: () => {});
+                                  print("ISINRECENT::${isEpisodeAvailable}");
                                   return TimelineTile(
                                     alignment: TimelineAlign.manual,
                                     lineXY: 0.0,
@@ -194,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     isLast: index ==
                                         homeController
                                                 .dashboardMeditationList[0]
-                                                .startYourDay!
+                                                .afternoonLift!
                                                 .length -
                                             1,
                                     indicatorStyle: IndicatorStyle(
@@ -299,6 +310,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Row dashboardCourseCard(EpisodeData course) {
+    // final duration = Duration(seconds: int.parse(course.duration.toString()));
+    // print("${_printDuration(duration)}");
     return Row(
       children: [
         SizedBox(
@@ -306,7 +319,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         GestureDetector(
           onTap: () {
-            if (authController.currentUserData.value.isUserPremium!) {
+            if (!authController.currentUserData.value.isUserPremium!) {
               homeController.addInRecent(course);
               final extension = p.extension(course.audioOrVideo!);
               if (extension == ".mp3") {
@@ -417,5 +430,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
     );
+  }
+
+  String _printDuration(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, "0");
+    String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
+    String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60));
+    return "${twoDigits(duration.inHours)}:$twoDigitMinutes:$twoDigitSeconds";
   }
 }

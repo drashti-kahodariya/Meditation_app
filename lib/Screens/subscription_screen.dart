@@ -17,10 +17,13 @@ class SubScriptionScreen extends StatefulWidget {
 
 class _SubScriptionScreenState extends State<SubScriptionScreen> {
   final premiumController = Get.put(PremiumController());
+  RxBool isMonthly = false.obs;
+  RxBool isYearly = false.obs;
+
   @override
   void initState() {
-    premiumController.setPremium();
-    premiumController.initStoreInfo();
+    // premiumController.setPremium();
+    // premiumController.initStoreInfo();
     super.initState();
   }
 
@@ -88,13 +91,58 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
                 SizedBox(
                   height: 5.h,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(Assets.assetsMonthly),
-                    Image.asset(Assets.assetsYearly)
-                  ],
-                ),
+                Obx(() {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          if (isMonthly.value) {
+                            isMonthly.value = false;
+                            isYearly.value = true;
+                          } else {
+                            isMonthly.value = true;
+                            // isYearly.value=true;
+                          }
+                        },
+                        child: Stack(
+                          alignment: Alignment.topRight,
+                          children: [
+                            Image.asset(Assets.assetsMonthly),
+                            isMonthly.value
+                                ? Image.asset(
+                                    Assets.assetsChecked,
+                                    height: 22,
+                                  )
+                                : Container(),
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                          onTap: () {
+                            if (isYearly.value) {
+                              isMonthly.value = true;
+                              isYearly.value = false;
+                            } else {
+                              isYearly.value = true;
+                              // isYearly.value=true;
+                            }
+                          },
+                          child: Stack(
+                            alignment: Alignment.topRight,
+                            children: [
+                              Image.asset(Assets.assetsYearly),
+                              isYearly.value
+                                  ? Image.asset(
+                                      Assets.assetsChecked,
+                                      height: 22,
+                                    )
+                                  : Container(),
+                            ],
+                          ))
+                    ],
+                  );
+                }),
                 SizedBox(
                   height: 5.h,
                 ),

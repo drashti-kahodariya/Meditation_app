@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meditation_app/Controllers/home_controller.dart';
+import 'package:meditation_app/Utils/Widgets/custom_date_formatter.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/l10n.dart';
@@ -46,7 +47,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CustomWidget.text("Yesterday"),
+                          CustomWidget.text(
+                              DateFormatter().getVerboseDateTimeRepresentation(
+                            DateTime.parse(homeController
+                                .notificationList[index].createdAt!),
+                          )),
                           Container(
                             // height: 50.h,
                             width: 100.w,

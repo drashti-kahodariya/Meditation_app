@@ -4,6 +4,7 @@ class Assets {
 
   static const String assetsApple = 'assets/apple.png';
   static const String assetsBackward = 'assets/backward.png';
+  static const String assetsChecked = 'assets/checked.png';
   static const String assetsChronometer = 'assets/chronometer.png';
   static const String assetsClock = 'assets/clock.png';
   static const String assetsDeadline = 'assets/deadline.png';

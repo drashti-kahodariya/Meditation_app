@@ -18,6 +18,7 @@ class HomeController extends GetxController {
   var recentList = <EpisodeData>[].obs;
   var notificationList = <EpisodeData>[].obs;
   var downloadList = <EpisodeData>[].obs;
+  var tempRecentList = [].obs;
 
   /// Get the greeting from the current time of user
   String greetingMessage() {
@@ -54,7 +55,6 @@ class HomeController extends GetxController {
   }
 
   addInRecent(EpisodeData episode) {
-    var tempRecentList = [].obs;
     var recentList = GetStorage().read(AppPreferencesHelper.recent) ?? [];
     tempRecentList.addAll(GetStorage().read(AppPreferencesHelper.recent) ?? []);
     Map isEpisodeAvailable = tempRecentList.firstWhere(
