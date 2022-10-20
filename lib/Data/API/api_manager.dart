@@ -347,6 +347,8 @@ class APIManager {
 
       /// Bad request need to check url
       case 400:
+        print(
+            "error::${ErrorModel.fromJson(json.decode(response.body.toString())).message}");
         throw BadRequestException(
             ErrorModel.fromJson(json.decode(response.body.toString())).message);
 

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -133,13 +135,39 @@ class AuthenticationController extends GetxController {
                 String.fromCharCodes(appleIdCredential.authorizationCode!),
             email: firebaseUser.email,
             name: firebaseUser.displayName ?? "");
+
+        // var loginData = await authenticationRepository.signInWithApple(
+        //     appleAuthCode:
+        //         String.fromCharCodes(appleIdCredential.authorizationCode!),
+        //     email: firebaseUser.email,
+        //     name: firebaseUser.displayName ?? "");
+        // print(loginData.userData!.toJson());
+        // GetStorage().write(
+        //     AppPreferencesHelper.pUser,
+        //     UserData(
+        //         sId: "630239f7e0e332667fba5381",
+        //         loginType: 1,
+        //         lastName: "",
+        //         isUserPremium: false,
+        //         image: "",
+        //         firstName: "User",
+        //         email: "",
+        //         mobileNumber: "",
+        //         refreshToken:
+        //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzAyMzlmN2UwZTMzMjY2N2ZiYTUzODEiLCJhdXRoVG9rZW4iOjYzMTAzOSwidHlwZSI6MCwic3RhdHVzIjoiTG9naW4iLCJnZW5lcmF0ZWRPbiI6MTY2NjEwMjk0OTAxNywiaWF0IjoxNjY2MTAyOTQ5fQ.P7EMs6eM5NDal8j1veiDzNv6gRMCueRE0gPN601afJ0",
+        //         token:
+        //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzAyMzlmN2UwZTMzMjY2N2ZiYTUzODEiLCJhdXRoVG9rZW4iOjYzMTAzOSwidHlwZSI6MCwic3RhdHVzIjoiTG9naW4iLCJnZW5lcmF0ZWRPbiI6MTY2NjEwMjk0OTAxNywiaWF0IjoxNjY2MTAyOTQ5fQ.P7EMs6eM5NDal8j1veiDzNv6gRMCueRE0gPN601afJ0",
+        //         userType: 0).toJson());
+        // setCurrentUser();
+        // Get.offAllNamed(Routes.dashboard);
         GetStorage()
             .write(AppPreferencesHelper.pUser, loginData.userData!.toJson());
         setCurrentUser();
-        Get.offAllNamed(Routes.homeScreen);
+        Get.offAllNamed(Routes.dashboard);
         break;
 
       case AuthorizationStatus.error:
+        print("ERROR::: ${result.error.toString()}");
         throw PlatformException(
           code: 'ERROR_AUTHORIZATION_DENIED',
           message: result.error.toString(),

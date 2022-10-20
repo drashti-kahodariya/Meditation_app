@@ -56,10 +56,12 @@ class AuthenticationRepository {
     var jsonResponse = await apiManager.postAPICall("user/apple_login", {
       "firstName": name,
       "lastName": name,
-      "email": email,
+      "email": email ?? "youremail@gmail.com",
       "appleAuthCode": [appleAuthCode].toString(),
       "deviceToken": ""
     });
+
+
     var loginResponse = LoginSuccessResponseModel.fromJson(jsonResponse);
     return loginResponse;
   }
