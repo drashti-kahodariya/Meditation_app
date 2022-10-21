@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meditation_app/Data/Model/episode_model.dart';
+import 'package:meditation_app/Utils/constant.dart';
+import 'package:sizer/sizer.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayScreen extends StatefulWidget {
@@ -41,15 +43,42 @@ class _VideoPlayScreenState extends State<VideoPlayScreen> {
       return SafeArea(
         child: Scaffold(
           backgroundColor: Colors.black,
-          body: Center(
-            child: _controller!.value.isInitialized
-                ? AspectRatio(
-                    aspectRatio: _controller!.value.aspectRatio,
-                    child: VideoPlayer(_controller!),
-                  )
-                : Container(),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+                child: Container(
+                  height: 45,
+                  width: 45,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: AppColor.whiteColor)),
+                  child: Center(
+                      child: Icon(
+                        Icons.close,
+                        color: AppColor.whiteColor,
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: 25.h,
+              ),
+              Center(
+                child: _controller!.value.isInitialized
+                    ? AspectRatio(
+                        aspectRatio: _controller!.value.aspectRatio,
+                        child: VideoPlayer(_controller!),
+                      )
+                    : Container(),
+              ),
+            ],
           ),
           floatingActionButton: FloatingActionButton(
+            backgroundColor: AppColor.primaryColor,
             onPressed: () {
               setState(() {
                 _controller!.value.isPlaying

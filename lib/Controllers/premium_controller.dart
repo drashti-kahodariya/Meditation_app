@@ -75,7 +75,7 @@ class PremiumController extends GetxController {
         await _inAppPurchase.queryProductDetails(
             Platform.isIOS ? _kProductIdsIos.toSet() : _kProductIds.toSet());
 
-    print("Amit ${productDetailResponse.productDetails}");
+    print("Product ${productDetailResponse.productDetails}");
 
     if (productDetailResponse.error != null) {
       _queryProductError = productDetailResponse.error!.message;

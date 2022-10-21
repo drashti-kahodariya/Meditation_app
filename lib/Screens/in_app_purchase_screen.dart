@@ -14,7 +14,7 @@ const String _kConsumableId = 'com.felix.meditate.monthly';
 
 const List<String> _kProductIds = <String>[
   _kConsumableId,
-  "com.felix.meditate.monthly"
+  "com.felix.meditate.yearly"
 ];
 
 class InAppPurchaseScreen extends StatefulWidget {

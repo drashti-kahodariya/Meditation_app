@@ -32,7 +32,7 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
       body: Padding(
-        padding: const EdgeInsets.all(18.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -103,13 +103,16 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
                             isYearly.value = true;
                           } else {
                             isMonthly.value = true;
-                            // isYearly.value=true;
+                            isYearly.value=false;
                           }
                         },
                         child: Stack(
                           alignment: Alignment.topRight,
                           children: [
-                            Image.asset(Assets.assetsMonthly),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(Assets.assetsMonthly),
+                            ),
                             isMonthly.value
                                 ? Image.asset(
                                     Assets.assetsChecked,
@@ -126,13 +129,16 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
                               isYearly.value = false;
                             } else {
                               isYearly.value = true;
-                              // isYearly.value=true;
+                              isMonthly.value=false;
                             }
                           },
                           child: Stack(
                             alignment: Alignment.topRight,
                             children: [
-                              Image.asset(Assets.assetsYearly),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset(Assets.assetsYearly),
+                              ),
                               isYearly.value
                                   ? Image.asset(
                                       Assets.assetsChecked,

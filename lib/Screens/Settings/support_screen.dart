@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+// import 'package:webview_flutter/webview_flutter.dart';
 
 class SupportScreen extends StatefulWidget {
   const SupportScreen({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class _SupportScreenState extends State<SupportScreen> {
   String url = "";
   @override
   void didChangeDependencies() {
-    WebView.platform = AndroidWebView();
+    // WebView.platform = AndroidWebView();
     String argument = ModalRoute.of(context)!.settings.arguments as String;
     if (argument == "My Data") {
       url =
@@ -32,8 +33,8 @@ class _SupportScreenState extends State<SupportScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WebView(
-      initialUrl: url,
+    return InAppWebView(
+      initialUrlRequest:  URLRequest(url: Uri.parse(url)),
     );
   }
 }

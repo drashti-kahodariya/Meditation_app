@@ -151,21 +151,34 @@ class _SettingScreenState extends State<SettingScreen> {
                 SizedBox(
                   height: 3.h,
                 ),
-                customSettingTile(
-                    icon: Assets.assetsLogout,
-                    title: S.of(context).deleteAccount,
-                    onTap: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return CustomWidget.alertDialog(
-                                desc:
-                                    S.of(context).areYouSureWantToDeleteAccount,
-                                cancel: S.of(context).cancel,
-                                tittle: S.of(context).deleteAccount);
-                          });
-                      // authController.logOut();
-                    }),
+              GestureDetector(
+                onTap:
+                  (){
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return CustomWidget.alertDialog(
+                              desc:
+                              S.of(context).areYouSureWantToDeleteAccount,
+                              cancel: S.of(context).cancel,
+                              tittle: S.of(context).deleteAccount);
+                        });
+                  },
+                child: Row(
+                  children: [
+                    Icon(Icons.delete,size: 30,color: AppColor.whiteColor,),
+                    // Image.asset(icon, height: 30, width: 30),
+                    SizedBox(width: 3.w),
+                    CustomWidget.text(S.of(context).deleteAccount, fontSize: 15),
+                    const Spacer(),
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColor.whiteColor,
+                      size: 22,
+                    )
+                  ],
+                ),
+              ),
                 SizedBox(
                   height: 3.h,
                 ),

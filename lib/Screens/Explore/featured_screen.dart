@@ -69,14 +69,16 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                     height: 2.h,
                   ),
                   Container(
-                    height: 25,
-                    width: 85,
+                    height: 5.h,
+                    width: 20.w,
                     decoration: CustomWidget.customBoxDecoration(
                         borderRadius: 10,
                         borderColor: AppColor.whiteColor.withOpacity(0.6)),
-                    child: CustomWidget.text(S.of(context).featured,
-                        fontSize: 10,
-                        color: AppColor.whiteColor.withOpacity(0.6)),
+                    child: Center(
+                      child: CustomWidget.text(S.of(context).featured,
+                          fontSize: 10,
+                          color: AppColor.whiteColor.withOpacity(0.6)),
+                    ),
                   ),
                   SizedBox(
                     height: 2.h,
@@ -105,7 +107,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
             Padding(
               padding: const EdgeInsets.only(left: 18.0),
               child: Container(
-                height: 23.h,
+                height: 24.h,
                 width: 100.w,
                 child: LazyLoadScrollView(
                   onEndOfPage: () {

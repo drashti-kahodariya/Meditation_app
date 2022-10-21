@@ -426,7 +426,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Container(
                     height: 19.h,
-                    width: 37.w,
+                    width: 36.w,
                     decoration: CustomWidget.customBoxDecoration(
                       borderRadius: 10,
                     ),
