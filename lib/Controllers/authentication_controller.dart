@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -256,6 +254,15 @@ class AuthenticationController extends GetxController {
   Future<void> setNewPassword(Map<String, String> params) async {
     await authenticationRepository.setNewPasswordApiCall(params);
     Get.offAllNamed(Routes.loginScreen);
+  }
+
+  ///
+  /// This method use for delete account
+  ///
+  Future<void> deleteAccount(Map<String, String> params) async {
+    await authenticationRepository.deleteAccountApiCall(params);
+    GetStorage().erase();
+    Get.offAllNamed(Routes.welcomeScreen);
   }
 
   ///

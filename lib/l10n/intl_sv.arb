@@ -68,6 +68,10 @@
   "sessionsCompleted": "Sessioner avslutade",
   "runStreak": "Kör Streak",
   "allYouNeedIsaFewMinuteADayToStartYourBestStreakEver": "Allt du behöver är några\nminuter om dagen för att börja\ndin bästa serie någonsin.",
-  "recommendedForYou": "Rekommenderat för dig"
+  "recommendedForYou": "Rekommenderat för dig",
+  "deleteAccount": "Radera konto",
+  "areYouSureWantToLogout": "Är du säker på att du vill logga ut?",
+  "areYouSureWantToDeleteAccount": "Är du säker på att du vill ta bort kontot?",
+  "cancel": "Avbryt"
 
 }

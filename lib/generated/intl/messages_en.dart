@@ -29,9 +29,14 @@ class MessageLookup extends MessageLookupByLibrary {
                 "All you need is a few\nminutes a day to start\nyour best streak ever."),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "areYouSureWantToDeleteAccount": MessageLookupByLibrary.simpleMessage(
+            "Are you sure want to delete account?"),
+        "areYouSureWantToLogout": MessageLookupByLibrary.simpleMessage(
+            "Are you sure want to logout?"),
         "atNight": MessageLookupByLibrary.simpleMessage("At Night"),
         "averageMeditationLength":
             MessageLookupByLibrary.simpleMessage("Average meditation length"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "codeHasSentToYourEmailAddress": MessageLookupByLibrary.simpleMessage(
             "Code has sent to \nyour email address"),
         "confirmPassword":
@@ -41,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Create an account and start meditating"),
         "createNewPassword":
             MessageLookupByLibrary.simpleMessage("Create new password"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
         "didSomeoneForgetTheirPassword": MessageLookupByLibrary.simpleMessage(
             "Did som!eone forget their password ?"),
         "doMeditationStayFocused":

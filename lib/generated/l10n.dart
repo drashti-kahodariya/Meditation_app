@@ -733,6 +733,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Delete Account`
+  String get deleteAccount {
+    return Intl.message(
+      'Delete Account',
+      name: 'deleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure want to logout?`
+  String get areYouSureWantToLogout {
+    return Intl.message(
+      'Are you sure want to logout?',
+      name: 'areYouSureWantToLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure want to delete account?`
+  String get areYouSureWantToDeleteAccount {
+    return Intl.message(
+      'Are you sure want to delete account?',
+      name: 'areYouSureWantToDeleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

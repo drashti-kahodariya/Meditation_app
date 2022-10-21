@@ -29,9 +29,14 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Allt du behöver är några\nminuter om dagen för att börja\ndin bästa serie någonsin."),
         "alreadyHaveAnAccount": MessageLookupByLibrary.simpleMessage(
             "Har redan ett konto? Logga in"),
+        "areYouSureWantToDeleteAccount": MessageLookupByLibrary.simpleMessage(
+            "Är du säker på att du vill ta bort kontot?"),
+        "areYouSureWantToLogout": MessageLookupByLibrary.simpleMessage(
+            "Är du säker på att du vill logga ut?"),
         "atNight": MessageLookupByLibrary.simpleMessage("Till kvällen"),
         "averageMeditationLength": MessageLookupByLibrary.simpleMessage(
             "Genomsnittlig meditationslängd"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Avbryt"),
         "codeHasSentToYourEmailAddress": MessageLookupByLibrary.simpleMessage(
             "Koden har skickats till\ndin e-postadress"),
         "confirmPassword":
@@ -41,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Skapa ett konto och börja meditera"),
         "createNewPassword":
             MessageLookupByLibrary.simpleMessage("Skapa nytt lösenord"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Radera konto"),
         "didSomeoneForgetTheirPassword": MessageLookupByLibrary.simpleMessage(
             "Har någon glömt sitt lösenord?"),
         "doMeditationStayFocused":

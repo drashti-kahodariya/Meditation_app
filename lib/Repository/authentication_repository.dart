@@ -61,7 +61,6 @@ class AuthenticationRepository {
       "deviceToken": ""
     });
 
-
     var loginResponse = LoginSuccessResponseModel.fromJson(jsonResponse);
     return loginResponse;
   }
@@ -146,6 +145,17 @@ class AuthenticationRepository {
         await apiManager.postAPICall("user/reset_password", params);
     var forgotPasswordResponse = CommonResponseModel.fromJson(jsonResponse);
     return forgotPasswordResponse;
+  }
+
+  ///
+  ///Delete Account API calling
+  ///
+  Future<CommonResponseModel> deleteAccountApiCall(
+      Map<String, String> params) async {
+    var jsonResponse =
+        await apiManager.deleteAPICall("user/delete_user", params);
+    var deleteAccountResponse = CommonResponseModel.fromJson(jsonResponse);
+    return deleteAccountResponse;
   }
 
   ///

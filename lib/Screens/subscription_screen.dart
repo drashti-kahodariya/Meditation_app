@@ -95,6 +95,7 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+
                       GestureDetector(
                         onTap: () {
                           if (isMonthly.value) {

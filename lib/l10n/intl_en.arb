@@ -68,5 +68,9 @@
   "sessionsCompleted": "Sessions completed",
   "runStreak": "Run Streak",
   "allYouNeedIsaFewMinuteADayToStartYourBestStreakEver": "All you need is a few\nminutes a day to start\nyour best streak ever.",
-  "recommendedForYou": "Recommended for you"
+  "recommendedForYou": "Recommended for you",
+  "deleteAccount": "Delete Account",
+  "areYouSureWantToLogout": "Are you sure want to logout?",
+  "areYouSureWantToDeleteAccount": "Are you sure want to delete account?",
+  "cancel": "Cancel"
 }

@@ -374,13 +374,16 @@ class CustomWidget {
     );
   }
 
-  static ClipRRect alertDialog() {
+  static ClipRRect alertDialog(
+      {required String desc, required String cancel, required String tittle}) {
+    var authController = Get.put(AuthenticationController());
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
       child: AlertDialog(
         backgroundColor: AppColor.primaryColor,
         content: text(
-          "Are you sure want to logout?",
+          desc,
           fontSize: 13,
         ),
         actions: <Widget>[
@@ -388,14 +391,17 @@ class CustomWidget {
             onPressed: () {
               Get.back();
             },
-            child: text("Cancel", fontSize: 12),
+            child: text(cancel, fontSize: 12),
           ),
           TextButton(
             onPressed: () {
-              AuthenticationController().logOut();
+              if (tittle == "Log out") {
+                authController.logOut();
+              } else {
+                authController.deleteAccount({});
+              }
             },
-            child:
-                text("Logout", fontSize: 12, color: AppColor.backgroundColor),
+            child: text(tittle, fontSize: 12, color: AppColor.backgroundColor),
           )
         ],
       ),

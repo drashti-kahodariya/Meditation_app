@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:meditation_app/Controllers/authentication_controller.dart';
-import 'package:meditation_app/Controllers/home_controller.dart';
 import 'package:meditation_app/Utils/constant.dart';
 import 'package:meditation_app/Utils/custom_widget.dart';
 import 'package:meditation_app/generated/assets.dart';
@@ -154,12 +153,33 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
                 customSettingTile(
                     icon: Assets.assetsLogout,
+                    title: S.of(context).deleteAccount,
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return CustomWidget.alertDialog(
+                                desc:
+                                    S.of(context).areYouSureWantToDeleteAccount,
+                                cancel: S.of(context).cancel,
+                                tittle: S.of(context).deleteAccount);
+                          });
+                      // authController.logOut();
+                    }),
+                SizedBox(
+                  height: 3.h,
+                ),
+                customSettingTile(
+                    icon: Assets.assetsLogout,
                     title: S.of(context).logOut,
                     onTap: () {
                       showDialog(
                           context: context,
                           builder: (context) {
-                            return CustomWidget.alertDialog();
+                            return CustomWidget.alertDialog(
+                                desc: S.of(context).areYouSureWantToLogout,
+                                cancel: S.of(context).cancel,
+                                tittle: S.of(context).logOut);
                           });
                       // authController.logOut();
                     }),
