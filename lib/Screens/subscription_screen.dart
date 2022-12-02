@@ -22,8 +22,8 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
 
   @override
   void initState() {
-    // premiumController.setPremium();
-    // premiumController.initStoreInfo();
+    premiumController.setPremium();
+    premiumController.initStoreInfo();
     super.initState();
   }
 
